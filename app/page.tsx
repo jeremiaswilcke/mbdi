@@ -1,9 +1,10 @@
-"use client";
-
 import { BentoCard } from "@/components/BentoCard";
 import { motion } from "framer-motion";
+import { getLatestVideos } from "@/lib/youtube";
+import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const { liveStream, latestVod } = await getLatestVideos();
   return (
     <main className="min-h-screen bg-background text-foreground pt-32 pb-24 overflow-hidden">
 
@@ -31,55 +32,72 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[300px]">
 
           {/* 
-            === 1. Video-Bento: Aktueller Stream (Hero) ===
+            === 1. Video-Bento: Aktueller Stream / Letztes Highlight (Hero) ===
             Spans 2 columns, 2 rows on desktop for maximum impact
           */}
           <BentoCard
-            colorVariant="magenta"
+            colorVariant={liveStream ? "magenta" : "darkBlue"}
             className="md:col-span-2 md:row-span-2 p-0 overflow-hidden group"
-            href="/videos"
+            href={liveStream ? `https://youtube.com/watch?v=${liveStream.id}` : (latestVod ? `https://youtube.com/watch?v=${latestVod.id}` : "/videos")}
             delay={0.1}
           >
-            <div className="absolute inset-0 z-0">
-              {/* Placeholder for YouTube Embed or Thumbnail */}
-              <div className="w-full h-full bg-[#155277]/50 flex items-center justify-center relative">
-                {/* Simulate a video thumbnail */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/50 z-0"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-              </div>
+            <div className="absolute inset-0 z-0 bg-[#0f172a]">
+              {/* Background / Thumbnail */}
+              {(liveStream?.thumbnailUrl || latestVod?.thumbnailUrl) && (
+                <div className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500">
+                  <img
+                    src={liveStream?.thumbnailUrl || latestVod?.thumbnailUrl || ""}
+                    alt={liveStream?.title || latestVod?.title || "Video Thumbnail"}
+                    className="object-cover w-full h-full"
+                  />
+                </div>
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
             </div>
 
             <div className="relative z-20 h-full flex flex-col justify-between p-8">
               <div className="self-start">
-                <span className="inline-flex items-center gap-2 bg-[#AF3F6C] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-lg shadow-[#AF3F6C]/20 border border-white/20">
-                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" /> Live Now
-                </span>
+                {liveStream ? (
+                  <span className="inline-flex items-center gap-2 bg-[#AF3F6C] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-lg shadow-[#AF3F6C]/20 border border-white/20">
+                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" /> Live Now
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-2 bg-[#155277] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest border border-white/10">
+                    Neuestes Video
+                  </span>
+                )}
               </div>
               <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 shadow-black drop-shadow-lg">
-                  Sonntagsgottesdienst
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 shadow-black drop-shadow-lg line-clamp-2">
+                  {liveStream?.title || latestVod?.title || "Mariabrunn Digital"}
                 </h2>
-                <p className="text-slate-200 font-medium">Aus der Pfarr- und Wallfahrtskirche Mariabrunn</p>
+                <p className="text-slate-200 font-medium drop-shadow-md lg:line-clamp-none line-clamp-2">
+                  {liveStream ? "Wir sind gerade live! Klicke hier um teilzunehmen." : "Aus der Pfarr- und Wallfahrtskirche Mariabrunn."}
+                </p>
               </div>
             </div>
           </BentoCard>
 
           {/* 
-            === 2. Video-Bento: Aktuelles VOD ===
+            === 2. Video-Bento: YouTube Kanal direkt ===
+            Da wir das neueste Video nun dynamisch im Hero haben, leitet dieses Bento prominent zum Kanal.
           */}
           <BentoCard
             colorVariant="lightBlue"
             className="md:col-span-2 p-0 overflow-hidden group"
-            href="/videos/latest"
+            href="https://www.youtube.com/@MariabrunnDigital"
             delay={0.2}
           >
-            <div className="absolute inset-0 z-0 bg-[#0f172a] flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
-              <p className="text-slate-500 z-0">Letztes Video Thumbnail</p>
-            </div>
-            <div className="relative z-20 h-full flex flex-col justify-end p-6">
-              <span className="text-[#6DC0D2] font-bold text-sm mb-1 uppercase tracking-wider">Aktuelles Video</span>
-              <h3 className="text-2xl font-heading font-bold text-white">Vortrag: Kirchengeschichte</h3>
+            <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#155277] to-[#0f172a] opacity-80" />
+
+            <div className="relative z-20 h-full flex flex-col justify-between p-8">
+              <div className="self-start bg-white/10 p-3 rounded-2xl backdrop-blur-md">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#6DC0D2" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" /><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" /></svg>
+              </div>
+              <div>
+                <h3 className="text-2xl font-heading font-bold text-white mb-2">Mariabrunn Digital auf YouTube</h3>
+                <p className="text-slate-300">Abonniere unseren Kanal für alle Predigten, Vorträge und Live-Übertragungen.</p>
+              </div>
             </div>
           </BentoCard>
 
