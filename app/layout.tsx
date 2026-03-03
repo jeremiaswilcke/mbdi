@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import { Navigation } from "@/components/Navigation";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,7 +25,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`${inter.variable} ${outfit.variable} antialiased selection:bg-primary-light selection:text-primary-dark min-h-screen`}>
+      <body className={`${inter.variable} ${outfit.variable} antialiased selection:bg-primary-light selection:text-primary-dark min-h-screen bg-background`}>
+        <Navigation />
         {children}
       </body>
     </html>

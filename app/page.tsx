@@ -1,151 +1,192 @@
+"use client";
+
 import { BentoCard } from "@/components/BentoCard";
+import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground selection:bg-primary-light selection:text-primary-dark">
+    <main className="min-h-screen bg-background text-foreground pt-32 pb-24 overflow-hidden">
 
-      {/* 
-        ========================================
-        HERO SECTION (Latest Video / Stream) 
-        ========================================
-      */}
-      <section id="hero" className="w-full relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-        {/* Background gradient/image placeholder */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dark to-slate-900 -z-10"></div>
-        <div className="absolute inset-0 bg-black/40 z-0"></div>
-
-        <div className="relative z-10 w-full max-w-7xl mx-auto p-6 md:p-12 flex flex-col justify-end h-full">
-          <div className="mb-4">
-            <span className="inline-block bg-accent-magenta text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-lg animate-pulse">
-              🔴 Live
-            </span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-heading font-extrabold text-white mb-4 leading-tight drop-shadow-lg">
-            Sonntagsgottesdienst
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        {/* Header / Intro */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12"
+        >
+          <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-white mb-4">
+            Willkommen bei <span className="text-[#6DC0D2]">Mariabrunn Digital</span>
           </h1>
-          <p className="text-primary-light font-medium text-xl md:text-2xl drop-shadow-md mb-8 max-w-2xl">
-            Feiere den Gottesdienst live aus der Pfarr- und Wallfahrtskirche Mariabrunn mit uns.
+          <p className="text-xl text-slate-300 max-w-2xl">
+            Entdecke unsere neuesten Medien, Livestreams und tauche ein in das Leben der Pfarre Mariabrunn.
           </p>
+        </motion.div>
 
-          <div className="flex gap-4 flex-wrap">
-            <a href="/videos" className="bg-primary-light text-primary-dark font-bold px-8 py-4 rounded-full hover:bg-white transition-colors duration-300 shadow-xl">
-              Alle Videos ansehen
-            </a>
-          </div>
-        </div>
-      </section>
+        {/* 
+          ========================================
+          MAIN BENTO GRID 
+          ========================================
+        */}
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[300px]">
 
-      {/* 
-        ========================================
-        NÄCHSTE MESSEN SECTION
-        ========================================
-      */}
-      <section id="gottesdienste" className="w-full py-20 bg-card border-y border-card-border relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-10 flex items-center gap-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-accent-green"><rect width="18" height="18" x="3" y="4" rx="2" ry="2" /><line x1="16" x2="16" y1="2" y2="6" /><line x1="8" x2="8" y1="2" y2="6" /><line x1="3" x2="21" y1="10" y2="10" /></svg>
-            Nächste Gottesdienste
-          </h2>
-
-          {/* Horizontal or Grid list of upcoming masses */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-slate-800/50 p-6 rounded-2xl border border-white/5 hover:border-accent-green/50 transition-colors">
-              <p className="text-accent-green font-bold text-lg mb-1">Heute, 09:30</p>
-              <p className="text-2xl font-bold text-slate-100">Heilige Messe</p>
-              <p className="text-slate-400 mt-2">Gestaltet vom Kirchenchor</p>
+          {/* 
+            === 1. Video-Bento: Aktueller Stream (Hero) ===
+            Spans 2 columns, 2 rows on desktop for maximum impact
+          */}
+          <BentoCard
+            colorVariant="magenta"
+            className="md:col-span-2 md:row-span-2 p-0 overflow-hidden group"
+            href="/videos"
+            delay={0.1}
+          >
+            <div className="absolute inset-0 z-0">
+              {/* Placeholder for YouTube Embed or Thumbnail */}
+              <div className="w-full h-full bg-[#155277]/50 flex items-center justify-center relative">
+                {/* Simulate a video thumbnail */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
+                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/50 z-0"><polygon points="5 3 19 12 5 21 5 3" /></svg>
+              </div>
             </div>
-            <div className="bg-slate-800/50 p-6 rounded-2xl border border-white/5 hover:border-primary-light/50 transition-colors">
-              <p className="text-primary-light font-bold text-lg mb-1">Mittwoch, 18:00</p>
-              <p className="text-2xl font-bold text-slate-100">Abendmesse</p>
+
+            <div className="relative z-20 h-full flex flex-col justify-between p-8">
+              <div className="self-start">
+                <span className="inline-flex items-center gap-2 bg-[#AF3F6C] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-lg shadow-[#AF3F6C]/20 border border-white/20">
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" /> Live Now
+                </span>
+              </div>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 shadow-black drop-shadow-lg">
+                  Sonntagsgottesdienst
+                </h2>
+                <p className="text-slate-200 font-medium">Aus der Pfarr- und Wallfahrtskirche Mariabrunn</p>
+              </div>
             </div>
-            <div className="bg-slate-800/50 p-6 rounded-2xl border border-white/5 hover:border-primary-light/50 transition-colors">
-              <p className="text-primary-light font-bold text-lg mb-1">Sonntag, 09:30</p>
-              <p className="text-2xl font-bold text-slate-100">Pfarrgottesdienst</p>
+          </BentoCard>
+
+          {/* 
+            === 2. Video-Bento: Aktuelles VOD ===
+          */}
+          <BentoCard
+            colorVariant="lightBlue"
+            className="md:col-span-2 p-0 overflow-hidden group"
+            href="/videos/latest"
+            delay={0.2}
+          >
+            <div className="absolute inset-0 z-0 bg-[#0f172a] flex items-center justify-center">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10" />
+              <p className="text-slate-500 z-0">Letztes Video Thumbnail</p>
             </div>
-          </div>
-        </div>
-      </section>
+            <div className="relative z-20 h-full flex flex-col justify-end p-6">
+              <span className="text-[#6DC0D2] font-bold text-sm mb-1 uppercase tracking-wider">Aktuelles Video</span>
+              <h3 className="text-2xl font-heading font-bold text-white">Vortrag: Kirchengeschichte</h3>
+            </div>
+          </BentoCard>
 
-      {/* 
-        ========================================
-        BENTO GRID: MITMACHEN & FAKTEN
-        ========================================
-      */}
-      <section id="entdecken" className="w-full py-24 bg-background">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-10">
-            Pfarre Entdecken
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[280px]">
-
-            {/* Mitmachen (Large) */}
-            <BentoCard
-              href="/mitmachen"
-              className="md:col-span-2 bg-gradient-to-r from-accent-rose/20 to-accent-magenta/20 border-accent-rose/30 hover:border-accent-magenta/50 group"
-            >
-              <div className="flex flex-col h-full justify-between">
+          {/* 
+            === 3. Tagesplan API ===
+          */}
+          <BentoCard
+            colorVariant="darkBlue"
+            className="md:col-span-1 lg:col-span-1"
+            delay={0.3}
+          >
+            <div className="flex flex-col h-full">
+              <h3 className="text-xl font-heading font-bold text-white mb-4 flex items-center gap-2">
+                <span className="text-[#90AD50]">●</span> Heute
+              </h3>
+              <div className="flex-grow space-y-4">
+                <div className="pb-3 border-b border-white/10">
+                  <p className="text-[#6DC0D2] font-bold text-sm">09:30</p>
+                  <p className="text-slate-200">Heilige Messe</p>
+                </div>
                 <div>
-                  <h3 className="text-3xl font-heading font-bold text-white mb-4 group-hover:text-accent-rose transition-colors">
-                    Mitmachen
-                  </h3>
-                  <p className="text-lg text-slate-300 max-w-md">
-                    Werde Teil der Pfarre Mariabrunn. Entdecke Gruppen, Chöre, Jugendangebote und ehrenamtliche Tätigkeiten.
-                  </p>
-                </div>
-                <div className="self-end mt-4 bg-white/10 p-4 rounded-full group-hover:bg-accent-magenta group-hover:text-white transition-all transform group-hover:scale-110">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                  <p className="text-[#6DC0D2] font-bold text-sm">18:00</p>
+                  <p className="text-slate-200">Abendandacht</p>
                 </div>
               </div>
-            </BentoCard>
+              <p className="text-xs text-slate-500 mt-4 text-center">Via API: dienste.mariabrunn-digital.at</p>
+            </div>
+          </BentoCard>
 
-            {/* Über Mariabrunn */}
-            <BentoCard href="/ueber-uns" className="bg-card group">
-              <div className="flex flex-col h-full justify-between">
-                <div>
-                  <h3 className="text-2xl font-heading font-bold text-white mb-3 group-hover:text-accent-green transition-colors">
-                    Kirchenfakten
-                  </h3>
-                  <p className="text-slate-400">
-                    Architektur, Geschichte und Kunst in Mariabrunn.
-                  </p>
-                </div>
-                <div className="mt-4 opacity-50 group-hover:opacity-100 transition-opacity self-end">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="text-accent-green"><path d="M4 22h16" /><path d="M4 2v20" /><path d="M20 2v20" /><path d="M8 22v-4a4 4 0 0 1 8 0v4" /><path d="M12 2v16" /><path d="M8 6h8" /><path d="M8 10h8" /><path d="M8 14h8" /></svg>
-                </div>
+          {/* 
+            === 4. Pfarrtermine (PDF Link) ===
+          */}
+          <BentoCard
+            colorVariant="green"
+            className="md:col-span-1 lg:col-span-1 group"
+            href="https://www.erzdioezese-wien.at/pages/pfarren/9122/aktuellestermine"
+            delay={0.4}
+          >
+            <div className="flex flex-col h-full justify-between">
+              <div>
+                <h3 className="text-xl font-heading font-bold text-white mb-2 group-hover:text-[#90AD50] transition-colors">
+                  Pfarrtermine
+                </h3>
+                <p className="text-slate-400 text-sm">
+                  Alle aktuellen Termine der Pfarre als praktisches PDF downloaden.
+                </p>
               </div>
-            </BentoCard>
-
-            {/* Workshops */}
-            <BentoCard href="/workshops" className="bg-slate-800 border-slate-700 hover:bg-slate-700/80 group">
-              <div className="flex flex-col h-full justify-center items-center text-center">
-                <h3 className="text-2xl font-heading font-bold text-white mb-2">Workshops</h3>
-                <p className="text-slate-400 text-sm">Kurse, Gruppen & Seminare</p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mt-6 text-slate-500 group-hover:text-primary-light transition-colors"><path d="M12 20h9" /><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" /></svg>
+              <div className="mt-4 opacity-70 group-hover:opacity-100 transition-opacity self-end bg-white/10 p-3 rounded-xl">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-[#90AD50]"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><polyline points="7 10 12 15 17 10" /><line x1="12" x2="12" y1="15" y2="3" /></svg>
               </div>
-            </BentoCard>
+            </div>
+          </BentoCard>
 
-            {/* Kirchenführung QR */}
-            <BentoCard href="/fuehrung" className="md:col-span-2 border-primary-light/30 bg-primary-dark/20 group hover:bg-primary-dark/40">
-              <div className="flex flex-col md:flex-row items-center justify-between h-full p-4">
-                <div className="text-left mb-6 md:mb-0">
-                  <h3 className="text-2xl font-heading font-bold text-primary-light mb-2">
-                    Interaktive Kirchenführung
-                  </h3>
-                  <p className="text-slate-300 max-w-sm">
-                    QR Code in der Kirche scannen und die Audio-Tour starten. Erfahre mehr über die Geschichte direkt vor Ort.
-                  </p>
-                </div>
-                <div className="bg-white p-4 rounded-xl group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(109,192,210,0.4)] shrink-0">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#155277" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="5" height="5" x="3" y="3" rx="1" /><rect width="5" height="5" x="16" y="3" rx="1" /><rect width="5" height="5" x="3" y="16" rx="1" /><path d="M21 16h-3a2 2 0 0 0-2 2v3" /><path d="M21 21v.01" /><path d="M12 7v3a2 2 0 0 1-2 2H7" /><path d="M3 12h.01" /><path d="M12 3h.01" /><path d="M12 16v.01" /><path d="M16 12h1" /><path d="M21 12v.01" /><path d="M12 21v-1" /></svg>
-                </div>
+          {/* 
+            === 5. Mitmachen: Technik & Streaming ===
+            Spans 2 columns 
+          */}
+          <BentoCard
+            colorVariant="rose"
+            className="md:col-span-2 group"
+            href="/mitmachen"
+            delay={0.5}
+          >
+            <div className="flex flex-col md:flex-row h-full gap-6 items-center">
+              <div className="flex-1">
+                <span className="text-[#BC8080] font-bold text-sm uppercase tracking-wider mb-2 block">Team erweitern</span>
+                <h3 className="text-3xl font-heading font-bold text-white mb-3">
+                  Mitmachen
+                </h3>
+                <p className="text-slate-300">
+                  Interesse an Kamera, Regie, Streamingtechnik oder Social Media? Werde Teil der Technikcrew von Mariabrunn Digital.
+                </p>
               </div>
-            </BentoCard>
+              <div className="w-24 h-24 rounded-full bg-[#155277]/50 border-4 border-[#BC8080]/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#BC8080" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" /><circle cx="12" cy="13" r="3" /></svg>
+              </div>
+            </div>
+          </BentoCard>
 
-          </div>
+          {/* 
+            === 6. Über Mariabrunn / Kirchenführung ===
+            Spans 2 columns 
+          */}
+          <BentoCard
+            colorVariant="darkBlue"
+            className="md:col-span-2 group border-[#6DC0D2]/20"
+            href="/fuehrung"
+            delay={0.6}
+          >
+            <div className="flex flex-col md:flex-row h-full gap-6 items-center justify-between">
+              <div>
+                <h3 className="text-2xl font-heading font-bold text-[#6DC0D2] mb-2">
+                  Interaktive Kirchenführung
+                </h3>
+                <p className="text-slate-400 max-w-sm">
+                  QR Code vor Ort scannen und die Audio-Tour durch die Kirche starten. Kirchenfakten und Architektur hautnah erleben.
+                </p>
+              </div>
+              <div className="bg-white p-3 rounded-xl group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-[0_0_20px_rgba(109,192,210,0.2)] shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#155277" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><rect width="5" height="5" x="3" y="3" rx="1" /><rect width="5" height="5" x="16" y="3" rx="1" /><rect width="5" height="5" x="3" y="16" rx="1" /><path d="M21 16h-3a2 2 0 0 0-2 2v3" /><path d="M21 21v.01" /><path d="M12 7v3a2 2 0 0 1-2 2H7" /><path d="M3 12h.01" /><path d="M12 3h.01" /><path d="M12 16v.01" /><path d="M16 12h1" /><path d="M21 12v.01" /><path d="M12 21v-1" /></svg>
+              </div>
+            </div>
+          </BentoCard>
+
         </div>
-      </section>
-
+      </div>
     </main>
   );
 }
+
