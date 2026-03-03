@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-outfit);
+
+  --color-primary-light: #6dc0d2;
+  --color-primary-dark: #155277;
+  --color-accent-green: #90ad50;
+  --color-accent-magenta: #af3f6c;
+  --color-accent-rose: #bc8080;
+
+  --color-background: #0f172a; /* Slate 900 for modern dark mode base */
+  --color-foreground: #f8fafc; /* Slate 50 */
+  --color-card: rgba(30, 41, 59, 0.7); /* Slate 800 with opacity for glassmorphism */
+  --color-card-border: rgba(255, 255, 255, 0.1);
+}
+
+:root {
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Base styles for the Bento Grid and Glassmorphism */
+@layer utilities {
+  .bento-card {
+    @apply bg-card border border-card-border rounded-3xl p-6 shadow-lg backdrop-blur-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 overflow-hidden relative;
+  }
+}

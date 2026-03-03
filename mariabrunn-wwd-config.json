@@ -1,0 +1,322 @@
+{
+    "version": "1.0",
+    "site": {
+        "name": "Mariabrunn Digital",
+        "slug": "mariabrunn",
+        "api_prefix": "wwd",
+        "cors_origins": [
+            "http://localhost:3000"
+        ]
+    },
+    "pages": {
+        "home": {
+            "label": "Startseite",
+            "menu_icon": "dashicons-admin-home",
+            "sections": {
+                "hero": {
+                    "type": "inline",
+                    "label": "Hero Bereich",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Überschrift (z.B. Sonntagsgottesdienst)",
+                            "required": true
+                        },
+                        "subtitle": {
+                            "type": "textarea",
+                            "label": "Untertitel"
+                        },
+                        "live_badge": {
+                            "type": "text",
+                            "label": "Live-Badge Text (z.B. 🔴 Live)"
+                        },
+                        "cta_text": {
+                            "type": "text",
+                            "label": "Button Text"
+                        },
+                        "cta_link": {
+                            "type": "url",
+                            "label": "Button Link"
+                        },
+                        "background_image": {
+                            "type": "image",
+                            "label": "Hintergrundbild (Optional)"
+                        }
+                    }
+                },
+                "messen": {
+                    "type": "inline",
+                    "label": "Nächste Gottesdienste",
+                    "order": 2,
+                    "repeatable": true,
+                    "fields": {
+                        "datetime": {
+                            "type": "text",
+                            "label": "Zeitpunkt (z.B. Heute, 09:30)",
+                            "required": true
+                        },
+                        "title": {
+                            "type": "text",
+                            "label": "Titel (z.B. Heilige Messe)",
+                            "required": true
+                        },
+                        "description": {
+                            "type": "text",
+                            "label": "Zusatzinfo (z.B. Gestaltet vom Kirchenchor)"
+                        }
+                    }
+                },
+                "entdecken": {
+                    "type": "inline",
+                    "label": "Pfarre Entdecken (Bento Texte)",
+                    "order": 3,
+                    "fields": {
+                        "section_title": {
+                            "type": "text",
+                            "label": "Sektions-Überschrift (Pfarre Entdecken)"
+                        },
+                        "card_mitmachen_title": {
+                            "type": "text",
+                            "label": "Mitmachen Karte: Titel"
+                        },
+                        "card_mitmachen_desc": {
+                            "type": "textarea",
+                            "label": "Mitmachen Karte: Beschreibung"
+                        },
+                        "card_fakten_title": {
+                            "type": "text",
+                            "label": "Kirchenfakten Karte: Titel"
+                        },
+                        "card_fakten_desc": {
+                            "type": "textarea",
+                            "label": "Kirchenfakten Karte: Beschreibung"
+                        },
+                        "card_workshops_title": {
+                            "type": "text",
+                            "label": "Workshops Karte: Titel"
+                        },
+                        "card_workshops_desc": {
+                            "type": "text",
+                            "label": "Workshops Karte: Beschreibung"
+                        },
+                        "card_fuehrung_title": {
+                            "type": "text",
+                            "label": "Kirchenführung Karte: Titel"
+                        },
+                        "card_fuehrung_desc": {
+                            "type": "textarea",
+                            "label": "Kirchenführung Karte: Beschreibung"
+                        }
+                    }
+                }
+            }
+        },
+        "mitmachen": {
+            "label": "Mitmachen",
+            "menu_icon": "dashicons-groups",
+            "sections": {
+                "intro_mitmachen": {
+                    "type": "inline",
+                    "label": "Einleitung",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Überschrift",
+                            "required": true
+                        },
+                        "description": {
+                            "type": "editor",
+                            "label": "Beschreibungstext"
+                        }
+                    }
+                },
+                "gruppen": {
+                    "type": "cpt",
+                    "label": "Pfarrgruppen",
+                    "label_singular": "Pfarrgruppe",
+                    "menu_icon": "dashicons-universal-access",
+                    "order": 2,
+                    "fields": {
+                        "description": {
+                            "type": "textarea",
+                            "label": "Kurzbeschreibung"
+                        },
+                        "image": {
+                            "type": "image",
+                            "label": "Bild"
+                        },
+                        "contact_email": {
+                            "type": "email",
+                            "label": "Kontakt E-Mail"
+                        },
+                        "meeting_time": {
+                            "type": "text",
+                            "label": "Treffpunkt / Zeit"
+                        }
+                    }
+                }
+            }
+        },
+        "ueber_uns": {
+            "label": "Kirchenfakten",
+            "menu_icon": "dashicons-book-alt",
+            "sections": {
+                "intro_fakten": {
+                    "type": "inline",
+                    "label": "Einleitung",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Überschrift",
+                            "required": true
+                        },
+                        "text": {
+                            "type": "editor",
+                            "label": "Haupttext"
+                        },
+                        "hero_image": {
+                            "type": "image",
+                            "label": "Titelbild"
+                        }
+                    }
+                },
+                "history_timeline": {
+                    "type": "inline",
+                    "label": "Geschichte & Timeline",
+                    "order": 2,
+                    "repeatable": true,
+                    "fields": {
+                        "year": {
+                            "type": "text",
+                            "label": "Jahr / Epoche"
+                        },
+                        "event": {
+                            "type": "text",
+                            "label": "Ereignis"
+                        },
+                        "description": {
+                            "type": "textarea",
+                            "label": "Beschreibung"
+                        }
+                    }
+                }
+            }
+        },
+        "workshops": {
+            "label": "Workshops",
+            "menu_icon": "dashicons-calendar-alt",
+            "sections": {
+                "intro_workshops": {
+                    "type": "inline",
+                    "label": "Einleitung",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Überschrift",
+                            "required": true
+                        },
+                        "subtitle": {
+                            "type": "textarea",
+                            "label": "Untertitel"
+                        }
+                    }
+                },
+                "events": {
+                    "type": "cpt",
+                    "label": "Seminare & Kurse",
+                    "label_singular": "Seminar",
+                    "menu_icon": "dashicons-welcome-learn-more",
+                    "order": 2,
+                    "fields": {
+                        "date": {
+                            "type": "date",
+                            "label": "Datum"
+                        },
+                        "time": {
+                            "type": "text",
+                            "label": "Uhrzeit (z.B. 18:00 Uhr)"
+                        },
+                        "description": {
+                            "type": "editor",
+                            "label": "Beschreibung"
+                        },
+                        "status": {
+                            "type": "select",
+                            "label": "Anmeldestatus",
+                            "options": [
+                                {
+                                    "value": "open",
+                                    "label": "Anmeldung offen"
+                                },
+                                {
+                                    "value": "full",
+                                    "label": "Ausgebucht / Warteliste"
+                                },
+                                {
+                                    "value": "closed",
+                                    "label": "Vorbei"
+                                }
+                            ]
+                        },
+                        "registration_link": {
+                            "type": "url",
+                            "label": "Anmelde-Link"
+                        }
+                    }
+                }
+            }
+        },
+        "fuehrung": {
+            "label": "Kirchenführung",
+            "menu_icon": "dashicons-location",
+            "sections": {
+                "intro_fuehrung": {
+                    "type": "inline",
+                    "label": "Landing Page Info",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Überschrift",
+                            "required": true
+                        },
+                        "description": {
+                            "type": "editor",
+                            "label": "Anleitung (Wie funktioniert der QR Code?)"
+                        }
+                    }
+                },
+                "stationen": {
+                    "type": "cpt",
+                    "label": "QR-Stationen",
+                    "label_singular": "Station",
+                    "menu_icon": "dashicons-marker",
+                    "order": 2,
+                    "fields": {
+                        "station_id": {
+                            "type": "text",
+                            "label": "Stations-ID (z.B. station-1)",
+                            "required": true
+                        },
+                        "text_content": {
+                            "type": "editor",
+                            "label": "Text-Inhalt zur Station"
+                        },
+                        "image": {
+                            "type": "image",
+                            "label": "Bild der Station"
+                        },
+                        "audio_url": {
+                            "type": "url",
+                            "label": "URL zur Audio-Datei (MP3)"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
