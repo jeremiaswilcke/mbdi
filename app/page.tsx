@@ -1,5 +1,4 @@
 import { BentoCard } from "@/components/BentoCard";
-import { motion } from "framer-motion";
 import { getLatestVideos } from "@/lib/youtube";
 import Image from "next/image";
 
@@ -10,19 +9,14 @@ export default async function Home() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header / Intro */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
+        <div className="mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-white mb-4">
             Willkommen bei <span className="text-[#6DC0D2]">Mariabrunn Digital</span>
           </h1>
           <p className="text-xl text-slate-300 max-w-2xl">
             Entdecke unsere neuesten Medien, Livestreams und tauche ein in das Leben der Pfarre Mariabrunn.
           </p>
-        </motion.div>
+        </div>
 
         {/* 
           ========================================
