@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Outfit } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
+import { MouseTrail } from "@/components/MouseTrail";
 
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const outfit = Outfit({
-  variable: "--font-outfit",
   subsets: ["latin"],
 });
 
@@ -26,7 +22,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className={`${inter.variable} ${outfit.variable} antialiased selection:bg-primary-light selection:text-primary-dark min-h-screen bg-background`}>
+      <body className={`${inter.variable} antialiased selection:bg-[#6DC0D2]/30 selection:text-[#155277] min-h-screen bg-white`}>
+        <MouseTrail />
         <Navigation />
         {children}
         <Footer />
