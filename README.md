@@ -14,6 +14,26 @@ pnpm dev
 bun dev
 ```
 
+## Configuration
+
+```env
+# 1. YouTube API (für aktuelle Gottesdienste und Videos auf der Startseite)
+YOUTUBE_API_KEY=""
+YOUTUBE_CHANNEL_ID=""
+
+# 2. WordPress API (für Beiträge, Seiten, etc.)
+NEXT_PUBLIC_WORDPRESS_URL="https://admin.mariabrunn-digital.at"
+WP_URL="https://admin.mariabrunn-digital.at/graphql"
+
+# 3. Mail-Konfiguration (für das Krankenkommunion-Formular)
+KRANKENKOMMUNION_INBOX="buero@mariabrunn-digital.at"
+SMTP_HOST="smtp.example.com"
+SMTP_PORT="587"
+SMTP_USER="your-user"
+SMTP_PASS="your-password"
+SMTP_FROM="noreply@mariabrunn-digital.at"
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.

@@ -1,4 +1,5 @@
 import { BentoCard } from "@/components/BentoCard";
+import { HeroCarousel } from "@/components/HeroCarousel";
 import { getLatestVideos } from "@/lib/youtube";
 import Image from "next/image";
 
@@ -9,13 +10,18 @@ export default async function Home() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header / Intro */}
-        <div className="mb-12 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-white mb-4">
+        <div className="mb-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-[#155277] mb-4">
             Willkommen bei <span className="text-[#6DC0D2]">Mariabrunn Digital</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl">
+          <p className="text-xl text-slate-600 max-w-2xl">
             Entdecke unsere neuesten Medien, Livestreams und tauche ein in das Leben der Pfarre Mariabrunn.
           </p>
+        </div>
+
+        {/* Hero Carousel */}
+        <div className="mb-16 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
+          <HeroCarousel liveStream={liveStream} latestVod={latestVod} />
         </div>
 
         {/* 
@@ -26,54 +32,7 @@ export default async function Home() {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 auto-rows-[300px]">
 
           {/* 
-            === 1. Video-Bento: Aktueller Stream / Letztes Highlight (Hero) ===
-            Spans 2 columns, 2 rows on desktop for maximum impact
-          */}
-          <BentoCard
-            colorVariant={liveStream ? "magenta" : "darkBlue"}
-            className="md:col-span-2 md:row-span-2 p-0 overflow-hidden group"
-            href={liveStream ? `https://youtube.com/watch?v=${liveStream.id}` : (latestVod ? `https://youtube.com/watch?v=${latestVod.id}` : "/videos")}
-            delay={0.1}
-          >
-            <div className="absolute inset-0 z-0 bg-[#0f172a]">
-              {/* Background / Thumbnail */}
-              {(liveStream?.thumbnailUrl || latestVod?.thumbnailUrl) && (
-                <div className="absolute inset-0 opacity-60 group-hover:opacity-80 transition-opacity duration-500">
-                  <img
-                    src={liveStream?.thumbnailUrl || latestVod?.thumbnailUrl || ""}
-                    alt={liveStream?.title || latestVod?.title || "Video Thumbnail"}
-                    className="object-cover w-full h-full"
-                  />
-                </div>
-              )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent z-10" />
-            </div>
-
-            <div className="relative z-20 h-full flex flex-col justify-between p-8">
-              <div className="self-start">
-                {liveStream ? (
-                  <span className="inline-flex items-center gap-2 bg-[#AF3F6C] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest shadow-lg shadow-[#AF3F6C]/20 border border-white/20">
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" /> Live Now
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center gap-2 bg-[#155277] text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest border border-white/10">
-                    Neuestes Video
-                  </span>
-                )}
-              </div>
-              <div>
-                <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-2 shadow-black drop-shadow-lg line-clamp-2">
-                  {liveStream?.title || latestVod?.title || "Mariabrunn Digital"}
-                </h2>
-                <p className="text-slate-200 font-medium drop-shadow-md lg:line-clamp-none line-clamp-2">
-                  {liveStream ? "Wir sind gerade live! Klicke hier um teilzunehmen." : "Aus der Pfarr- und Wallfahrtskirche Mariabrunn."}
-                </p>
-              </div>
-            </div>
-          </BentoCard>
-
-          {/* 
-            === 2. Video-Bento: YouTube Kanal direkt ===
+            === 1. Video-Bento: YouTube Kanal direkt ===
             Da wir das neueste Video nun dynamisch im Hero haben, leitet dieses Bento prominent zum Kanal.
           */}
           <BentoCard
@@ -104,17 +63,17 @@ export default async function Home() {
             delay={0.3}
           >
             <div className="flex flex-col h-full">
-              <h3 className="text-xl font-heading font-bold text-white mb-4 flex items-center gap-2">
+              <h3 className="text-xl font-heading font-bold text-[#155277] mb-4 flex items-center gap-2">
                 <span className="text-[#90AD50]">●</span> Heute
               </h3>
               <div className="flex-grow space-y-4">
-                <div className="pb-3 border-b border-white/10">
+                <div className="pb-3 border-b border-gray-100">
                   <p className="text-[#6DC0D2] font-bold text-sm">09:30</p>
-                  <p className="text-slate-200">Heilige Messe</p>
+                  <p className="text-slate-700">Heilige Messe</p>
                 </div>
                 <div>
                   <p className="text-[#6DC0D2] font-bold text-sm">18:00</p>
-                  <p className="text-slate-200">Abendandacht</p>
+                  <p className="text-slate-700">Abendandacht</p>
                 </div>
               </div>
               <p className="text-xs text-slate-500 mt-4 text-center">Via API: dienste.mariabrunn-digital.at</p>
@@ -132,10 +91,10 @@ export default async function Home() {
           >
             <div className="flex flex-col h-full justify-between">
               <div>
-                <h3 className="text-xl font-heading font-bold text-white mb-2 group-hover:text-[#90AD50] transition-colors">
+                <h3 className="text-xl font-heading font-bold text-[#155277] mb-2 group-hover:text-[#90AD50] transition-colors">
                   Pfarrtermine
                 </h3>
-                <p className="text-slate-400 text-sm">
+                <p className="text-slate-600 text-sm">
                   Alle aktuellen Termine der Pfarre als praktisches PDF downloaden.
                 </p>
               </div>
@@ -158,10 +117,10 @@ export default async function Home() {
             <div className="flex flex-col md:flex-row h-full gap-6 items-center">
               <div className="flex-1">
                 <span className="text-[#BC8080] font-bold text-sm uppercase tracking-wider mb-2 block">Team erweitern</span>
-                <h3 className="text-3xl font-heading font-bold text-white mb-3">
+                <h3 className="text-3xl font-heading font-bold text-[#155277] mb-3">
                   Mitmachen
                 </h3>
-                <p className="text-slate-300">
+                <p className="text-slate-700">
                   Interesse an Kamera, Regie, Streamingtechnik oder Social Media? Werde Teil der Technikcrew von Mariabrunn Digital.
                 </p>
               </div>
@@ -186,7 +145,7 @@ export default async function Home() {
                 <h3 className="text-2xl font-heading font-bold text-[#6DC0D2] mb-2">
                   Interaktive Kirchenführung
                 </h3>
-                <p className="text-slate-400 max-w-sm">
+                <p className="text-slate-600 max-w-sm">
                   QR Code vor Ort scannen und die Audio-Tour durch die Kirche starten. Kirchenfakten und Architektur hautnah erleben.
                 </p>
               </div>

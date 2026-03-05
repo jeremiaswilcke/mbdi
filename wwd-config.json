@@ -1,0 +1,153 @@
+{
+    "version": "1.0",
+    "site": {
+        "name": "Mariabrunn Digital",
+        "slug": "mb-digital",
+        "api_prefix": "wwd",
+        "cors_origins": [
+            "http://localhost:3000",
+            "https://mbdi.vercel.app"
+        ]
+    },
+    "pages": {
+        "home": {
+            "label": "Startseite",
+            "menu_icon": "dashicons-admin-home",
+            "sections": {
+                "hero": {
+                    "type": "inline",
+                    "label": "Hero Text",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Überschrift",
+                            "required": true
+                        },
+                        "subtitle": {
+                            "type": "textarea",
+                            "label": "Untertitel"
+                        }
+                    }
+                }
+            }
+        },
+        "mitmachen": {
+            "label": "Mitmachen / Team",
+            "menu_icon": "dashicons-groups",
+            "sections": {
+                "intro_team": {
+                    "type": "inline",
+                    "label": "Einleitung",
+                    "order": 1,
+                    "fields": {
+                        "heading": {
+                            "type": "text",
+                            "label": "Überschrift",
+                            "required": true
+                        },
+                        "description": {
+                            "type": "editor",
+                            "label": "Beschreibung"
+                        }
+                    }
+                },
+                "roles": {
+                    "type": "cpt",
+                    "label": "Team Rollen",
+                    "label_singular": "Team Rolle",
+                    "menu_icon": "dashicons-hammer",
+                    "order": 2,
+                    "fields": {
+                        "icon": {
+                            "type": "text",
+                            "label": "Icon Name (Lucide)"
+                        },
+                        "short_desc": {
+                            "type": "textarea",
+                            "label": "Kurzbeschreibung"
+                        },
+                        "detailed_desc": {
+                            "type": "editor",
+                            "label": "Detailbeschreibung"
+                        }
+                    }
+                }
+            }
+        },
+        "auf_den_punkt": {
+            "label": "Auf den Punkt",
+            "menu_icon": "dashicons-video-alt3",
+            "sections": {
+                "intro_adp": {
+                    "type": "inline",
+                    "label": "Format Info",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Format Name",
+                            "required": true
+                        },
+                        "description": {
+                            "type": "editor",
+                            "label": "Format Beschreibung"
+                        },
+                        "cover_image": {
+                            "type": "image",
+                            "label": "Titelbild"
+                        }
+                    }
+                },
+                "episodes": {
+                    "type": "cpt",
+                    "label": "Episoden",
+                    "label_singular": "Episode",
+                    "menu_icon": "dashicons-playlist-video",
+                    "order": 2,
+                    "fields": {
+                        "youtube_url": {
+                            "type": "url",
+                            "label": "YouTube Link",
+                            "required": true
+                        },
+                        "description": {
+                            "type": "textarea",
+                            "label": "Kurzbeschreibung"
+                        }
+                    }
+                }
+            }
+        },
+        "bibel_jahr": {
+            "label": "Bibel in einem Jahr",
+            "menu_icon": "dashicons-book-alt",
+            "sections": {
+                "intro_bibel": {
+                    "type": "inline",
+                    "label": "Projekt Info",
+                    "order": 1,
+                    "fields": {
+                        "title": {
+                            "type": "text",
+                            "label": "Projekt Name",
+                            "required": true
+                        },
+                        "description": {
+                            "type": "editor",
+                            "label": "Projekt Beschreibung"
+                        },
+                        "cover_image": {
+                            "type": "image",
+                            "label": "Titelbild"
+                        },
+                        "signup_active": {
+                            "type": "checkbox",
+                            "label": "Mitlese-Formular aktivieren?"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

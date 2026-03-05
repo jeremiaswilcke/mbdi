@@ -1,0 +1,27 @@
+
+> mb-digital@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+\n
+> Build error occurred
+Error: Turbopack build failed with 1 errors:
+./app/globals.css
+Error evaluating Node.js code
+Error: Cannot depend on path (\\?\UNC\192.168.31.199\personal_folder\Mariabrunn Digital\mb-digital\tsconfig.json) outside of root directory (Y:\Mariabrunn Digital\mb-digital)
+    at toPath (turbopack:///[turbopack-node]/transforms/transforms.ts:51:11) [Y:\Mariabrunn Digital\mb-digital\.next\build\chunks\[root-of-the-server]__51225daf._.js:53:15]
+    at transform (turbopack:///[turbopack-node]/transforms/postcss.ts:102:30) [Y:\Mariabrunn Digital\mb-digital\.next\build\chunks\[root-of-the-server]__51225daf._.js:169:174]
+    at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23) [Y:\Mariabrunn Digital\mb-digital\.next\build\chunks\[root-of-the-server]__974941ed._.js:443:31]
+
+Import trace:
+  Client Component Browser:
+    ./app/globals.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+
+
+    at toPath (turbopack:///[turbopack-node]/transforms/transforms.ts:51:11) [Y:\Mariabrunn Digital\mb-digital\.next\build\chunks\[root-of-the-server]__51225daf._.js:53:15])
+    at transform (turbopack:///[turbopack-node]/transforms/postcss.ts:102:30) [Y:\Mariabrunn Digital\mb-digital\.next\build\chunks\[root-of-the-server]__51225daf._.js:169:174])
+    at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23) [Y:\Mariabrunn Digital\mb-digital\.next\build\chunks\[root-of-the-server]__974941ed._.js:443:31])

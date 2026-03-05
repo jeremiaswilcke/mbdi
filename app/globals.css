@@ -1,6 +1,8 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@theme {
+:root {
   --font-sans: var(--font-inter);
   --font-heading: var(--font-outfit);
 
@@ -10,10 +12,9 @@
   --color-mb-magenta: #AF3F6C;
   --color-mb-rose: #BC8080;
 
-  /* Modern dark mode base that complements the dark blue */
-  --color-background: #0f172a; 
-  --color-foreground: #f8fafc; 
-  --color-card: rgba(21, 82, 119, 0.4); /* Glassmorphism using dark blue base */
+  --color-background: #ffffff;
+  --color-foreground: #155277;
+  --color-card: rgba(255, 255, 255, 0.8);
   --color-card-border: rgba(109, 192, 210, 0.2);
 }
 
@@ -33,9 +34,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Base utilities for Bento and Glassmorphism */
 @layer utilities {
   .glass-panel {
-    @apply bg-card border border-card-border shadow-lg backdrop-blur-md;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-card-border);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    backdrop-filter: blur(12px);
   }
 }

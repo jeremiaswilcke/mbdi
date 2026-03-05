@@ -41,10 +41,10 @@ export default function MitmachenPage() {
                     <div className="flex flex-col justify-between h-full">
                         <div>
                             <h3 className="text-2xl font-heading font-bold text-white mb-2 group-hover:text-[#6DC0D2] transition-colors">
-                                Tontechnik & Studiobetrieb
+                                Studio-Team & Formate
                             </h3>
                             <p className="text-slate-300">
-                                Finde den perfekten Sound für den Livestream. Lerne den professionellen Umgang mit digitalen Audiomischpulten und Effektierung.
+                                Hilf uns bei der Produktion von Formaten wie "Auf den Punkt". Kamera, Licht, Ton und Set-Design im Studio - werde kreativ!
                             </p>
                         </div>
                         <div className="self-end bg-white/10 p-3 rounded-xl mt-4">
