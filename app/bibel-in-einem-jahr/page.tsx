@@ -62,8 +62,8 @@ export default function BibelJahrPage() {
                         Ein wundervolles Gemeinschaftsprojekt der Pfarre Mariabrunn und Freunden. Wir lesen die gesamte Bibel in kurzen Abschnitten auf Video ein &ndash; Genesis 1&ndash;2, Genesis 3&ndash;4, und so weiter &ndash; sodass wir in einem Jahr einmal durch sind.
                     </p>
                     <div className="bg-[#BC8080]/10 border border-[#BC8080]/20 p-4 rounded-xl">
-                        <p className="text-[#BC8080] font-bold mb-1">Wir brauchen deine Stimme!</p>
-                        <p className="text-slate-600 text-sm">Das Projekt ist fast geschafft, aber es gibt noch einige Passagen, die eingelesen werden müssen. Hilf uns, dieses einzigartige Projekt zu vollenden!</p>
+                        <p className="text-[#BC8080] font-bold mb-1">Wir brauchen dich!</p>
+                        <p className="text-slate-600 text-sm">Wir suchen Vorleser und Mitarbeiter. Das Projekt ist fast geschafft, aber es gibt noch einige Passagen, die bei uns im Studio eingelesen werden müssen. Hilf uns, dieses einzigartige Projekt zu vollenden!</p>
                     </div>
                 </div>
                 <div className="md:w-1/2">
@@ -71,8 +71,8 @@ export default function BibelJahrPage() {
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-[#AF3F6C] mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
-                        <h3 className="text-[#155277] font-bold text-2xl font-heading">Werde Vorleser:in</h3>
-                        <p className="text-slate-600 mt-2">Nimm eine Passage per Smartphone auf oder besuche uns im Studio.</p>
+                        <h3 className="text-[#155277] font-bold text-2xl font-heading">Werde Vorleser</h3>
+                        <p className="text-slate-600 mt-2">Komm zu uns ins Studio und lies eine Passage ein.</p>
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@ export default function BibelJahrPage() {
                 <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
                     <div className="w-12 h-12 bg-[#6DC0D2]/10 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold text-[#6DC0D2]">2</div>
                     <h3 className="text-xl font-bold text-[#155277] mb-3">Lies vor</h3>
-                    <p className="text-slate-600">Nimm deine Passage ganz einfach zu Hause mit dem Handy auf, oder komme ins Studio und wir zeichnen dich professionell auf.</p>
+                    <p className="text-slate-600">Komm zu uns ins Studio und wir zeichnen dich professionell auf. Alles, was du brauchst, ist deine Stimme.</p>
                 </div>
                 <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
                     <div className="w-12 h-12 bg-[#90AD50]/10 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold text-[#90AD50]">3</div>
@@ -99,9 +99,9 @@ export default function BibelJahrPage() {
             {/* Form Section */}
             <div className="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100 mt-24">
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl font-heading font-bold text-[#155277] mb-4">Jetzt als Vorleser:in melden</h2>
+                    <h2 className="text-3xl font-heading font-bold text-[#155277] mb-4">Jetzt als Vorleser melden</h2>
                     <p className="text-slate-600">
-                        Trage dich ein und wir schicken dir eine der noch offenen Bibelstellen zu. Du kannst sie ganz einfach zu Hause mit dem Handy aufnehmen oder wir zeichnen dich im Studio auf.
+                        Trage dich ein und wir schicken dir eine der noch offenen Bibelstellen zu. Du kommst dann zu uns ins Studio und wir nehmen dich professionell auf.
                     </p>
                 </div>
 
@@ -182,7 +182,7 @@ export default function BibelJahrPage() {
                                     Wird gesendet...
                                 </>
                             ) : (
-                                "Jetzt als Vorleser:in melden"
+                                "Jetzt als Vorleser melden"
                             )}
                         </button>
                     </form>
