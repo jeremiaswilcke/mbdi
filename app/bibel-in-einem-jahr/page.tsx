@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import Image from "next/image";
+import { Loader2, CheckCircle2, AlertCircle, BookOpen, Users, Mic } from "lucide-react";
 
 export default function BibelJahrPage() {
     const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -14,7 +15,6 @@ export default function BibelJahrPage() {
         const form = e.currentTarget;
         const formData = new FormData(form);
 
-        // Honeypot check
         if (formData.get("_honeypot")) {
             setStatus("idle");
             return;
@@ -49,68 +49,104 @@ export default function BibelJahrPage() {
 
     return (
         <main className="min-h-screen pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
-            {/* Header Section */}
+
+            {/* Hero */}
             <div className="mb-16 md:flex md:items-center md:gap-12">
                 <div className="md:w-1/2 mb-8 md:mb-0">
                     <div className="inline-block bg-[#BC8080]/10 text-[#BC8080] font-bold px-4 py-1 rounded-full mb-4 text-sm">
                         Gemeinschaftsprojekt
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-heading font-extrabold text-[#155277] mb-6">
-                        Die Bibel in einem Jahr.
+                    <h1 className="text-4xl md:text-6xl font-heading text-[#155277] mb-6">
+                        Die Bibel in einem Jahr
                     </h1>
-                    <p className="text-xl text-slate-700 leading-relaxed mb-6">
-                        Ein wundervolles Gemeinschaftsprojekt der Pfarre Mariabrunn und Freunden. Wir lesen die gesamte Bibel in kurzen Abschnitten auf Video ein &ndash; Genesis 1&ndash;2, Genesis 3&ndash;4, und so weiter &ndash; sodass wir in einem Jahr einmal durch sind.
+                    <p className="text-xl text-[#2D2D2D]/80 leading-relaxed mb-4 font-subheading">
+                        Die ganze Bibel lesen – Schritt für Schritt
                     </p>
-                    <div className="bg-[#BC8080]/10 border border-[#BC8080]/20 p-4 rounded-xl">
-                        <p className="text-[#BC8080] font-bold mb-1">Wir brauchen dich!</p>
-                        <p className="text-slate-600 text-sm">Wir suchen Vorleser und Mitarbeiter. Das Projekt ist fast geschafft, aber es gibt noch einige Passagen, die bei uns im Studio eingelesen werden müssen. Hilf uns, dieses einzigartige Projekt zu vollenden!</p>
-                    </div>
+                    <p className="text-lg text-[#2D2D2D]/70 leading-relaxed">
+                        Mit unserem Projekt „Die Bibel in einem Jahr" lesen wir gemeinsam die gesamte Heilige Schrift.
+                        Jeden Tag werden mehrere Kapitel aus der Bibel vorgelesen und veröffentlicht.
+                        So entsteht ein fortlaufender Weg durch das Wort Gottes – von Gen bis Offb.
+                        Wer regelmäßig mithört oder mitliest, kann innerhalb eines Jahres die ganze Bibel kennenlernen.
+                    </p>
                 </div>
                 <div className="md:w-1/2">
-                    <div className="aspect-[4/3] bg-slate-200 rounded-3xl overflow-hidden shadow-xl border border-slate-100 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-br from-[#155277]/10 to-[#AF3F6C]/20">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24 text-[#AF3F6C] mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        <h3 className="text-[#155277] font-bold text-2xl font-heading">Werde Vorleser</h3>
-                        <p className="text-slate-600 mt-2">Komm zu uns ins Studio und lies eine Passage ein.</p>
+                    <div className="aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border border-slate-100 relative">
+                        <Image
+                            src="/images/card-bible.png"
+                            alt="Bibel auf einem Lesepult"
+                            fill
+                            className="object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#155277]/80 via-[#155277]/30 to-transparent flex flex-col justify-end p-8">
+                            <h3 className="text-white text-2xl font-heading">Von Genesis bis Offenbarung</h3>
+                            <p className="text-white/80 mt-1">Gemeinsam durch die Heilige Schrift</p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            {/* How it works */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
-                    <div className="w-12 h-12 bg-[#155277]/10 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold text-[#155277]">1</div>
-                    <h3 className="text-xl font-bold text-[#155277] mb-3">Melde dich an</h3>
-                    <p className="text-slate-600">Fülle das untenstehende Formular aus. Wir kontaktieren dich und schicken dir eine der noch offenen Bibelstellen.</p>
-                </div>
-                <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
-                    <div className="w-12 h-12 bg-[#6DC0D2]/10 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold text-[#6DC0D2]">2</div>
-                    <h3 className="text-xl font-bold text-[#155277] mb-3">Lies vor</h3>
-                    <p className="text-slate-600">Komm zu uns ins Studio und wir zeichnen dich professionell auf. Alles, was du brauchst, ist deine Stimme.</p>
-                </div>
-                <div className="bg-white p-8 rounded-3xl shadow-lg border border-slate-100">
-                    <div className="w-12 h-12 bg-[#90AD50]/10 rounded-2xl flex items-center justify-center mb-6 text-2xl font-bold text-[#90AD50]">3</div>
-                    <h3 className="text-xl font-bold text-[#155277] mb-3">Werde Teil des Ganzen</h3>
-                    <p className="text-slate-600">Dein Beitrag wird in unser Gesamtprojekt eingebettet. Gemeinsam schaffen wir es, die ganze Bibel hörbar zu machen!</p>
+            {/* Ein gemeinsamer Weg */}
+            <div className="max-w-3xl mx-auto mb-20">
+                <h2 className="text-3xl font-heading text-[#155277] mb-6">Ein gemeinsamer Weg durch die Schrift</h2>
+                <div className="space-y-4 text-lg text-[#2D2D2D]/70 leading-relaxed">
+                    <p>Die Bibel ist kein Buch, das man allein lesen muss. Viele Christen entdecken sie neu, wenn sie gemeinsam Schritt für Schritt durch die Texte gehen.</p>
+                    <p>Darum veröffentlichen wir täglich neue Abschnitte – als Hörfassung und Video. So kann jeder mitgehen, auch wenn wenig Zeit zum Lesen bleibt.</p>
                 </div>
             </div>
 
-            {/* Form Section */}
-            <div className="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100 mt-24">
+            {/* Wir suchen Mitleser */}
+            <div className="bg-[#BC8080]/5 border border-[#BC8080]/15 rounded-3xl p-8 md:p-12 mb-16 max-w-3xl mx-auto">
+                <div className="flex items-center gap-3 mb-6">
+                    <div className="w-12 h-12 bg-[#BC8080]/10 rounded-2xl flex items-center justify-center">
+                        <Users size={24} className="text-[#BC8080]" />
+                    </div>
+                    <h2 className="text-2xl font-heading text-[#155277]">Wir suchen Mitleser</h2>
+                </div>
+                <div className="space-y-4 text-[#2D2D2D]/70 leading-relaxed">
+                    <p>Unser Ziel ist es, dass viele Menschen an diesem Projekt mitwirken. Noch fehlen einige Abschnitte der Bibel.</p>
+                    <p>Darum laden wir herzlich ein, selbst eine Bibelstelle einzulesen und Teil dieses gemeinsamen Projekts zu werden. Wer mitmachen möchte, kann sich gerne bei uns melden.</p>
+                </div>
+            </div>
+
+            {/* YouTube Playlist Embed */}
+            <div className="mb-20">
+                <h2 className="text-3xl font-heading text-[#155277] mb-8 text-center">Bisherige Lesungen</h2>
+                <div className="aspect-video max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl">
+                    <iframe
+                        src="https://www.youtube.com/embed/videoseries?list=PLSNwTwrZKgtBCoO-G0SgeAeSD6QgWrbec"
+                        title="Die Bibel in einem Jahr – Playlist"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        className="w-full h-full border-0"
+                    />
+                </div>
+            </div>
+
+            {/* Warum wir dieses Projekt machen */}
+            <div className="max-w-3xl mx-auto mb-20">
+                <h2 className="text-3xl font-heading text-[#155277] mb-6">Warum wir dieses Projekt machen</h2>
+                <div className="space-y-4 text-lg text-[#2D2D2D]/70 leading-relaxed">
+                    <p>Die Bibel ist das Herz unseres Glaubens. Sie erzählt von Gottes Geschichte mit den Menschen und von seiner Liebe, die in Christus sichtbar geworden ist.</p>
+                    <p>Unser Wunsch ist es, dass möglichst viele Menschen die ganze Bibel entdecken – nicht nur einzelne Verse.</p>
+                </div>
+            </div>
+
+            {/* Mitmachen / Formular */}
+            <div className="max-w-2xl mx-auto bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-slate-100">
                 <div className="text-center mb-10">
-                    <h2 className="text-3xl font-heading font-bold text-[#155277] mb-4">Jetzt als Vorleser melden</h2>
-                    <p className="text-slate-600">
-                        Trage dich ein und wir schicken dir eine der noch offenen Bibelstellen zu. Du kommst dann zu uns ins Studio und wir nehmen dich professionell auf.
+                    <h2 className="text-3xl font-heading text-[#155277] mb-4">Mitmachen</h2>
+                    <p className="text-[#2D2D2D]/70">
+                        Wenn Sie eine Bibelstelle lesen und aufnehmen möchten, freuen wir uns über Ihre Unterstützung.
+                        Sie helfen damit, dass das Wort Gottes weitergetragen wird und viele Menschen Zugang zur Heiligen Schrift finden.
                     </p>
                 </div>
 
                 {status === "success" ? (
                     <div className="bg-[#90AD50]/10 border border-[#90AD50]/20 rounded-2xl p-8 text-center">
                         <CheckCircle2 className="w-16 h-16 text-[#90AD50] mx-auto mb-4" />
-                        <h3 className="text-2xl font-bold text-[#155277] mb-2">Großartig, danke!</h3>
-                        <p className="text-slate-700">
-                            Wir haben dir eine Bestätigungsmail geschickt und melden uns in Kürze mit deiner Bibelstelle bei dir.
+                        <h3 className="text-2xl font-heading text-[#155277] mb-2">Vielen Dank!</h3>
+                        <p className="text-[#2D2D2D]/70">
+                            Wir haben Ihre Anmeldung erhalten und melden uns in Kürze mit Ihrer Bibelstelle.
                         </p>
                         <button
                             onClick={() => setStatus("idle")}
@@ -121,9 +157,9 @@ export default function BibelJahrPage() {
                     </div>
                 ) : (
                     <form onSubmit={handleSubmit} className="space-y-6">
-                        {/* Hidden Honeypot */}
+                        {/* Honeypot */}
                         <div className="hidden" aria-hidden="true">
-                            <label htmlFor="_honeypot">Lassen Sie dieses Feld leer, wenn Sie ein Mensch sind.</label>
+                            <label htmlFor="_honeypot">Lassen Sie dieses Feld leer.</label>
                             <input type="text" id="_honeypot" name="_honeypot" tabIndex={-1} autoComplete="off" />
                         </div>
 
@@ -147,7 +183,7 @@ export default function BibelJahrPage() {
                                 name="email"
                                 required
                                 className="w-full bg-slate-50 border border-slate-200 text-slate-800 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#90AD50] focus:border-transparent transition-all"
-                                placeholder="max@beispiel.de"
+                                placeholder="max@beispiel.at"
                             />
                         </div>
 
@@ -160,7 +196,7 @@ export default function BibelJahrPage() {
                                 className="mt-1 w-5 h-5 text-[#90AD50] border-slate-300 rounded focus:ring-[#90AD50]"
                             />
                             <label htmlFor="consent" className="text-sm text-slate-600 leading-relaxed">
-                                Ich erkläre mich bereit, eine Bibelstelle vorzulesen und stimme zu, dass meine Daten zur Kontaktaufnahme verarbeitet werden. <a href="/dsgvo" className="text-[#155277] hover:underline" target="_blank">Zur Datenschutzerklärung</a>.
+                                Ich erkläre mich bereit, eine Bibelstelle vorzulesen, und stimme zu, dass meine Daten zur Kontaktaufnahme verarbeitet werden. <a href="/dsgvo" className="text-[#155277] hover:underline" target="_blank">Zur Datenschutzerklärung</a>.
                             </label>
                         </div>
 
@@ -182,7 +218,7 @@ export default function BibelJahrPage() {
                                     Wird gesendet...
                                 </>
                             ) : (
-                                "Jetzt als Vorleser melden"
+                                "Jetzt als Mitleser melden"
                             )}
                         </button>
                     </form>
