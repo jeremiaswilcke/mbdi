@@ -68,7 +68,7 @@ export default async function KirchePage() {
           (hero.hero_description as string) ??
           "Ein barocker Gnadenort im Wienerwald."
         }
-        hero_image={hero.hero_image as Record<string, unknown> | undefined}
+        hero_image={hero.hero_image as { url: string; alt?: string } | undefined}
         primary_cta_text={hero.primary_cta_text as string}
         primary_cta_link={hero.primary_cta_link as string}
       />
