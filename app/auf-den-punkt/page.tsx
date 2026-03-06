@@ -5,18 +5,18 @@ import { Hero } from "@/components/Hero";
 export const metadata: Metadata = {
   title: "Auf den Punkt",
   description:
-    "Taegliche 2-3 Minuten Kurzauslegung zum Tagesevangelium und zur Tageslesung mit Diakon Peter Scheuchel.",
+    "Tägliche 2-3 Minuten Kurzauslegung zum Tagesevangelium und zur Tageslesung mit Diakon Peter Scheuchel.",
 };
 
 const fallback: WWDPageGeneric = {
   title: "Auf den Punkt",
   content:
-    "<p>Jeden Tag eine frische, praegnante Auslegung zum <strong>Tagesevangelium</strong> und zur <strong>Tageslesung</strong> -- in nur 2-3 Minuten.</p><p>Diakon Peter Scheuchel liest aus seinen Buechern und gibt taegliche Impulse, aufgenommen in unserem Studio in Mariabrunn. Ideal fuer den Morgen, die Mittagspause oder den Abend -- ueberall und jederzeit abrufbar.</p>",
+    "<p>Jeden Tag eine frische, prägnante Auslegung zum <strong>Tagesevangelium</strong> und zur <strong>Tageslesung</strong> -- in nur 2-3 Minuten.</p><p>Diakon Peter Scheuchel liest aus seinen Büchern und gibt tägliche Impulse, aufgenommen in unserem Studio in Mariabrunn. Ideal für den Morgen, die Mittagspause oder den Abend -- überall und jederzeit abrufbar.</p>",
   sections: {
     hero: {
       hero_title: "Auf den Punkt.",
       hero_description:
-        "Taegliche Kurzauslegung zum Tagesevangelium und zur Tageslesung -- 2-3 Minuten mit Diakon Peter Scheuchel.",
+        "Tägliche Kurzauslegung zum Tagesevangelium und zur Tageslesung -- 2-3 Minuten mit Diakon Peter Scheuchel.",
       primary_cta_text: "Zur YouTube-Playlist",
       primary_cta_link:
         "https://www.youtube.com/playlist?list=PLSNwTwrZKgtDuvxdCqKrl3k2gFiSC3fc0",

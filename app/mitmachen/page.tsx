@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 
 const fallbackTeam = {
   title: "Unsere Bereiche",
-  description: "In diesen Bereichen suchen wir Verstaerkung:",
+  description: "In diesen Bereichen suchen wir Verstärkung:",
   areas: [
-    { title: "Livestream Technik", description: "Kamerafuehrung, Bildregie und Streaming-Technik bei den Sonntagsgottesdiensten." },
-    { title: "Studio Technik", description: "Aufnahme und Postproduktion im hauseigenen Studio fuer Podcasts und Kurzformate." },
-    { title: "Bibelleser", description: "Lesungen fuer das Bibelprojekt einsprechen -- auch von zu Hause moeglich." },
-    { title: "Redaktion", description: "Inhalte planen, Texte verfassen und Social-Media-Kanaele betreuen." },
+    { title: "Livestream Technik", description: "Kameraführung, Bildregie und Streaming-Technik bei den Sonntagsgottesdiensten." },
+    { title: "Studio Technik", description: "Aufnahme und Postproduktion im hauseigenen Studio für Podcasts und Kurzformate." },
+    { title: "Bibelleser", description: "Lesungen für das Bibelprojekt einsprechen -- auch von zu Hause möglich." },
+    { title: "Redaktion", description: "Inhalte planen, Texte verfassen und Social-Media-Kanäle betreuen." },
   ],
   cta_text: "Jetzt anmelden",
   cta_link: "#anmeldung",
@@ -26,12 +26,12 @@ const fallbackTeam = {
 const fallback: WWDPageGeneric = {
   title: "Mitmachen",
   content:
-    "<p>Mariabrunn Digital lebt von engagierten Menschen, die ihre Talente einbringen moechten. Ob Sie technisch versiert sind oder einfach gerne lesen -- bei uns findet jeder seinen Platz.</p><p>Alle Taetigkeiten sind ehrenamtlich und flexibel einteilbar. Wir bieten Einschulungen und gegenseitige Unterstuetzung im Team.</p>",
+    "<p>Mariabrunn Digital lebt von engagierten Menschen, die ihre Talente einbringen möchten. Ob Sie technisch versiert sind oder einfach gerne lesen -- bei uns findet jeder seinen Platz.</p><p>Alle Tätigkeiten sind ehrenamtlich und flexibel einteilbar. Wir bieten Einschulungen und gegenseitige Unterstützung im Team.</p>",
   sections: {
     hero: {
       hero_title: "Mitmachen bei Mariabrunn Digital",
       hero_description:
-        "Bringen Sie Ihre Talente ein und werden Sie Teil eines engagierten Teams fuer Glaube und Medien.",
+        "Bringen Sie Ihre Talente ein und werden Sie Teil eines engagierten Teams für Glaube und Medien.",
       primary_cta_text: "Jetzt anmelden",
       primary_cta_link: "#anmeldung",
     },
@@ -68,7 +68,7 @@ export default async function MitmachenPage() {
             Anmeldung
           </h2>
           <p className="text-center text-foreground/70 mb-8">
-            Waehlen Sie Ihren Bereich und melden Sie sich an.
+            Wählen Sie Ihren Bereich und melden Sie sich an.
           </p>
           <FormTeam />
         </div>

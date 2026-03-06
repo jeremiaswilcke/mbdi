@@ -19,14 +19,6 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: 'FormaDJR Display';
-  src: url('/fonts/FormaDJRDisplay-Thin.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
 /* ===== Base ===== */
 html {
   scroll-behavior: smooth;
@@ -34,9 +26,8 @@ html {
 
 body {
   background-color: #FFFFFF;
-  color: #0B2E42;
-  font-family: 'FormaDJR Display', system-ui, sans-serif;
-  font-weight: 100;
+  color: #2D2D2D;
+  font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

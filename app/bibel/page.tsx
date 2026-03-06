@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 const fallback: WWDPageGeneric = {
   title: "Bibel in einem Jahr",
   content:
-    "<p><strong>Bibel in einem Jahr</strong> ist unser grosses Gemeinschaftsprojekt: Gemeinsam lesen wir die gesamte Heilige Schrift in zwoelf Monaten.</p><p>Jeden Tag gibt es einen Abschnitt, der von ehrenamtlichen Leserinnen und Lesern aus der Pfarre eingesprochen und als Video veroeffentlicht wird.</p><p>Begleitend bieten wir woechentliche Impulse und Austauschrunden an. Wer selbst als Leser oder Leserin mitwirken moechte, kann sich ueber das untenstehende Formular anmelden.</p>",
+    "<p><strong>Bibel in einem Jahr</strong> ist unser großes Gemeinschaftsprojekt: Gemeinsam lesen wir die gesamte Heilige Schrift in zwölf Monaten.</p><p>Jeden Tag gibt es einen Abschnitt, der von ehrenamtlichen Leserinnen und Lesern aus der Pfarre eingesprochen und als Video veröffentlicht wird.</p><p>Begleitend bieten wir wöchentliche Impulse und Austauschrunden an. Wer selbst als Leser oder Leserin mitwirken möchte, kann sich über das untenstehende Formular anmelden.</p>",
   sections: {
     hero: {
       hero_title: "Bibel in einem Jahr",
       hero_description:
-        "Gemeinsam die gesamte Heilige Schrift lesen -- als Gemeinschaft, mit Begleitung und taeglichen Impulsen.",
+        "Gemeinsam die gesamte Heilige Schrift lesen -- als Gemeinschaft, mit Begleitung und täglichen Impulsen.",
       primary_cta_text: "Zur Playlist",
       primary_cta_link:
         "https://www.youtube.com/playlist?list=PLSNwTwrZKgtBCoO-G0SgeAeSD6QgWrbec",
@@ -63,7 +63,7 @@ export default async function BibelPage() {
             Als Leser/in anmelden
           </h2>
           <p className="text-center text-foreground/70 mb-8">
-            Moechten Sie einen Abschnitt der Bibel fuer unser Projekt einsprechen? Melden Sie sich hier an.
+            Möchten Sie einen Abschnitt der Bibel für unser Projekt einsprechen? Melden Sie sich hier an.
           </p>
           <FormBibel />
         </div>

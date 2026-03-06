@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 import { OrganizationSchema, ChurchSchema } from "./structured-data";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="de">
-      <body className="antialiased min-h-screen bg-white text-foreground">
+      <body className={`${inter.variable} antialiased min-h-screen bg-white`}>
         <OrganizationSchema />
         <ChurchSchema />
         <Navigation />

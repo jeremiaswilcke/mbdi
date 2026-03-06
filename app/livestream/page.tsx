@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const fallback: WWDPageGeneric = {
   title: "Livestream aus Mariabrunn",
   content:
-    "<p>Jeden Sonntag und an Feiertagen uebertragen wir die Heilige Messe live aus der Wallfahrtskirche Mariabrunn. So koennen Sie auch von zu Hause oder unterwegs mitfeiern.</p><p>Die Uebertragung beginnt jeweils 5 Minuten vor Gottesdienstbeginn. Nach der Messe bleibt das Video als Aufzeichnung verfuegbar.</p><p><strong>Regelmaessige Zeiten:</strong></p><ul><li>Sonntag: 09:30 Uhr</li><li>Feiertage: siehe Pfarrkalender</li></ul>",
+    "<p>Jeden Sonntag und an Feiertagen übertragen wir die Heilige Messe live aus der Wallfahrtskirche Mariabrunn. So können Sie auch von zu Hause oder unterwegs mitfeiern.</p><p>Die Übertragung beginnt jeweils 5 Minuten vor Gottesdienstbeginn. Nach der Messe bleibt das Video als Aufzeichnung verfügbar.</p><p><strong>Regelmäßige Zeiten:</strong></p><ul><li>Sonntag: 09:30 Uhr</li><li>Feiertage: siehe Pfarrkalender</li></ul>",
   sections: {
     hero: {
       hero_title: "Livestream",

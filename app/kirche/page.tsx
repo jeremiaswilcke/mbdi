@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const fallback: WWDPageGeneric = {
   title: "Kirche Mariabrunn",
   content:
-    "<p>Die <strong>Pfarr- und Wallfahrtskirche Mariabrunn</strong> ist ein barockes Juwel im Wienerwald. Seit dem 15. Jahrhundert pilgern Glaeubige zu diesem Gnadenort, der fuer sein wundertaetiges Marienbild bekannt ist.</p><p>Die Kirche beeindruckt mit praechtigen Deckenfresken, dem imposanten Hochaltar und einer reichen Geschichte, die eng mit dem ehemaligen Augustiner-Chorherrenstift verbunden ist.</p><p>Entdecken Sie die Kirche mit unserem digitalen Audioguide -- Station fuer Station.</p>",
+    "<p>Die <strong>Pfarr- und Wallfahrtskirche Mariabrunn</strong> ist ein barockes Juwel im Wienerwald. Seit dem 15. Jahrhundert pilgern Gläubige zu diesem Gnadenort, der für sein wundertätiges Marienbild bekannt ist.</p><p>Die Kirche beeindruckt mit prächtigen Deckenfresken, dem imposanten Hochaltar und einer reichen Geschichte, die eng mit dem ehemaligen Augustiner-Chorherrenstift verbunden ist.</p><p>Entdecken Sie die Kirche mit unserem digitalen Audioguide -- Station für Station.</p>",
   sections: {
     hero: {
       hero_title: "Pfarr- und Wallfahrtskirche Mariabrunn",
@@ -25,17 +25,17 @@ const fallback: WWDPageGeneric = {
       {
         station_title: "Station 1: Hochaltar",
         description:
-          "Der barocke Hochaltar bildet das Herzstueck der Wallfahrtskirche. In seinem Zentrum thront das Gnadenbild der Muttergottes.",
+          "Der barocke Hochaltar bildet das Herzstück der Wallfahrtskirche. In seinem Zentrum thront das Gnadenbild der Muttergottes.",
       },
       {
         station_title: "Station 2: Deckenfresco",
         description:
-          "Die praechtigen Fresken an der Kirchendecke stammen aus dem 18. Jahrhundert und erzaehlen die Geschichte der Wallfahrt.",
+          "Die prächtigen Fresken an der Kirchendecke stammen aus dem 18. Jahrhundert und erzählen die Geschichte der Wallfahrt.",
       },
       {
         station_title: "Station 3: Gnadenbild",
         description:
-          "Das wundertaetige Gnadenbild der Muttergottes von Mariabrunn ist seit Jahrhunderten Ziel unzaehliger Pilger.",
+          "Das wundertätige Gnadenbild der Muttergottes von Mariabrunn ist seit Jahrhunderten Ziel unzähliger Pilger.",
       },
     ],
   },

@@ -6,18 +6,18 @@ import { FormWorkshop } from "@/components/FormWorkshop";
 export const metadata: Metadata = {
   title: "Mariabrunn Digital",
   description:
-    "Ueber das Projekt Mariabrunn Digital: Vision, Mission und Workshops fuer Pfarren.",
+    "Über das Projekt Mariabrunn Digital: Vision, Mission und Workshops für Pfarren.",
 };
 
 const fallback: WWDPageGeneric = {
   title: "Mariabrunn Digital",
   content:
-    "<h2>Vision</h2><p>Wir glauben, dass die Frohe Botschaft dort sein soll, wo die Menschen sind -- auch im digitalen Raum. Mariabrunn Digital verbindet Glaube, Gemeinschaft und moderne Medientechnik, um die Pfarre fuer alle erlebbar zu machen.</p><h2>Mission</h2><p>Unser Team aus ehrenamtlichen Mitarbeiterinnen und Mitarbeitern produziert Livestreams, Podcasts, taegliche Kurzauslegungen und das Bibelprojekt. Dabei setzen wir auf professionelle Qualitaet mit einfachen Mitteln -- und teilen unser Wissen gerne mit anderen Pfarren.</p><h2>Workshops fuer Pfarren</h2><p>Sie moechten in Ihrer Pfarre ebenfalls digitale Medien einsetzen? Wir bieten praxisnahe Workshops an, in denen wir unsere Erfahrungen weitergeben. Melden Sie sich ueber das untenstehende Formular an.</p>",
+    "<h2>Vision</h2><p>Wir glauben, dass die Frohe Botschaft dort sein soll, wo die Menschen sind -- auch im digitalen Raum. Mariabrunn Digital verbindet Glaube, Gemeinschaft und moderne Medientechnik, um die Pfarre für alle erlebbar zu machen.</p><h2>Mission</h2><p>Unser Team aus ehrenamtlichen Mitarbeiterinnen und Mitarbeitern produziert Livestreams, Podcasts, tägliche Kurzauslegungen und das Bibelprojekt. Dabei setzen wir auf professionelle Qualität mit einfachen Mitteln -- und teilen unser Wissen gerne mit anderen Pfarren.</p><h2>Workshops für Pfarren</h2><p>Sie möchten in Ihrer Pfarre ebenfalls digitale Medien einsetzen? Wir bieten praxisnahe Workshops an, in denen wir unsere Erfahrungen weitergeben. Melden Sie sich über das untenstehende Formular an.</p>",
   sections: {
     hero: {
       hero_title: "Mariabrunn Digital",
       hero_description:
-        "Glaube. Gemeinschaft. Digital. -- Ein Medienprojekt der Pfarre Mariabrunn fuer die Kirche von heute.",
+        "Glaube. Gemeinschaft. Digital. -- Ein Medienprojekt der Pfarre Mariabrunn für die Kirche von heute.",
       primary_cta_text: "Mitmachen",
       primary_cta_link: "/mitmachen",
       secondary_cta_text: "Workshop anfragen",
@@ -55,7 +55,7 @@ export default async function MariabrunnDigitalPage() {
             Workshop anfragen
           </h2>
           <p className="text-center text-foreground/70 mb-8">
-            Interessiert an einem Workshop fuer Ihre Pfarre? Schreiben Sie uns.
+            Interessiert an einem Workshop für Ihre Pfarre? Schreiben Sie uns.
           </p>
           <FormWorkshop />
         </div>

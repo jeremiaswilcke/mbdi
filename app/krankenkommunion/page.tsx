@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 const fallback: WWDPageGeneric = {
   title: "Krankenkommunion",
   content:
-    "<p>Sie oder ein Angehoeriger koennen nicht am Pfarrgottesdienst teilnehmen? Gerne bringen wir Ihnen die <strong>Heilige Kommunion</strong> nach Hause.</p><p>Unser Kommunionhelfer-Team besucht regelmaessig kranke und aeltere Gemeindemitglieder, um ihnen die Kommunion zu spenden und ein offenes Ohr zu schenken.</p><p>Bitte fuellen Sie das untenstehende Formular aus, und wir werden uns umgehend bei Ihnen melden.</p>",
+    "<p>Sie oder ein Angehöriger können nicht am Pfarrgottesdienst teilnehmen? Gerne bringen wir Ihnen die <strong>Heilige Kommunion</strong> nach Hause.</p><p>Unser Kommunionhelfer-Team besucht regelmäßig kranke und ältere Gemeindemitglieder, um ihnen die Kommunion zu spenden und ein offenes Ohr zu schenken.</p><p>Bitte füllen Sie das untenstehende Formular aus, und wir werden uns umgehend bei Ihnen melden.</p>",
   sections: {
     hero: {
       hero_title: "Krankenkommunion",
       hero_description:
-        "Wir bringen Ihnen die Heilige Kommunion nach Hause -- ein Dienst der Naechstenliebe unserer Pfarre.",
+        "Wir bringen Ihnen die Heilige Kommunion nach Hause -- ein Dienst der Nächstenliebe unserer Pfarre.",
       primary_cta_text: "Jetzt anfragen",
       primary_cta_link: "#formular",
     },
@@ -49,7 +49,7 @@ export default async function KrankenkommunionPage() {
             Krankenkommunion anfragen
           </h2>
           <p className="text-center text-foreground/70 mb-8">
-            Bitte fuellen Sie das Formular aus -- wir melden uns umgehend bei Ihnen.
+            Bitte füllen Sie das Formular aus -- wir melden uns umgehend bei Ihnen.
           </p>
           <FormCommunion />
         </div>

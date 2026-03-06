@@ -42,7 +42,7 @@ export function Navigation() {
           <Link href="/" className="relative z-50 flex items-center gap-3">
             <div className="relative w-10 h-10">
               <Image
-                src="/images/Logo.png"
+                src="/Logo.png"
                 alt="Mariabrunn Logo"
                 fill
                 className="object-contain"
