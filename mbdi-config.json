@@ -11,79 +11,95 @@
       "slug": "home",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "hero_title": { "type": "text" },
-            "hero_description": { "type": "textarea" },
-            "hero_image": { "type": "image" },
-            "livestream_url": { "type": "url" },
-            "fallback_video_url": { "type": "url" },
-            "primary_cta_text": { "type": "text" },
-            "primary_cta_link": { "type": "url" },
-            "secondary_cta_text": { "type": "text" },
-            "secondary_cta_link": { "type": "url" }
+            "hero_title": { "type": "text", "label": "Titel" },
+            "hero_description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" },
+            "livestream_url": { "type": "url", "label": "Livestream URL" },
+            "fallback_video_url": { "type": "url", "label": "Fallback Video URL" },
+            "primary_cta_text": { "type": "text", "label": "Primärer Button Text" },
+            "primary_cta_link": { "type": "url", "label": "Primärer Button Link" },
+            "secondary_cta_text": { "type": "text", "label": "Sekundärer Button Text" },
+            "secondary_cta_link": { "type": "url", "label": "Sekundärer Button Link" }
           }
         },
         "bento_grid": {
+          "type": "inline",
+          "label": "Bento-Grid Kacheln",
           "repeatable": true,
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "image": { "type": "image" },
-            "link": { "type": "url" },
-            "size": { "type": "select", "options": ["small", "medium", "large"] }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "image": { "type": "image", "label": "Bild" },
+            "link": { "type": "url", "label": "Link" },
+            "size": { "type": "select", "label": "Größe", "options": ["small", "medium", "large"] }
           }
         },
         "audioguide": {
+          "type": "inline",
+          "label": "Audioguide Stationen",
           "repeatable": true,
           "fields": {
-            "station_title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "audio_file": { "type": "file" },
-            "image": { "type": "image" }
+            "station_title": { "type": "text", "label": "Stationstitel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "audio_file": { "type": "file", "label": "Audiodatei" },
+            "image": { "type": "image", "label": "Bild" }
           }
         },
         "church_history": {
+          "type": "inline",
+          "label": "Kirchengeschichte",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "image": { "type": "image" },
-            "cta_text": { "type": "text" },
-            "cta_link": { "type": "url" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "image": { "type": "image", "label": "Bild" },
+            "cta_text": { "type": "text", "label": "Button Text" },
+            "cta_link": { "type": "url", "label": "Button Link" }
           }
         },
         "movement": {
+          "type": "inline",
+          "label": "Bewegung / Mitmachen",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "workshop_cta_text": { "type": "text" },
-            "workshop_cta_link": { "type": "url" },
-            "info_cta_text": { "type": "text" },
-            "info_cta_link": { "type": "url" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "workshop_cta_text": { "type": "text", "label": "Workshop Button Text" },
+            "workshop_cta_link": { "type": "url", "label": "Workshop Button Link" },
+            "info_cta_text": { "type": "text", "label": "Info Button Text" },
+            "info_cta_link": { "type": "url", "label": "Info Button Link" }
           }
         },
         "team_recruitment": {
+          "type": "inline",
+          "label": "Team / Mitarbeiter",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "cta_text": { "type": "text" },
-            "cta_link": { "type": "url" },
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "cta_text": { "type": "text", "label": "Button Text" },
+            "cta_link": { "type": "url", "label": "Button Link" },
             "areas": {
+              "type": "inline",
+              "label": "Bereiche",
               "repeatable": true,
               "fields": {
-                "title": { "type": "text" },
-                "description": { "type": "textarea" },
-                "icon": { "type": "text" }
+                "title": { "type": "text", "label": "Bereichstitel" },
+                "description": { "type": "textarea", "label": "Beschreibung" },
+                "icon": { "type": "text", "label": "Icon (Emoji)" }
               }
             }
           }
         },
         "donation": {
+          "type": "inline",
+          "label": "Spenden",
           "fields": {
-            "donation_title": { "type": "text" },
-            "donation_description": { "type": "textarea" },
-            "donation_goal": { "type": "number" },
-            "donation_current": { "type": "number" },
-            "donation_link": { "type": "url" }
+            "donation_title": { "type": "text", "label": "Titel" },
+            "donation_description": { "type": "textarea", "label": "Beschreibung" },
+            "donation_goal": { "type": "number", "label": "Spendenziel (Euro)" },
+            "donation_current": { "type": "number", "label": "Aktueller Spendenstand (Euro)" },
+            "donation_link": { "type": "url", "label": "Spenden-Link" }
           }
         }
       }
@@ -92,17 +108,21 @@
       "slug": "livestream",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "hero_image": { "type": "image" },
-            "livestream_url": { "type": "url" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" },
+            "livestream_url": { "type": "url", "label": "Livestream URL" }
           }
         },
         "content": {
+          "type": "inline",
+          "label": "Inhalt",
           "fields": {
-            "body": { "type": "richtext" },
-            "schedule": { "type": "textarea" }
+            "body": { "type": "richtext", "label": "Inhalt" },
+            "schedule": { "type": "textarea", "label": "Zeitplan" }
           }
         }
       }
@@ -111,16 +131,20 @@
       "slug": "auf-den-punkt",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "hero_image": { "type": "image" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" }
           }
         },
         "content": {
+          "type": "inline",
+          "label": "Inhalt",
           "fields": {
-            "body": { "type": "richtext" },
-            "youtube_playlist_id": { "type": "text" }
+            "body": { "type": "richtext", "label": "Inhalt" },
+            "youtube_playlist_id": { "type": "text", "label": "YouTube Playlist ID" }
           }
         }
       }
@@ -129,22 +153,28 @@
       "slug": "bibel",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "hero_image": { "type": "image" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" }
           }
         },
         "content": {
+          "type": "inline",
+          "label": "Inhalt",
           "fields": {
-            "body": { "type": "richtext" },
-            "youtube_playlist_id": { "type": "text" }
+            "body": { "type": "richtext", "label": "Inhalt" },
+            "youtube_playlist_id": { "type": "text", "label": "YouTube Playlist ID" }
           }
         },
         "form_intro": {
+          "type": "inline",
+          "label": "Formular-Einleitung",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
           }
         }
       }
@@ -153,24 +183,30 @@
       "slug": "kirche",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "hero_image": { "type": "image" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" }
           }
         },
         "audioguide": {
+          "type": "inline",
+          "label": "Audioguide Stationen",
           "repeatable": true,
           "fields": {
-            "station_title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "audio_file": { "type": "file" },
-            "image": { "type": "image" }
+            "station_title": { "type": "text", "label": "Stationstitel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "audio_file": { "type": "file", "label": "Audiodatei" },
+            "image": { "type": "image", "label": "Bild" }
           }
         },
         "history": {
+          "type": "inline",
+          "label": "Geschichte",
           "fields": {
-            "body": { "type": "richtext" }
+            "body": { "type": "richtext", "label": "Inhalt" }
           }
         }
       }
@@ -179,21 +215,27 @@
       "slug": "mariabrunn-digital",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "hero_image": { "type": "image" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" }
           }
         },
         "about": {
+          "type": "inline",
+          "label": "Über uns",
           "fields": {
-            "body": { "type": "richtext" }
+            "body": { "type": "richtext", "label": "Inhalt" }
           }
         },
         "workshops": {
+          "type": "inline",
+          "label": "Workshops",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
           }
         }
       }
@@ -202,24 +244,30 @@
       "slug": "mitmachen",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "hero_image": { "type": "image" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" }
           }
         },
         "areas": {
+          "type": "inline",
+          "label": "Bereiche",
           "repeatable": true,
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "icon": { "type": "text" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "icon": { "type": "text", "label": "Icon (Emoji)" }
           }
         },
         "form_intro": {
+          "type": "inline",
+          "label": "Formular-Einleitung",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
           }
         }
       }
@@ -228,21 +276,27 @@
       "slug": "krankenkommunion",
       "sections": {
         "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" },
-            "hero_image": { "type": "image" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" }
           }
         },
         "content": {
+          "type": "inline",
+          "label": "Inhalt",
           "fields": {
-            "body": { "type": "richtext" }
+            "body": { "type": "richtext", "label": "Inhalt" }
           }
         },
         "form_intro": {
+          "type": "inline",
+          "label": "Formular-Einleitung",
           "fields": {
-            "title": { "type": "text" },
-            "description": { "type": "textarea" }
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
           }
         }
       }
@@ -250,13 +304,15 @@
   },
   "settings": {
     "site_settings": {
+      "type": "inline",
+      "label": "Seiteneinstellungen",
       "fields": {
-        "site_title": { "type": "text" },
-        "site_description": { "type": "textarea" },
-        "contact_email": { "type": "email" },
-        "youtube_channel_url": { "type": "url" },
-        "facebook_url": { "type": "url" },
-        "instagram_url": { "type": "url" }
+        "site_title": { "type": "text", "label": "Seitentitel" },
+        "site_description": { "type": "textarea", "label": "Seitenbeschreibung" },
+        "contact_email": { "type": "email", "label": "Kontakt-E-Mail" },
+        "youtube_channel_url": { "type": "url", "label": "YouTube Kanal URL" },
+        "facebook_url": { "type": "url", "label": "Facebook URL" },
+        "instagram_url": { "type": "url", "label": "Instagram URL" }
       }
     }
   }

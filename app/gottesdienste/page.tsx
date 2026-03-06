@@ -8,8 +8,6 @@ export const metadata: Metadata = {
 };
 
 async function getScheduleData() {
-  // In production, this could come from WordPress via WWD API.
-  // For now, load from static JSON file (updated every ~2 weeks).
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://mariabrunn-digital.at";
   try {
     const res = await fetch(`${baseUrl}/data/gottesdienste.json`, {
@@ -20,7 +18,6 @@ async function getScheduleData() {
     // fallback below
   }
 
-  // Fallback: import directly during build
   const data = await import("@/public/data/gottesdienste.json");
   return data.default ?? data;
 }
@@ -28,14 +25,12 @@ async function getScheduleData() {
 export default async function GottesdienstePage() {
   const data = await getScheduleData();
 
-  // Format period for display
-  const periodParts = (data.period as string).split(" to ");
-  const from = new Date(periodParts[0]).toLocaleDateString("de-AT", {
+  const from = new Date(data.source.period.from).toLocaleDateString("de-AT", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
-  const to = new Date(periodParts[1]).toLocaleDateString("de-AT", {
+  const to = new Date(data.source.period.to).toLocaleDateString("de-AT", {
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -50,7 +45,7 @@ export default async function GottesdienstePage() {
             Gottesdienste
           </h1>
           <p className="text-white/70 text-lg mt-4 font-body">
-            Gottesdienstordnung der Pfarre Mariabrunn
+            Gottesdienstordnung der Pfarre {data.parish}
           </p>
           <p className="text-secondary font-subheading mt-2">
             {from} – {to}
