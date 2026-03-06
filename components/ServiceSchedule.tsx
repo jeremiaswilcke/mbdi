@@ -62,8 +62,16 @@ function typeLabel(type: string): string {
 }
 
 export function ServiceSchedule({ data }: { data: ScheduleData }) {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const todayStr = today.toISOString().split("T")[0];
+
+  // Filter: only services from today onwards
+  const futureServices = data.services.filter((s) => s.date >= todayStr);
+  const futureEvents = data.events.filter((ev) => ev.date >= todayStr);
+
   // Group services by date
-  const grouped = data.services.reduce<Record<string, { weekday: string; season?: string; services: Service[] }>>(
+  const grouped = futureServices.reduce<Record<string, { weekday: string; season?: string; services: Service[] }>>(
     (acc, s) => {
       if (!acc[s.date]) {
         acc[s.date] = { weekday: s.weekday, season: s.season, services: [] };
@@ -78,6 +86,19 @@ export function ServiceSchedule({ data }: { data: ScheduleData }) {
   );
 
   const dates = Object.keys(grouped).sort();
+
+  if (dates.length === 0 && futureEvents.length === 0) {
+    return (
+      <div className="text-center py-16">
+        <p className="font-subheading text-lg text-anthracite/60">
+          Derzeit keine anstehenden Gottesdienste eingetragen.
+        </p>
+        <p className="text-sm text-anthracite/40 mt-2">
+          Die Gottesdienstordnung wird in Kürze aktualisiert.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-16">
@@ -152,13 +173,13 @@ export function ServiceSchedule({ data }: { data: ScheduleData }) {
       </div>
 
       {/* Veranstaltungen */}
-      {data.events.length > 0 && (
+      {futureEvents.length > 0 && (
         <div>
           <h3 className="font-heading text-2xl text-primary mb-8 text-center">
             Veranstaltungen & Termine
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {data.events.map((ev, i) => (
+            {futureEvents.map((ev, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
