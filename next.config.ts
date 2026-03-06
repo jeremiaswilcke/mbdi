@@ -9,6 +9,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "mariabrunn-digital.at",
+      },
+      {
+        protocol: "https",
         hostname: "i.ytimg.com",
       },
       {
