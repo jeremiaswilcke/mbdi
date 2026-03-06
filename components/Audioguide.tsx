@@ -8,7 +8,7 @@ interface Station {
   station_title: string;
   description?: string;
   audio_file?: string;
-  image?: string;
+  image?: { url: string; alt?: string } | string;
 }
 
 interface AudioguideProps {
@@ -35,16 +35,15 @@ export function Audioguide({ stations }: AudioguideProps) {
             transition={{ duration: 0.6, delay: index * 0.1 }}
             className="rounded-2xl overflow-hidden bg-white shadow-lg border border-gray-100"
           >
-            {station.image && (
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={station.image}
-                  alt={station.station_title}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            )}
+            {station.image && (() => {
+              const imgSrc = typeof station.image === "string" ? station.image : station.image.url;
+              const imgAlt = typeof station.image === "string" ? station.station_title : (station.image.alt || station.station_title);
+              return (
+                <div className="relative aspect-[4/3]">
+                  <Image src={imgSrc} alt={imgAlt} fill className="object-cover" />
+                </div>
+              );
+            })()}
 
             <div className="p-6">
               <h3 className="font-subheading text-lg text-primary">
