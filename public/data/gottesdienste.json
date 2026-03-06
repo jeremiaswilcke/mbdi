@@ -1,106 +1,480 @@
 {
   "parish": "Mariabrunn",
-  "period": "2026-02-08 to 2026-03-08",
+  "source": {
+    "type": "pdf",
+    "title": "Pfarrkalender der Pfarre Mariabrunn",
+    "period": {
+      "from": "2026-02-08",
+      "to": "2026-03-08"
+    }
+  },
+  "contact": {
+    "name": "r.k. Pfarramt Mariabrunn",
+    "address": "1140 Wien, Hauptstraße 9",
+    "phone": "01/979-10-72",
+    "office_hours": [
+      "Di, Do, Fr 9-12",
+      "Do 15-18 Uhr"
+    ],
+    "email": "pfarre.mariabrunn@katholischekirche.at",
+    "website": "https://www.erzdioezese-wien.at/pages/pfarren/9122"
+  },
   "services": [
     {
       "date": "2026-02-08",
       "weekday": "Sonntag",
-      "season": "5. Sonntag im Jahreskreis",
-      "time": "10:00",
-      "title": "Hl. Messe",
-      "type": "messe",
-      "intention": "† Gertrude Salansky"
-    },
-    {
-      "date": "2026-02-08",
-      "weekday": "Sonntag",
-      "time": "10:00",
-      "title": "Kinderkirche",
-      "type": "kinderkirche",
-      "intention": "† Eltern u. Geschwister der Fam. Wandl"
-    },
-    {
-      "date": "2026-02-08",
-      "weekday": "Sonntag",
-      "time": "19:00",
-      "title": "Hl. Messe",
-      "type": "messe",
-      "intention": "† Mutter Angela Koller"
+      "day_title": "Fünfter Sonntag im Jahreskreis",
+      "special_day": null,
+      "collections": [],
+      "readings": {
+        "l1": "Jes 58,7-10",
+        "psalm": "112,4-9",
+        "l2": "1 Kor 2,1-5",
+        "gospel": "Mt 5,13-16"
+      },
+      "celebrations": [
+        {
+          "time": "10:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Gertrude Salansky"
+        },
+        {
+          "time": "10:00",
+          "title": "Kinderkirche",
+          "type": "kinderkirche",
+          "intention": "† Eltern u. Geschwister der Fam. Wandl"
+        },
+        {
+          "time": "19:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Mutter Angela Koller"
+        }
+      ]
     },
     {
       "date": "2026-02-13",
       "weekday": "Freitag",
-      "time": "18:30",
-      "title": "Rosenkranz",
-      "type": "rosenkranz"
-    },
-    {
-      "date": "2026-02-13",
-      "weekday": "Freitag",
-      "time": "19:00",
-      "title": "Hl. Messe",
-      "type": "messe",
-      "notes": "anschließend Anbetung"
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "18:30",
+          "title": "Rosenkranz",
+          "type": "rosenkranz",
+          "intention": null
+        },
+        {
+          "time": "19:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null,
+          "notes": "anschl. Anbetung"
+        }
+      ]
     },
     {
       "date": "2026-02-15",
       "weekday": "Sonntag",
-      "season": "6. Sonntag im Jahreskreis",
-      "time": "10:00",
-      "title": "Familienmesse",
-      "type": "messe",
-      "intention": "† Christa Pleyer"
+      "day_title": "Sechster Sonntag im Jahreskreis",
+      "special_day": null,
+      "collections": [
+        "Torsammlung Osteuropahilfe der Caritas",
+        "Kinderkampagne"
+      ],
+      "readings": {
+        "l1": "Sir 15,15-20",
+        "psalm": "119,1-2.4-5.17-18.33-34",
+        "l2": "1 Kor 2,6-10",
+        "gospel": "Mt 5,17-37"
+      },
+      "celebrations": [
+        {
+          "time": "10:00",
+          "title": "Familienmesse",
+          "type": "messe",
+          "intention": "† Christa Pleyer"
+        },
+        {
+          "time": "10:00",
+          "title": "Kinderkirche",
+          "type": "kinderkirche",
+          "intention": null
+        },
+        {
+          "time": "19:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
     },
     {
       "date": "2026-02-18",
       "weekday": "Mittwoch",
-      "time": "17:00",
-      "title": "Aschenkreuzfeier für Kinder und Familien",
-      "type": "liturgie"
-    },
-    {
-      "date": "2026-02-18",
-      "weekday": "Mittwoch",
-      "time": "19:00",
-      "title": "Hl. Messe mit Aschenkreuzfeier",
-      "type": "messe"
+      "day_title": null,
+      "special_day": "Aschermittwoch",
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "17:00",
+          "title": "Aschenkreuzfeier für Kinder und Familien",
+          "type": "aschenkreuzfeier",
+          "intention": null
+        },
+        {
+          "time": "19:00",
+          "title": "Hl Messe mit Aschenkreuzfeier",
+          "type": "messe",
+          "intention": null
+        }
+      ]
     },
     {
       "date": "2026-02-20",
       "weekday": "Freitag",
-      "time": "19:00",
-      "title": "Hl. Messe mit Kreuzweg",
-      "type": "messe",
-      "notes": "anschließend Anbetung"
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "19:00",
+          "title": "Hl Messe mit Kreuzweg",
+          "type": "messe",
+          "intention": null,
+          "notes": "anschl. Anbetung"
+        }
+      ]
     },
     {
       "date": "2026-02-21",
       "weekday": "Samstag",
-      "time": "08:00",
-      "title": "Hl. Messe",
-      "type": "messe"
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "08:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
+    },
+    {
+      "date": "2026-02-22",
+      "weekday": "Sonntag",
+      "day_title": "Erster Fastensonntag",
+      "special_day": null,
+      "collections": [],
+      "readings": {
+        "l1": "Gen 2,7-9; 3,1-7",
+        "psalm": "51,3-6b.12-14,17",
+        "l2": "Röm 5,12-19",
+        "gospel": "Mt 4,1-11"
+      },
+      "celebrations": [
+        {
+          "time": "10:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Gottfried Hölzl; † Maria und Otto Böhm"
+        },
+        {
+          "time": "10:00",
+          "title": "Kinderkirche",
+          "type": "kinderkirche",
+          "intention": null
+        },
+        {
+          "time": "19:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Christine Salansky"
+        }
+      ]
+    },
+    {
+      "date": "2026-02-24",
+      "weekday": "Dienstag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "08:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
+    },
+    {
+      "date": "2026-02-26",
+      "weekday": "Donnerstag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "08:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
+    },
+    {
+      "date": "2026-02-27",
+      "weekday": "Freitag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "19:00",
+          "title": "Seelenmesse mit Kreuzweg",
+          "type": "messe",
+          "intention": "† Vater Eduard Prusa",
+          "notes": "anschl. Anbetung"
+        }
+      ]
+    },
+    {
+      "date": "2026-02-28",
+      "weekday": "Samstag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "08:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
+    },
+    {
+      "date": "2026-03-01",
+      "weekday": "Sonntag",
+      "day_title": "Zweiter Fastensonntag",
+      "special_day": null,
+      "collections": [],
+      "readings": {
+        "l1": "Gen 12,1-4a",
+        "psalm": "33,4-5.18-20.22",
+        "l2": "2 Tim 1,8b-10",
+        "gospel": "Mt 17,1-9"
+      },
+      "celebrations": [
+        {
+          "time": "10:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Schwester Erna und † Schwager Gino"
+        },
+        {
+          "time": "10:00",
+          "title": "Kinderkirche",
+          "type": "kinderkirche",
+          "intention": "Montinaro"
+        },
+        {
+          "time": "19:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
+    },
+    {
+      "date": "2026-03-03",
+      "weekday": "Dienstag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "08:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Gertrude Salansky"
+        }
+      ]
+    },
+    {
+      "date": "2026-03-05",
+      "weekday": "Donnerstag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "08:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
+    },
+    {
+      "date": "2026-03-06",
+      "weekday": "Freitag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "19:00",
+          "title": "Hl Messe mit Kreuzweg",
+          "type": "messe",
+          "intention": null,
+          "notes": "anschl. Anbetung"
+        }
+      ]
+    },
+    {
+      "date": "2026-03-07",
+      "weekday": "Samstag",
+      "day_title": null,
+      "special_day": null,
+      "collections": [],
+      "readings": null,
+      "celebrations": [
+        {
+          "time": "08:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Christa Salansky"
+        }
+      ]
+    },
+    {
+      "date": "2026-03-08",
+      "weekday": "Sonntag",
+      "day_title": "Dritter Fastensonntag",
+      "special_day": "Suppensonntag",
+      "collections": [],
+      "readings": {
+        "l1": "Ex 17,3-7",
+        "psalm": "95,1-2.6-7c.7d-9",
+        "l2": "Röm 5,1-2.5-8",
+        "gospel": "Joh 4,5-42"
+      },
+      "celebrations": [
+        {
+          "time": "10:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": "† Familie Salansky"
+        },
+        {
+          "time": "10:00",
+          "title": "Kinderkirche",
+          "type": "kinderkirche",
+          "intention": null
+        },
+        {
+          "time": "19:00",
+          "title": "Hl Messe",
+          "type": "messe",
+          "intention": null
+        }
+      ]
     }
   ],
   "events": [
     {
       "date": "2026-02-11",
+      "weekday": "Mittwoch",
       "time": "18:00",
-      "title": "Glaubensgespräch zum Thema Fasten"
+      "title": "Glaubensgespräch zum Thema „Fasten“",
+      "location": null
     },
     {
       "date": "2026-02-19",
+      "weekday": "Donnerstag",
       "time": "15:00",
-      "title": "Seniorenrunde – Filmvorführung"
+      "title": "Seniorenrunde - Filmvorführung",
+      "location": null
+    },
+    {
+      "date": "2026-02-21",
+      "weekday": "Samstag",
+      "time": "12:00",
+      "title": "Treffen der Philippinischen Gemeinde",
+      "location": "Mariensaal"
+    },
+    {
+      "date": "2026-02-28",
+      "weekday": "Samstag",
+      "time": null,
+      "title": "EKo26 – Fest der Liebe Gottes zu uns",
+      "subtitle": "oder auch Beichte und Tauferneuerung",
+      "location": null
+    },
+    {
+      "date": "2026-03-04",
+      "weekday": "Mittwoch",
+      "time": "18:00",
+      "title": "Glaubensgespräch",
+      "location": null
+    },
+    {
+      "date": "2026-03-04",
+      "weekday": "Mittwoch",
+      "time": "19:00",
+      "title": "Elternabend der Firmlinge; Thema: Beichte",
+      "location": null
+    },
+    {
+      "date": "2026-03-05",
+      "weekday": "Donnerstag",
+      "time": "15:00",
+      "title": "Seniorenrunde - Gesundheitsvortrag",
+      "location": null
+    },
+    {
+      "date": "2026-03-06",
+      "weekday": "Freitag",
+      "time": "19:00",
+      "title": "Ökonomischer Weltgebetstag der Frauen",
+      "subtitle": "Gebetsrunde in der Pfarre Wolfersberg",
+      "location": "Pfarre Wolfersberg"
     },
     {
       "date": "2026-03-07",
+      "weekday": "Samstag",
       "time": "14:00",
-      "title": "Stadtkreuzweg – Pfarre Hütteldorf"
+      "title": "Stadtkreuzweg – Pfarre Hütteldorf",
+      "location": "Pfarre Hütteldorf"
     },
     {
       "date": "2026-03-08",
+      "weekday": "Sonntag",
       "time": "11:00",
-      "title": "Suppensonntag Pfarrcafé"
+      "title": "Suppensonntag-Pfarrcafé",
+      "location": null
+    }
+  ],
+  "notices": [
+    {
+      "title": "In eigener Sache",
+      "text": "Unser Pfarrmoderator Marcelo Sahulga ist vom 26.1. bis 18.2. in seiner Heimat auf Urlaub. In dieser Zeit gibt es keine morgendlichen Wochentagsmessen. Seine Vertretung ist wie in den vergangenen Jahren GR Gustav J. Murlasits."
     }
   ]
 }
