@@ -1,52 +1,39 @@
-export default function VideosPlaylists() {
+import { wwdClient } from "@/lib/api/wwd-client";
+
+export default async function VideosPlaylists() {
+    const videos = await wwdClient.getCPT<any>('videos');
+    const predigten = await wwdClient.getCPT<any>('predigten');
+
     return (
-        <main className="min-h-screen bg-background text-foreground p-4 md:p-12">
-            <div className="max-w-6xl mx-auto space-y-12">
-                <header className="border-b border-card-border pb-8">
-                    <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-white mb-4">
-                        Videos & Playlists
+        <main className="min-h-screen bg-white text-[#145073] pt-28 pb-24">
+            <div className="max-w-6xl mx-auto px-6 space-y-16">
+                <header className="border-b border-gray-100 pb-8">
+                    <h1 className="text-4xl md:text-5xl font-heading font-extrabold text-[#145073] mb-4">
+                        Videos & Predigten
                     </h1>
-                    <p className="text-xl text-slate-400 max-w-2xl">
+                    <p className="text-xl text-[#0B2E42]/80 max-w-2xl">
                         Entdecke alle Livestreams, Predigten und Videoproduktionen der Pfarre Mariabrunn.
                     </p>
                 </header>
 
                 <section>
-                    <h2 className="text-2xl font-bold text-primary-light mb-6">Neueste Uploads</h2>
+                    <h2 className="text-3xl font-heading text-[#69AFD2] mb-6">Neueste Predigten</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* Mock Video Cards */}
-                        {[1, 2, 3].map((item) => (
-                            <div key={item} className="bento-card group p-0 overflow-hidden border-0">
-                                <div className="w-full h-48 bg-slate-800 relative">
-                                    <div className="absolute inset-0 flex items-center justify-center group-hover:scale-110 transition-transform">
-                                        <div className="w-12 h-12 bg-black/60 rounded-full flex items-center justify-center backdrop-blur-sm">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="white" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ml-1"><polygon points="6 3 20 12 6 21 6 3" /></svg>
-                                        </div>
-                                    </div>
+                        {predigten.length > 0 ? predigten.slice(0, 3).map((item) => (
+                            <a href={(item.acf && item.acf.youtube_url) || '#'} target="_blank" rel="noreferrer" key={item.id} className="glass-panel group overflow-hidden border border-[#69AFD2]/20 rounded-2xl block hover:shadow-lg transition">
+                                <div className="w-full h-48 bg-slate-100 relative">
+                                    {(item.acf && item.acf.thumbnail) && <img src={item.acf.thumbnail.url} alt={item.title.rendered} className="w-full h-full object-cover" />}
                                 </div>
-                                <div className="p-4 bg-card">
-                                    <h3 className="font-bold text-white mb-1 group-hover:text-primary-light transition-colors">Sonntagsgottesdienst (Archiv)</h3>
-                                    <p className="text-sm text-slate-400">Vor {item} Tagen</p>
+                                <div className="p-4 bg-white/50">
+                                    <h3 className="font-heading text-[#145073] font-bold text-lg mb-1 group-hover:text-[#69AFD2] transition-colors" dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
+                                    {item.acf && item.acf.date && <p className="text-sm text-slate-500">{item.acf.date}</p>}
                                 </div>
-                            </div>
-                        ))}
+                            </a>
+                        )) : (
+                            <p className="text-slate-500">Aktuell keine Predigten verfügbar.</p>
+                        )}
                     </div>
                 </section>
-
-                <section>
-                    <h2 className="text-2xl font-bold text-accent-rose mb-6">Playlists</h2>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="bg-gradient-to-br from-slate-800 to-card p-6 rounded-2xl border border-white/5 hover:border-accent-rose/50 transition-colors cursor-pointer group">
-                            <h3 className="text-xl font-bold text-white group-hover:text-accent-rose">Predigten 2024</h3>
-                            <p className="text-slate-400 mt-2">12 Videos</p>
-                        </div>
-                        <div className="bg-gradient-to-br from-slate-800 to-card p-6 rounded-2xl border border-white/5 hover:border-accent-rose/50 transition-colors cursor-pointer group">
-                            <h3 className="text-xl font-bold text-white group-hover:text-accent-rose">Kirchenmusik & Chöre</h3>
-                            <p className="text-slate-400 mt-2">8 Videos</p>
-                        </div>
-                    </div>
-                </section>
-
             </div>
         </main>
     );

@@ -1,0 +1,41 @@
+import { NextResponse } from 'next/server';
+import { sendEmail } from '@/lib/mailer';
+
+export async function POST(req: Request) {
+    try {
+        const body = await req.json();
+        const { name, email, preferred_books, message, honeypot } = body;
+
+        if (honeypot) return NextResponse.json({ success: true });
+
+        if (!name || !email) {
+            return NextResponse.json({ success: false, message: "Missing fields" }, { status: 400 });
+        }
+
+        const htmlContent = `
+      <h2>Anmeldung "Bibel in einem Jahr"</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>E-Mail:</strong> ${email}</p>
+      <p><strong>Bevorzugte Bücher:</strong> ${preferred_books || 'Keine Angabe'}</p>
+      <p><strong>Nachricht:</strong></p>
+      <p>${message ? message.replace(/\n/g, '<br>') : '-'}</p>
+      <hr>
+      <p><small>Gesendet am: ${new Date().toLocaleString('de-AT')}</small></p>
+    `;
+
+        const result = await sendEmail({
+            subject: `Bibelprojekt Anmeldung: ${name}`,
+            text: `Neuer Bibelleser: ${name} (${email})`,
+            html: htmlContent,
+            replyTo: email,
+        });
+
+        if (result.success) {
+            return NextResponse.json({ success: true });
+        } else {
+            return NextResponse.json({ success: false, message: "Failed to send email" }, { status: 500 });
+        }
+    } catch (error) {
+        return NextResponse.json({ success: false, message: "Server error" }, { status: 500 });
+    }
+}

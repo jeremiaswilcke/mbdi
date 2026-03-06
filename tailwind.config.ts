@@ -13,7 +13,9 @@ const config: Config = {
                 foreground: "var(--foreground)",
                 card: "var(--color-card)",
                 "card-border": "var(--color-card-border)",
-                anthracite: "#2D2D2D",
+                primary: "var(--color-mb-dark-blue)",
+                secondary: "var(--color-mb-light-blue)",
+                anthracite: "var(--color-mb-anthracite)",
             },
             fontFamily: {
                 heading: ["'FormaDJR Micro'", "var(--font-inter)", "system-ui", "sans-serif"],
