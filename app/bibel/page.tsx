@@ -9,10 +9,10 @@ export const metadata: Metadata = {
     "Gemeinsam die gesamte Bibel in einem Jahr lesen -- das Gemeinschaftsprojekt von Mariabrunn Digital.",
 };
 
-const fallbackData: WWDPageGeneric = {
+const fallback: WWDPageGeneric = {
   title: "Bibel in einem Jahr",
   content:
-    "<p><strong>Bibel in einem Jahr</strong> ist unser grosses Gemeinschaftsprojekt: Gemeinsam lesen wir die gesamte Heilige Schrift in zwoelf Monaten.</p><p>Jeden Tag gibt es einen Abschnitt, der von ehrenamtlichen Leserinnen und Lesern aus der Pfarre eingesprochen und als Video veroeffentlicht wird. So entsteht eine lebendige, hoerbare Bibel -- vorgetragen von Menschen aus unserer Mitte.</p><p>Begleitend bieten wir woechentliche Impulse und Austauschrunden an. Wer selbst als Leser oder Leserin mitwirken moechte, kann sich ueber das untenstehende Formular anmelden.</p>",
+    "<p><strong>Bibel in einem Jahr</strong> ist unser grosses Gemeinschaftsprojekt: Gemeinsam lesen wir die gesamte Heilige Schrift in zwoelf Monaten.</p><p>Jeden Tag gibt es einen Abschnitt, der von ehrenamtlichen Leserinnen und Lesern aus der Pfarre eingesprochen und als Video veroeffentlicht wird.</p><p>Begleitend bieten wir woechentliche Impulse und Austauschrunden an. Wer selbst als Leser oder Leserin mitwirken moechte, kann sich ueber das untenstehende Formular anmelden.</p>",
   sections: {
     hero: {
       hero_title: "Bibel in einem Jahr",
@@ -26,33 +26,27 @@ const fallbackData: WWDPageGeneric = {
 };
 
 export default async function BibelPage() {
-  const data =
-    (await wwdClient.getPage<WWDPageGeneric>("bibel")) ?? fallbackData;
-
-  const hero = (data.sections?.hero as Record<string, unknown>) ?? fallbackData.sections!.hero;
+  const data = (await wwdClient.getPage<WWDPageGeneric>("bibel")) ?? fallback;
+  const hero = data.sections?.hero ?? fallback.sections!.hero!;
 
   return (
-    <main>
+    <>
       <Hero
-        hero_title={(hero.hero_title as string) ?? "Bibel in einem Jahr"}
-        hero_description={
-          (hero.hero_description as string) ??
-          "Gemeinsam die gesamte Heilige Schrift lesen."
-        }
-        primary_cta_text={hero.primary_cta_text as string}
-        primary_cta_link={hero.primary_cta_link as string}
+        hero_title={hero.hero_title}
+        hero_description={hero.hero_description}
+        hero_image={hero.hero_image}
+        primary_cta_text={hero.primary_cta_text}
+        primary_cta_link={hero.primary_cta_link}
       />
 
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div
           className="prose prose-lg max-w-3xl mx-auto text-[#0B2E42]/80 mb-16"
-          dangerouslySetInnerHTML={{
-            __html: data.content ?? (fallbackData.content as string),
-          }}
+          dangerouslySetInnerHTML={{ __html: data.content }}
         />
 
         <div className="max-w-4xl mx-auto mb-24">
-          <h2 className="text-3xl font-heading text-[#145073] mb-8 text-center">
+          <h2 className="text-3xl font-heading text-primary mb-8 text-center">
             Aktuelle Lesungen
           </h2>
           <iframe
@@ -65,16 +59,15 @@ export default async function BibelPage() {
         </div>
 
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-3xl font-heading text-[#145073] mb-4 text-center">
+          <h2 className="text-3xl font-heading text-primary mb-4 text-center">
             Als Leser/in anmelden
           </h2>
-          <p className="text-center text-[#0B2E42]/70 mb-8">
-            Moechten Sie einen Abschnitt der Bibel fuer unser Projekt
-            einsprechen? Melden Sie sich hier an.
+          <p className="text-center text-foreground/70 mb-8">
+            Moechten Sie einen Abschnitt der Bibel fuer unser Projekt einsprechen? Melden Sie sich hier an.
           </p>
           <FormBibel />
         </div>
       </section>
-    </main>
+    </>
   );
 }

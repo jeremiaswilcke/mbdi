@@ -91,7 +91,12 @@ export interface WWDPageGeneric {
   title: string;
   content: string;
   hero_image?: WWDImage;
-  sections?: Record<string, unknown>;
+  sections?: {
+    hero?: WWDHero;
+    audioguide?: WWDAudioguideStation[];
+    team_recruitment?: WWDTeamRecruitment;
+    [key: string]: unknown;
+  };
 }
 
 // ===== API Client =====
