@@ -1,0 +1,263 @@
+{
+  "version": "2.0",
+  "site_name": "Mariabrunn Digital",
+  "cors_origins": [
+    "http://localhost:3000",
+    "https://mariabrunn-digital.at",
+    "https://mbdi.vercel.app"
+  ],
+  "pages": {
+    "home": {
+      "slug": "home",
+      "sections": {
+        "hero": {
+          "fields": {
+            "hero_title": { "type": "text" },
+            "hero_description": { "type": "textarea" },
+            "hero_image": { "type": "image" },
+            "livestream_url": { "type": "url" },
+            "fallback_video_url": { "type": "url" },
+            "primary_cta_text": { "type": "text" },
+            "primary_cta_link": { "type": "url" },
+            "secondary_cta_text": { "type": "text" },
+            "secondary_cta_link": { "type": "url" }
+          }
+        },
+        "bento_grid": {
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "image": { "type": "image" },
+            "link": { "type": "url" },
+            "size": { "type": "select", "options": ["small", "medium", "large"] }
+          }
+        },
+        "audioguide": {
+          "repeatable": true,
+          "fields": {
+            "station_title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "audio_file": { "type": "file" },
+            "image": { "type": "image" }
+          }
+        },
+        "church_history": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "image": { "type": "image" },
+            "cta_text": { "type": "text" },
+            "cta_link": { "type": "url" }
+          }
+        },
+        "movement": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "workshop_cta_text": { "type": "text" },
+            "workshop_cta_link": { "type": "url" },
+            "info_cta_text": { "type": "text" },
+            "info_cta_link": { "type": "url" }
+          }
+        },
+        "team_recruitment": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "cta_text": { "type": "text" },
+            "cta_link": { "type": "url" },
+            "areas": {
+              "repeatable": true,
+              "fields": {
+                "title": { "type": "text" },
+                "description": { "type": "textarea" },
+                "icon": { "type": "text" }
+              }
+            }
+          }
+        },
+        "donation": {
+          "fields": {
+            "donation_title": { "type": "text" },
+            "donation_description": { "type": "textarea" },
+            "donation_goal": { "type": "number" },
+            "donation_current": { "type": "number" },
+            "donation_link": { "type": "url" }
+          }
+        }
+      }
+    },
+    "livestream": {
+      "slug": "livestream",
+      "sections": {
+        "hero": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "hero_image": { "type": "image" },
+            "livestream_url": { "type": "url" }
+          }
+        },
+        "content": {
+          "fields": {
+            "body": { "type": "richtext" },
+            "schedule": { "type": "textarea" }
+          }
+        }
+      }
+    },
+    "auf-den-punkt": {
+      "slug": "auf-den-punkt",
+      "sections": {
+        "hero": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "hero_image": { "type": "image" }
+          }
+        },
+        "content": {
+          "fields": {
+            "body": { "type": "richtext" },
+            "youtube_playlist_id": { "type": "text" }
+          }
+        }
+      }
+    },
+    "bibel": {
+      "slug": "bibel",
+      "sections": {
+        "hero": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "hero_image": { "type": "image" }
+          }
+        },
+        "content": {
+          "fields": {
+            "body": { "type": "richtext" },
+            "youtube_playlist_id": { "type": "text" }
+          }
+        },
+        "form_intro": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" }
+          }
+        }
+      }
+    },
+    "kirche": {
+      "slug": "kirche",
+      "sections": {
+        "hero": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "hero_image": { "type": "image" }
+          }
+        },
+        "audioguide": {
+          "repeatable": true,
+          "fields": {
+            "station_title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "audio_file": { "type": "file" },
+            "image": { "type": "image" }
+          }
+        },
+        "history": {
+          "fields": {
+            "body": { "type": "richtext" }
+          }
+        }
+      }
+    },
+    "mariabrunn-digital": {
+      "slug": "mariabrunn-digital",
+      "sections": {
+        "hero": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "hero_image": { "type": "image" }
+          }
+        },
+        "about": {
+          "fields": {
+            "body": { "type": "richtext" }
+          }
+        },
+        "workshops": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" }
+          }
+        }
+      }
+    },
+    "mitmachen": {
+      "slug": "mitmachen",
+      "sections": {
+        "hero": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "hero_image": { "type": "image" }
+          }
+        },
+        "areas": {
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "icon": { "type": "text" }
+          }
+        },
+        "form_intro": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" }
+          }
+        }
+      }
+    },
+    "krankenkommunion": {
+      "slug": "krankenkommunion",
+      "sections": {
+        "hero": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" },
+            "hero_image": { "type": "image" }
+          }
+        },
+        "content": {
+          "fields": {
+            "body": { "type": "richtext" }
+          }
+        },
+        "form_intro": {
+          "fields": {
+            "title": { "type": "text" },
+            "description": { "type": "textarea" }
+          }
+        }
+      }
+    }
+  },
+  "settings": {
+    "site_settings": {
+      "fields": {
+        "site_title": { "type": "text" },
+        "site_description": { "type": "textarea" },
+        "contact_email": { "type": "email" },
+        "youtube_channel_url": { "type": "url" },
+        "facebook_url": { "type": "url" },
+        "instagram_url": { "type": "url" }
+      }
+    }
+  }
+}

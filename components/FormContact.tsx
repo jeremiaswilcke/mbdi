@@ -4,57 +4,52 @@ import { useState } from "react";
 import { CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
 export function FormContact() {
+    const [formData, setFormData] = useState({ name: "", email: "", message: "" });
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [errorMessage, setErrorMessage] = useState("");
 
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    };
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-
-        const form = e.currentTarget;
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-
-        if (!data.name || !data.email || !data.message || !data.consent) {
-            setStatus("error");
-            setErrorMessage("Bitte füllen Sie alle Pflichtfelder aus und stimmen Sie unserer Datenschutzerklärung zu.");
-            return;
-        }
-
         setStatus("loading");
+        setErrorMessage("");
+
+        const honey = (e.currentTarget.elements.namedItem("_honey") as HTMLInputElement)?.value;
 
         try {
             const response = await fetch("/api/forms/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+                body: JSON.stringify({ ...formData, honeypot: honey }),
             });
 
             const result = await response.json();
 
             if (response.ok && result.success) {
                 setStatus("success");
-                form.reset();
+                setFormData({ name: "", email: "", message: "" });
             } else {
                 setStatus("error");
                 setErrorMessage(result.message || "Ein Fehler ist aufgetreten.");
             }
-        } catch (error) {
+        } catch {
             setStatus("error");
-            setErrorMessage("Es gab ein Problem beim Senden der Anfrage. Bitte versuchen Sie es später noch einmal.");
+            setErrorMessage("Es gab ein Problem beim Senden. Bitte versuchen Sie es später erneut.");
         }
     };
 
     if (status === "success") {
         return (
-            <div className="bg-[#145073]/5 border border-[#145073]/10 text-[#145073] p-10 rounded-3xl flex flex-col items-center text-center shadow-lg">
-                <div className="w-16 h-16 bg-[#145073] text-white rounded-full flex items-center justify-center mb-6 shadow-md">
-                    <CheckCircle2 size={32} />
-                </div>
-                <h2 className="text-2xl font-bold font-heading mb-3">Nachricht gesendet!</h2>
-                <p className="text-[#0B2E42]/80">Wir haben Ihre Nachricht erhalten und werden uns bald bei Ihnen melden.</p>
+            <div className="bg-green-50 border border-green-200 text-green-800 p-10 rounded-lg flex flex-col items-center text-center">
+                <CheckCircle2 className="w-14 h-14 mb-4" />
+                <h3 className="text-xl font-subheading mb-2">Nachricht gesendet!</h3>
+                <p className="font-body text-green-700">Wir haben Ihre Nachricht erhalten und melden uns in Kürze.</p>
                 <button
                     onClick={() => setStatus("idle")}
-                    className="mt-8 px-8 py-3 bg-[#145073] text-white rounded-full font-bold hover:bg-[#69AFD2] transition-colors shadow-md"
+                    className="mt-6 bg-primary text-white font-subheading px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors"
                 >
                     Weitere Nachricht senden
                 </button>
@@ -64,73 +59,70 @@ export function FormContact() {
 
     return (
         <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="hidden" aria-hidden="true">
-                <label>Feld leer lassen: <input type="text" name="honeypot" tabIndex={-1} autoComplete="off" /></label>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label htmlFor="name" className="block text-sm font-bold text-[#145073] mb-2">Name *</label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#69AFD2] focus:border-transparent text-[#0B2E42]"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="email" className="block text-sm font-bold text-[#145073] mb-2">E-Mail Adresse *</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#69AFD2] focus:border-transparent text-[#0B2E42]"
-                    />
-                </div>
+            <div style={{ display: "none" }} aria-hidden="true">
+                <input type="text" name="_honey" tabIndex={-1} autoComplete="off" />
             </div>
 
             <div>
-                <label htmlFor="message" className="block text-sm font-bold text-[#145073] mb-2">Ihre Nachricht *</label>
-                <textarea
-                    id="message"
-                    name="message"
+                <label htmlFor="contact-name" className="block font-subheading text-sm text-foreground/70 mb-2">
+                    Name *
+                </label>
+                <input
+                    type="text"
+                    id="contact-name"
+                    name="name"
                     required
-                    rows={4}
-                    className="w-full bg-slate-50 px-4 py-3 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#69AFD2] focus:border-transparent text-[#0B2E42] resize-none"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className="w-full font-body border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-secondary focus:border-transparent focus:outline-none transition-all"
                 />
             </div>
 
-            <div className="flex items-start gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100">
-                <input
-                    type="checkbox"
-                    id="consent"
-                    name="consent"
-                    required
-                    className="mt-1 w-5 h-5 rounded border-slate-300 text-[#145073] focus:ring-[#69AFD2]"
-                />
-                <label htmlFor="consent" className="text-sm text-slate-600 leading-relaxed">
-                    Ich stimme zu, dass meine Daten zur Bearbeitung der Anfrage verarbeitet werden.
-                    Weitere Informationen finden Sie in unserer <a href="/dsgvo" className="text-[#145073] font-bold underline hover:text-[#69AFD2]">Datenschutzerklärung</a>. *
+            <div>
+                <label htmlFor="contact-email" className="block font-subheading text-sm text-foreground/70 mb-2">
+                    E-Mail Adresse *
                 </label>
+                <input
+                    type="email"
+                    id="contact-email"
+                    name="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    className="w-full font-body border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-secondary focus:border-transparent focus:outline-none transition-all"
+                />
+            </div>
+
+            <div>
+                <label htmlFor="contact-message" className="block font-subheading text-sm text-foreground/70 mb-2">
+                    Ihre Nachricht *
+                </label>
+                <textarea
+                    id="contact-message"
+                    name="message"
+                    required
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="w-full font-body border border-gray-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-secondary focus:border-transparent focus:outline-none transition-all resize-none"
+                />
             </div>
 
             {status === "error" && (
-                <div className="p-4 bg-red-50 border border-red-100 text-red-600 rounded-xl flex items-center gap-3">
+                <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-lg flex items-center gap-3">
                     <AlertCircle className="w-5 h-5 shrink-0" />
-                    <p className="text-sm font-bold">{errorMessage}</p>
+                    <p className="text-sm font-body">{errorMessage}</p>
                 </div>
             )}
 
             <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full bg-[#145073] hover:bg-[#69AFD2] text-white font-bold py-4 rounded-xl transition-colors shadow-lg shadow-[#145073]/20 flex justify-center items-center disabled:opacity-70 disabled:cursor-not-allowed"
+                className="bg-primary text-white font-subheading px-8 py-3 rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
             >
                 {status === "loading" ? (
                     <>
-                        <Loader2 className="w-5 h-5 mr-3 animate-spin" />
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                         Wird gesendet...
                     </>
                 ) : (

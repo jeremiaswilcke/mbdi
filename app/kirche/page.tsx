@@ -1,51 +1,93 @@
-import { wwdClient, WWDPageKirche } from "@/lib/api/wwd-client";
-import Image from "next/image";
+import type { Metadata } from "next";
+import { wwdClient, type WWDPageGeneric } from "@/lib/api/wwd-client";
+import { Hero } from "@/components/Hero";
+import { Audioguide } from "@/components/Audioguide";
 
-const fallbackKircheData: WWDPageKirche = {
-    sections: {
-        audioguide: [
-            {
-                station_title: "01. Willkommen in Mariabrunn",
-                description: "Der Startpunkt der interaktiven Führung.",
-            }
-        ]
-    }
+export const metadata: Metadata = {
+  title: "Kirche Mariabrunn",
+  description:
+    "Entdecken Sie die Pfarr- und Wallfahrtskirche Mariabrunn mit unserem digitalen Audioguide.",
+};
+
+const fallbackData: WWDPageGeneric = {
+  title: "Kirche Mariabrunn",
+  content:
+    "<p>Die <strong>Pfarr- und Wallfahrtskirche Mariabrunn</strong> ist ein barockes Juwel im Wienerwald. Seit dem 15. Jahrhundert pilgern Glaeubige zu diesem Gnadenort, der fuer sein wundertaetiges Marienbild bekannt ist.</p><p>Die Kirche beeindruckt mit praechtigen Deckenfresken, dem imposanten Hochaltar und einer reichen Geschichte, die eng mit dem ehemaligen Augustiner-Chorherrenstift verbunden ist. Der Sakralbau wurde im 17. und 18. Jahrhundert im Barockstil umgestaltet und zaehlt zu den bedeutendsten Wallfahrtsstaetten Niederoesterreichs.</p><p>Entdecken Sie die Kirche mit unserem digitalen Audioguide -- Station fuer Station.</p>",
+  sections: {
+    hero: {
+      hero_title: "Pfarr- und Wallfahrtskirche Mariabrunn",
+      hero_description:
+        "Ein barocker Gnadenort im Wienerwald -- entdecken Sie Geschichte, Kunst und Glauben.",
+      primary_cta_text: "Audioguide starten",
+      primary_cta_link: "#audioguide",
+    },
+    audioguide: [
+      {
+        station_title: "Station 1: Hochaltar",
+        description:
+          "Der barocke Hochaltar bildet das Herzstück der Wallfahrtskirche. In seinem Zentrum thront das Gnadenbild der Muttergottes, umgeben von vergoldeten Sauelen und Engelsfiguren.",
+      },
+      {
+        station_title: "Station 2: Deckenfresco",
+        description:
+          "Die praechtigen Fresken an der Kirchendecke stammen aus dem 18. Jahrhundert und erzaehlen in leuchtenden Farben die Geschichte der Wallfahrt und die Verehrung Mariens.",
+      },
+      {
+        station_title: "Station 3: Gnadenbild",
+        description:
+          "Das wundertaetige Gnadenbild der Muttergottes von Mariabrunn ist seit Jahrhunderten Ziel unzaehliger Pilger. Die Legende erzaehlt von einer wundersamen Quelle, die an dieser Stelle entsprang.",
+      },
+    ],
+  },
 };
 
 export default async function KirchePage() {
-    const pageData = await wwdClient.getPage<WWDPageKirche>('kirche') || fallbackKircheData;
-    const stations = pageData.sections?.audioguide || [];
+  const data =
+    (await wwdClient.getPage<WWDPageGeneric>("kirche")) ?? fallbackData;
 
-    return (
-        <main className="min-h-screen bg-white text-[#145073] pt-28 pb-24">
-            <div className="max-w-4xl mx-auto px-6">
-                <h1 className="text-4xl md:text-5xl font-heading text-[#145073] mb-6">Pfarr- und Wallfahrtskirche</h1>
-                <p className="text-xl text-[#0B2E42]/80 mb-12">
-                    Entdecken Sie Mariabrunn mit unserem digitalen Audioguide.
-                </p>
+  const hero = (data.sections?.hero as Record<string, unknown>) ?? fallbackData.sections!.hero;
+  const audioguideStations =
+    (data.sections?.audioguide as Array<{
+      station_title: string;
+      description?: string;
+      audio_file?: string;
+      image?: { id: number; url: string; alt: string; title: string };
+    }>) ?? (fallbackData.sections!.audioguide as Array<{
+      station_title: string;
+      description?: string;
+    }>);
 
-                <div className="space-y-8">
-                    {stations.map((station, idx) => (
-                        <div key={idx} className="glass-panel p-6 md:p-8 rounded-3xl flex flex-col md:flex-row gap-6 items-center">
-                            {station.image && (
-                                <div className="w-full md:w-1/3 aspect-video relative rounded-xl overflow-hidden shrink-0">
-                                    <Image src={station.image.url} alt={station.station_title} fill className="object-cover" />
-                                </div>
-                            )}
-                            <div className="flex-1">
-                                <h2 className="text-2xl font-heading text-[#69AFD2] mb-3">{station.station_title}</h2>
-                                <div className="text-sm text-slate-700" dangerouslySetInnerHTML={{ __html: station.description || '' }} />
+  return (
+    <main>
+      <Hero
+        hero_title={
+          (hero.hero_title as string) ??
+          "Pfarr- und Wallfahrtskirche Mariabrunn"
+        }
+        hero_description={
+          (hero.hero_description as string) ??
+          "Ein barocker Gnadenort im Wienerwald."
+        }
+        hero_image={hero.hero_image as Record<string, unknown> | undefined}
+        primary_cta_text={hero.primary_cta_text as string}
+        primary_cta_link={hero.primary_cta_link as string}
+      />
 
-                                {station.audio_file && (
-                                    <audio controls className="mt-4 w-full" src={station.audio_file}>
-                                        Ihr Browser unterstützt das Audio-Element nicht.
-                                    </audio>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </main>
-    );
+      <section className="py-24 px-6 max-w-7xl mx-auto">
+        <div
+          className="prose prose-lg max-w-3xl mx-auto text-[#0B2E42]/80 mb-16"
+          dangerouslySetInnerHTML={{
+            __html: data.content ?? (fallbackData.content as string),
+          }}
+        />
+      </section>
+
+      <section id="audioguide" className="py-24 px-6 max-w-7xl mx-auto">
+        <h2 className="text-3xl font-heading text-[#145073] mb-12 text-center">
+          Digitaler Audioguide
+        </h2>
+        <Audioguide stations={audioguideStations} />
+      </section>
+    </main>
+  );
 }

@@ -1,82 +1,117 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight, Play } from "lucide-react";
-import type { WWDHero } from "@/lib/api/wwd-client";
+import { cn } from "@/lib/utils";
 
-export function Hero({ data }: { data: WWDHero }) {
-    if (!data) return null;
+interface HeroProps {
+  hero_title: string;
+  hero_description: string;
+  hero_image?: { url: string; alt?: string } | string;
+  livestream_url?: string;
+  fallback_video_url?: string;
+  primary_cta_text?: string;
+  primary_cta_link?: string;
+  secondary_cta_text?: string;
+  secondary_cta_link?: string;
+}
 
-    const isLivestream = data.display_mode === "livestream" && data.livestream_url;
+export function Hero({
+  hero_title,
+  hero_description,
+  hero_image,
+  livestream_url,
+  fallback_video_url,
+  primary_cta_text,
+  primary_cta_link,
+  secondary_cta_text,
+  secondary_cta_link,
+}: HeroProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -50]);
 
-    // Fallback image logic if missing from WWD
-    const bgImage = data.background_image?.url || (isLivestream ? "/images/hero-streaming.png" : "/images/hero-church.png");
+  const videoUrl = livestream_url || fallback_video_url;
+  const imageSrc = typeof hero_image === "string" ? hero_image : hero_image?.url;
+  const imageAlt = typeof hero_image === "string" ? hero_title : (hero_image?.alt || hero_title);
 
-    return (
-        <div className="relative w-full overflow-hidden rounded-[2rem] shadow-2xl shadow-[#155277]/10 h-[400px] md:h-[520px]">
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-                className="absolute inset-0 w-full h-full"
-            >
-                {/* Background Image / Placeholder */}
-                <div className="absolute inset-0 z-0">
-                    <Image
-                        src={bgImage}
-                        alt={data.background_image?.alt || data.title}
-                        fill
-                        className="object-cover"
-                        priority
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/60 to-[#155277]/20 z-10" />
-                </div>
+  return (
+    <section ref={sectionRef} className="relative h-screen w-full overflow-hidden">
+      {/* Parallax Background Image */}
+      <motion.div className="absolute inset-0" style={{ y: parallaxY }}>
+        {imageSrc ? (
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            fill
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <div className="absolute inset-0 bg-primary" />
+        )}
+      </motion.div>
 
-                {/* Content */}
-                <div className="relative z-20 h-full flex flex-col justify-end p-8 md:p-12 pb-20">
-                    <div className="max-w-3xl">
-                        {isLivestream && (
-                            <div className="mb-4">
-                                <span className={`inline-flex items-center gap-2 text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest border border-white/20 shadow-lg backdrop-blur-sm bg-[#AF3F6C]`}>
-                                    <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                                    Live
-                                </span>
-                            </div>
-                        )}
-                        <h2 className="text-3xl md:text-5xl lg:text-6xl font-heading text-white mb-4 drop-shadow-md line-clamp-2 leading-tight">
-                            {data.title}
-                        </h2>
-                        {data.subtitle && (
-                            <p className="text-lg md:text-xl text-slate-200 mb-8 max-w-2xl line-clamp-2">
-                                {data.subtitle}
-                            </p>
-                        )}
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent" />
 
-                        <div className="flex flex-wrap gap-4">
-                            {data.primary_cta_link && data.primary_cta_text && (
-                                <Link
-                                    href={data.primary_cta_link}
-                                    className="inline-flex items-center gap-2 bg-white text-[#145073] hover:bg-[#69AFD2] hover:text-white px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-xl hover:shadow-[#69AFD2]/30"
-                                >
-                                    {isLivestream ? <Play size={20} className="fill-[#145073] group-hover:fill-white" /> : null}
-                                    {data.primary_cta_text} <ChevronRight size={20} />
-                                </Link>
-                            )}
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="relative z-10 h-full max-w-7xl mx-auto px-6 flex items-center"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
+          {/* LEFT column */}
+          <div className="flex flex-col gap-6">
+            <h1 className="font-heading text-white text-5xl lg:text-7xl leading-tight">
+              {hero_title}
+            </h1>
+            <p className="text-white/80 text-lg max-w-lg font-body">
+              {hero_description}
+            </p>
+            <div className="flex flex-wrap gap-4">
+              {primary_cta_text && primary_cta_link && (
+                <Link
+                  href={primary_cta_link}
+                  className="bg-secondary text-primary font-subheading px-8 py-4 rounded-lg hover:bg-secondary/90 transition-colors"
+                >
+                  {primary_cta_text}
+                </Link>
+              )}
+              {secondary_cta_text && secondary_cta_link && (
+                <Link
+                  href={secondary_cta_link}
+                  className="border-2 border-white text-white font-subheading px-8 py-4 rounded-lg hover:bg-white/10 transition-colors"
+                >
+                  {secondary_cta_text}
+                </Link>
+              )}
+            </div>
+          </div>
 
-                            {data.secondary_cta_link && data.secondary_cta_text && (
-                                <Link
-                                    href={data.secondary_cta_link}
-                                    className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-white hover:text-[#145073] px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-xl"
-                                >
-                                    {data.secondary_cta_text}
-                                </Link>
-                            )}
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
+          {/* RIGHT column */}
+          <div className="hidden lg:block">
+            {videoUrl && (
+              <div className="relative w-full aspect-video rounded-xl overflow-hidden shadow-2xl">
+                <iframe
+                  src={videoUrl}
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Video"
+                />
+              </div>
+            )}
+          </div>
         </div>
-    );
+      </motion.div>
+    </section>
+  );
 }

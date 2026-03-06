@@ -1,29 +1,25 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-    content: [
-        "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    ],
-    theme: {
-        extend: {
-            colors: {
-                background: "var(--background)",
-                foreground: "var(--foreground)",
-                card: "var(--color-card)",
-                "card-border": "var(--color-card-border)",
-                primary: "var(--color-mb-dark-blue)",
-                secondary: "var(--color-mb-light-blue)",
-                anthracite: "var(--color-mb-anthracite)",
-            },
-            fontFamily: {
-                heading: ["'FormaDJR Micro'", "var(--font-inter)", "system-ui", "sans-serif"],
-                subheading: ["'FormaDJR Display'", "var(--font-inter)", "system-ui", "sans-serif"],
-                sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-            },
-        },
+  content: [
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#145073",
+        secondary: "#69AFD2",
+        foreground: "#0B2E42",
+        background: "#FFFFFF",
+      },
+      fontFamily: {
+        heading: ["'FormaDJR Micro'", "system-ui", "sans-serif"],
+        subheading: ["'FormaDJR Display'", "system-ui", "sans-serif"],
+        body: ["'FormaDJR Display'", "system-ui", "sans-serif"],
+      },
     },
-    plugins: [],
+  },
+  plugins: [],
 };
 export default config;

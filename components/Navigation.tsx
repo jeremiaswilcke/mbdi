@@ -1,10 +1,19 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const navLinks = [
+  { name: "Livestream", href: "/livestream" },
+  { name: "Auf den Punkt", href: "/auf-den-punkt" },
+  { name: "Bibel", href: "/bibel" },
+  { name: "Kirche", href: "/kirche" },
+  { name: "Mariabrunn Digital", href: "/mariabrunn-digital" },
+  { name: "Mitmachen", href: "/mitmachen" },
+];
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,99 +21,124 @@ export function Navigation() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Start", href: "/" },
-    { name: "Videos", href: "/#videos" },
-    { name: "Auf den Punkt", href: "/auf-den-punkt" },
-    { name: "Bibel in einem Jahr", href: "/bibel-in-einem-jahr" },
-    { name: "Mitmachen", href: "/mitmachen" },
-    { name: "Über uns", href: "/#ueber-uns" },
-  ];
-
   return (
     <>
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "py-3 bg-white/90 backdrop-blur-lg border-b border-gray-100 shadow-sm"
-          : "py-6 bg-white"
-          }`}
+      <nav
+        className={cn(
+          "fixed top-0 w-full z-50 transition-all duration-300",
+          isScrolled
+            ? "bg-white/95 backdrop-blur-md shadow-sm"
+            : "bg-transparent"
+        )}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-3 group relative z-50">
-            <div className="relative w-10 h-10 overflow-hidden transition-transform duration-300 group-hover:scale-105">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="relative z-50 flex items-center gap-3">
+            <div className="relative w-10 h-10">
               <Image
-                src="/Logo.png"
+                src="/images/Logo.png"
                 alt="Mariabrunn Logo"
                 fill
                 className="object-contain"
                 priority
               />
             </div>
-            <span className={`font-heading font-bold text-xl tracking-tight transition-colors duration-300 text-[#155277]`}>
-              Mariabrunn <span className="text-[#6DC0D2]">Digital</span>
+            <span
+              className={cn(
+                "font-heading text-xl transition-colors duration-300",
+                isScrolled ? "text-primary" : "text-white"
+              )}
+            >
+              Mariabrunn Digital
             </span>
           </Link>
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop nav links */}
+          <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-[#155277] hover:text-[#6DC0D2] transition-colors relative group"
+                className={cn(
+                  "font-subheading text-sm tracking-wide transition-colors hover:text-secondary",
+                  isScrolled ? "text-primary" : "text-white"
+                )}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#6DC0D2] transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
-            <Link
-              href="/#termine"
-              className="bg-[#155277] hover:bg-[#6DC0D2] text-white text-sm font-bold px-5 py-2.5 rounded-full transition-colors shadow-lg shadow-[#155277]/20 hover:shadow-[#6DC0D2]/40"
-            >
-              Gottesdienste
-            </Link>
           </div>
 
-          {/* Mobile Toggle */}
+          {/* Mobile hamburger */}
           <button
-            className="md:hidden relative z-50 p-2 text-[#155277]"
+            className="lg:hidden relative z-50 p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Menu"
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <div className="flex flex-col gap-1.5">
+              <span
+                className={cn(
+                  "block w-6 h-0.5 transition-all duration-300",
+                  isMobileMenuOpen
+                    ? "rotate-45 translate-y-2 bg-white"
+                    : isScrolled
+                    ? "bg-primary"
+                    : "bg-white"
+                )}
+              />
+              <span
+                className={cn(
+                  "block w-6 h-0.5 transition-all duration-300",
+                  isMobileMenuOpen
+                    ? "opacity-0"
+                    : isScrolled
+                    ? "bg-primary"
+                    : "bg-white"
+                )}
+              />
+              <span
+                className={cn(
+                  "block w-6 h-0.5 transition-all duration-300",
+                  isMobileMenuOpen
+                    ? "-rotate-45 -translate-y-2 bg-white"
+                    : isScrolled
+                    ? "bg-primary"
+                    : "bg-white"
+                )}
+              />
+            </div>
           </button>
         </div>
-      </motion.nav>
+      </nav>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl md:hidden flex flex-col items-center justify-center gap-8 pt-20"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 bg-primary flex flex-col items-center justify-center gap-8 lg:hidden"
           >
             {navLinks.map((link, i) => (
               <motion.div
                 key={link.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ delay: i * 0.05 }}
               >
                 <Link
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl font-heading font-bold text-[#155277] hover:text-[#6DC0D2] transition-colors"
+                  className="font-heading text-2xl text-white hover:text-secondary transition-colors"
                 >
                   {link.name}
                 </Link>
