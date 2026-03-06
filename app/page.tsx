@@ -48,6 +48,12 @@ const fallback: WWDPageHome = {
         link: "/livestream",
       },
       {
+        title: "Gottesdienste",
+        description: "Messzeiten, Rosenkranz und Andachten – die aktuelle Gottesdienstordnung.",
+        size: "small",
+        link: "/gottesdienste",
+      },
+      {
         title: "Podcast & Medienarbeit",
         description: "Predigten, Vorträge und Gespräche als Podcast – überall verfügbar.",
         size: "small",

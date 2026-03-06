@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 const fallback: WWDPageGeneric = {
   title: "Mariabrunn Digital",
   content:
-    "<h2>Vision</h2><p>Wir glauben, dass die Frohe Botschaft dort sein soll, wo die Menschen sind -- auch im digitalen Raum. Mariabrunn Digital verbindet Glaube, Gemeinschaft und moderne Medientechnik, um die Pfarre für alle erlebbar zu machen.</p><h2>Mission</h2><p>Unser Team aus ehrenamtlichen Mitarbeiterinnen und Mitarbeitern produziert Livestreams, Podcasts, tägliche Kurzauslegungen und das Bibelprojekt. Dabei setzen wir auf professionelle Qualität mit einfachen Mitteln -- und teilen unser Wissen gerne mit anderen Pfarren.</p><h2>Workshops für Pfarren</h2><p>Sie möchten in Ihrer Pfarre ebenfalls digitale Medien einsetzen? Wir bieten praxisnahe Workshops an, in denen wir unsere Erfahrungen weitergeben. Melden Sie sich über das untenstehende Formular an.</p>",
+    "<h2>Vision</h2><p>Wir glauben, dass die Frohe Botschaft dort sein soll, wo die Menschen sind -- auch im digitalen Raum. Mariabrunn Digital verbindet Glaube, Gemeinschaft und moderne Medientechnik, um die Pfarre für alle erlebbar zu machen.</p><h2>Mission</h2><p>Unser Team aus ehrenamtlichen Mitarbeitern produziert Livestreams, Podcasts, tägliche Kurzauslegungen und das Bibelprojekt. Dabei setzen wir auf professionelle Qualität mit einfachen Mitteln -- und teilen unser Wissen gerne mit anderen Pfarren.</p><h2>Workshops für Pfarren</h2><p>Sie möchten in Ihrer Pfarre ebenfalls digitale Medien einsetzen? Wir bieten praxisnahe Workshops an, in denen wir unsere Erfahrungen weitergeben. Melden Sie sich über das untenstehende Formular an.</p>",
   sections: {
     hero: {
       hero_title: "Mariabrunn Digital",

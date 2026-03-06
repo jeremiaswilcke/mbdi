@@ -7,11 +7,11 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
+  { name: "Gottesdienste", href: "/gottesdienste" },
   { name: "Livestream", href: "/livestream" },
   { name: "Auf den Punkt", href: "/auf-den-punkt" },
   { name: "Bibel", href: "/bibel" },
   { name: "Kirche", href: "/kirche" },
-  { name: "Mariabrunn Digital", href: "/mariabrunn-digital" },
   { name: "Mitmachen", href: "/mitmachen" },
 ];
 
@@ -40,7 +40,7 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-50 flex items-center gap-3">
-            <div className="relative w-10 h-10">
+            <div className="relative w-12 h-12">
               <Image
                 src="/Logo.png"
                 alt="Mariabrunn Logo"

@@ -35,6 +35,14 @@ export function Footer() {
               </li>
               <li>
                 <Link
+                  href="/gottesdienste"
+                  className="text-white/70 hover:text-secondary transition-colors"
+                >
+                  Gottesdienste
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/livestream"
                   className="text-white/70 hover:text-secondary transition-colors"
                 >

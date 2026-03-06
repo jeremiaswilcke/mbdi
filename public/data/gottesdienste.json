@@ -1,0 +1,106 @@
+{
+  "parish": "Mariabrunn",
+  "period": "2026-02-08 to 2026-03-08",
+  "services": [
+    {
+      "date": "2026-02-08",
+      "weekday": "Sonntag",
+      "season": "5. Sonntag im Jahreskreis",
+      "time": "10:00",
+      "title": "Hl. Messe",
+      "type": "messe",
+      "intention": "† Gertrude Salansky"
+    },
+    {
+      "date": "2026-02-08",
+      "weekday": "Sonntag",
+      "time": "10:00",
+      "title": "Kinderkirche",
+      "type": "kinderkirche",
+      "intention": "† Eltern u. Geschwister der Fam. Wandl"
+    },
+    {
+      "date": "2026-02-08",
+      "weekday": "Sonntag",
+      "time": "19:00",
+      "title": "Hl. Messe",
+      "type": "messe",
+      "intention": "† Mutter Angela Koller"
+    },
+    {
+      "date": "2026-02-13",
+      "weekday": "Freitag",
+      "time": "18:30",
+      "title": "Rosenkranz",
+      "type": "rosenkranz"
+    },
+    {
+      "date": "2026-02-13",
+      "weekday": "Freitag",
+      "time": "19:00",
+      "title": "Hl. Messe",
+      "type": "messe",
+      "notes": "anschließend Anbetung"
+    },
+    {
+      "date": "2026-02-15",
+      "weekday": "Sonntag",
+      "season": "6. Sonntag im Jahreskreis",
+      "time": "10:00",
+      "title": "Familienmesse",
+      "type": "messe",
+      "intention": "† Christa Pleyer"
+    },
+    {
+      "date": "2026-02-18",
+      "weekday": "Mittwoch",
+      "time": "17:00",
+      "title": "Aschenkreuzfeier für Kinder und Familien",
+      "type": "liturgie"
+    },
+    {
+      "date": "2026-02-18",
+      "weekday": "Mittwoch",
+      "time": "19:00",
+      "title": "Hl. Messe mit Aschenkreuzfeier",
+      "type": "messe"
+    },
+    {
+      "date": "2026-02-20",
+      "weekday": "Freitag",
+      "time": "19:00",
+      "title": "Hl. Messe mit Kreuzweg",
+      "type": "messe",
+      "notes": "anschließend Anbetung"
+    },
+    {
+      "date": "2026-02-21",
+      "weekday": "Samstag",
+      "time": "08:00",
+      "title": "Hl. Messe",
+      "type": "messe"
+    }
+  ],
+  "events": [
+    {
+      "date": "2026-02-11",
+      "time": "18:00",
+      "title": "Glaubensgespräch zum Thema Fasten"
+    },
+    {
+      "date": "2026-02-19",
+      "time": "15:00",
+      "title": "Seniorenrunde – Filmvorführung"
+    },
+    {
+      "date": "2026-03-07",
+      "time": "14:00",
+      "title": "Stadtkreuzweg – Pfarre Hütteldorf"
+    },
+    {
+      "date": "2026-03-08",
+      "time": "11:00",
+      "title": "Suppensonntag Pfarrcafé"
+    }
+  ]
+}
