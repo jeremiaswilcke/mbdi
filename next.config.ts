@@ -13,6 +13,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "wilckeworte.at",
+      },
+      {
+        protocol: "https",
         hostname: "i.ytimg.com",
       },
       {
