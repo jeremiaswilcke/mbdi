@@ -101,6 +101,21 @@ export interface WWDPageGeneric {
 
 const API_BASE = process.env.NEXT_PUBLIC_WORDPRESS_URL || "https://www.mariabrunn.at";
 
+// WWD plugin wraps each section as { type, label, data: <actual data> }
+// This unwraps all sections to just their data
+function unwrapSections(raw: Record<string, unknown>): Record<string, unknown> {
+  if (!raw || typeof raw !== "object") return raw;
+  const result: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(raw)) {
+    if (value && typeof value === "object" && "data" in (value as Record<string, unknown>)) {
+      result[key] = (value as Record<string, unknown>).data;
+    } else {
+      result[key] = value;
+    }
+  }
+  return result;
+}
+
 async function fetchWWD<T>(endpoint: string): Promise<T | null> {
   try {
     const res = await fetch(`${API_BASE}/wp-json/wwd/v1${endpoint}`, {
@@ -111,7 +126,12 @@ async function fetchWWD<T>(endpoint: string): Promise<T | null> {
       console.error(`WWD API [${res.status}]: ${endpoint}`);
       return null;
     }
-    return res.json();
+    const json = await res.json();
+    // Unwrap sections if present
+    if (json && typeof json === "object" && json.sections) {
+      json.sections = unwrapSections(json.sections);
+    }
+    return json as T;
   } catch (error) {
     console.error(`WWD API error on ${endpoint}:`, error);
     return null;
