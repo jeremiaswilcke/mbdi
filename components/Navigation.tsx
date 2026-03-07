@@ -13,6 +13,7 @@ const navLinks = [
   { name: "Bibel", href: "/bibel" },
   { name: "Kirche", href: "/kirche" },
   { name: "Mitmachen", href: "/mitmachen" },
+  { name: "Christ werden", href: "/christ-werden" },
 ];
 
 export function Navigation() {
