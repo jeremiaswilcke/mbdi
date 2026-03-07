@@ -42,7 +42,7 @@ export default async function BibelPage() {
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div
           className="prose prose-lg max-w-3xl mx-auto text-[#0B2E42]/80 mb-16"
-          dangerouslySetInnerHTML={{ __html: data.content }}
+          dangerouslySetInnerHTML={{ __html: data.content || fallback.content }}
         />
 
         <div className="max-w-4xl mx-auto mb-24">

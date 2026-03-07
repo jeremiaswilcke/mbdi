@@ -9,12 +9,10 @@ export interface WWDImage {
   height?: number;
 }
 
-export interface WWDHero {
+export interface WWDHeroSlide {
   hero_title: string;
   hero_description: string;
   hero_image?: WWDImage;
-  livestream_url?: string;
-  fallback_video_url?: string;
   primary_cta_text?: string;
   primary_cta_link?: string;
   secondary_cta_text?: string;
@@ -77,7 +75,7 @@ export interface WWDDonation {
 
 export interface WWDPageHome {
   sections: {
-    hero: WWDHero;
+    hero: WWDHeroSlide[];
     bento_grid: WWDBentoCard[];
     audioguide: WWDAudioguideStation[];
     church_history: WWDChurchHistory;
@@ -92,7 +90,7 @@ export interface WWDPageGeneric {
   content: string;
   hero_image?: WWDImage;
   sections?: {
-    hero?: WWDHero;
+    hero?: WWDHeroSlide;
     audioguide?: WWDAudioguideStation[];
     team_recruitment?: WWDTeamRecruitment;
     [key: string]: unknown;

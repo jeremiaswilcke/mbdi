@@ -44,7 +44,8 @@ const fallback: WWDPageGeneric = {
 export default async function KirchePage() {
   const data = (await wwdClient.getPage<WWDPageGeneric>("kirche")) ?? fallback;
   const hero = data.sections?.hero ?? fallback.sections!.hero!;
-  const stations = data.sections?.audioguide ?? fallback.sections!.audioguide!;
+  const rawStations = data.sections?.audioguide;
+  const stations = Array.isArray(rawStations) && rawStations.length > 0 ? rawStations : fallback.sections!.audioguide!;
 
   return (
     <>
@@ -59,7 +60,7 @@ export default async function KirchePage() {
       <section className="py-24 px-6 max-w-7xl mx-auto">
         <div
           className="prose prose-lg max-w-3xl mx-auto text-[#0B2E42]/80 mb-16"
-          dangerouslySetInnerHTML={{ __html: data.content }}
+          dangerouslySetInnerHTML={{ __html: data.content || fallback.content }}
         />
       </section>
 

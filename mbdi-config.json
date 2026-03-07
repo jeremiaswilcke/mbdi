@@ -13,7 +13,8 @@
       "sections": {
         "hero": {
           "type": "inline",
-          "label": "Hero-Bereich",
+          "label": "Hero-Slides",
+          "repeatable": true,
           "fields": {
             "hero_title": { "type": "text", "label": "Titel" },
             "hero_description": { "type": "textarea", "label": "Beschreibung" },

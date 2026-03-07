@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { wwdClient, type WWDPageHome } from "@/lib/api/wwd-client";
+import { wwdClient, type WWDPageHome, type WWDHeroSlide } from "@/lib/api/wwd-client";
 import { getLatestVideos } from "@/lib/youtube";
 import { Hero } from "@/components/Hero";
 import { BentoGrid } from "@/components/BentoGrid";
@@ -17,16 +17,34 @@ export const metadata: Metadata = {
 
 const fallback: WWDPageHome = {
   sections: {
-    hero: {
-      hero_title: "Glaube. Gemeinschaft. Digital.",
-      hero_description:
-        "Mariabrunn Digital bringt die Pfarre ins digitale Zeitalter: Livestreams der Heiligen Messe, tägliche Kurzauslegungen, Podcasts und ein einzigartiges Bibelprojekt – für alle, die Glauben leben und teilen möchten.",
-      hero_image: { url: "/images/hero-church.png", alt: "Wallfahrtskirche Mariabrunn", id: 0, title: "Hero" },
-      primary_cta_text: "Livestream ansehen",
-      primary_cta_link: "/livestream",
-      secondary_cta_text: "Mitmachen",
-      secondary_cta_link: "/mitmachen",
-    },
+    hero: [
+      {
+        hero_title: "Glaube. Gemeinschaft. Digital.",
+        hero_description:
+          "Mariabrunn Digital bringt die Pfarre ins digitale Zeitalter: Livestreams der Heiligen Messe, tägliche Kurzauslegungen, Podcasts und ein einzigartiges Bibelprojekt.",
+        hero_image: { url: "/images/hero-church.png", alt: "Wallfahrtskirche Mariabrunn", id: 0, title: "Hero" },
+        primary_cta_text: "Livestream ansehen",
+        primary_cta_link: "/livestream",
+        secondary_cta_text: "Mitmachen",
+        secondary_cta_link: "/mitmachen",
+      },
+      {
+        hero_title: "Auf den Punkt.",
+        hero_description:
+          "Jeden Tag eine kurze Auslegung zum Tagesevangelium mit Diakon Peter Scheuchel – in nur 2 bis 3 Minuten.",
+        hero_image: { url: "/images/hero-streaming.png", alt: "Auf den Punkt", id: 0, title: "Auf den Punkt" },
+        primary_cta_text: "Jetzt anhören",
+        primary_cta_link: "/auf-den-punkt",
+      },
+      {
+        hero_title: "Wallfahrtskirche Mariabrunn.",
+        hero_description:
+          "Seit dem 15. Jahrhundert ein Ort der Andacht und Wallfahrt. Entdecken Sie die Geschichte, Kunst und Spiritualität unserer Kirche.",
+        hero_image: { url: "/images/hero-church2.png", alt: "Kirche Mariabrunn Innenraum", id: 0, title: "Kirche" },
+        primary_cta_text: "Mehr erfahren",
+        primary_cta_link: "/kirche",
+      },
+    ],
     bento_grid: [
       {
         title: "Auf den Punkt",
@@ -110,6 +128,13 @@ const fallback: WWDPageHome = {
 export default async function HomePage() {
   const data = (await wwdClient.getPage<WWDPageHome>("home")) ?? fallback;
   const s = data.sections;
+  const fb = fallback.sections;
+
+  // Normalize hero: WP might return single object (old config) or array (new config)
+  const heroSlides: WWDHeroSlide[] = Array.isArray(s.hero) && s.hero.length > 0
+    ? s.hero
+    : Array.isArray(s.hero) ? fb.hero : [s.hero as unknown as WWDHeroSlide].filter(h => h?.hero_title);
+  const safeHeroSlides = heroSlides.length > 0 ? heroSlides : fb.hero;
 
   // Auto-detect livestream or latest video from YouTube
   const { liveStream, latestVod } = await getLatestVideos();
@@ -122,15 +147,15 @@ export default async function HomePage() {
   return (
     <>
       <Hero
-        {...s.hero}
+        slides={safeHeroSlides}
         livestream_url={autoVideoUrl}
       />
-      <BentoGrid cards={s.bento_grid} />
-      <Audioguide stations={s.audioguide} />
-      <ChurchSection {...s.church_history} />
-      <MovementSection {...s.movement} />
-      <TeamCTA {...s.team_recruitment} />
-      <DonationProgress {...s.donation} />
+      <BentoGrid cards={Array.isArray(s.bento_grid) ? s.bento_grid : fb.bento_grid} />
+      <Audioguide stations={Array.isArray(s.audioguide) ? s.audioguide : fb.audioguide} />
+      <ChurchSection {...(s.church_history?.title ? s.church_history : fb.church_history)} />
+      <MovementSection {...(s.movement?.title ? s.movement : fb.movement)} />
+      <TeamCTA {...(s.team_recruitment?.title ? s.team_recruitment : fb.team_recruitment)} />
+      <DonationProgress {...(s.donation?.donation_title ? s.donation : fb.donation)} />
     </>
   );
 }
