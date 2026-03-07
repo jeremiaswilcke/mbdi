@@ -71,7 +71,12 @@ export function Hero({
           {/* LEFT column */}
           <div className="flex flex-col gap-6">
             <h1 className="font-heading text-white text-5xl lg:text-7xl leading-tight">
-              {hero_title}
+              {hero_title.split(/\.\s*/).filter(Boolean).map((part, i, arr) => (
+                <span key={i}>
+                  {part}{i < arr.length - 1 ? "." : hero_title.endsWith(".") ? "." : ""}
+                  {i < arr.length - 1 && <br />}
+                </span>
+              ))}
             </h1>
             <p className="text-white/80 text-lg max-w-lg font-body">
               {hero_description}

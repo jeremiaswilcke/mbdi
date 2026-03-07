@@ -18,8 +18,6 @@
             "hero_title": { "type": "text", "label": "Titel" },
             "hero_description": { "type": "textarea", "label": "Beschreibung" },
             "hero_image": { "type": "image", "label": "Hintergrundbild" },
-            "livestream_url": { "type": "url", "label": "Livestream URL" },
-            "fallback_video_url": { "type": "url", "label": "Fallback Video URL" },
             "primary_cta_text": { "type": "text", "label": "Primärer Button Text" },
             "primary_cta_link": { "type": "url", "label": "Primärer Button Link" },
             "secondary_cta_text": { "type": "text", "label": "Sekundärer Button Text" },

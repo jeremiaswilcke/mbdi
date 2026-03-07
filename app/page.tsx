@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { wwdClient, type WWDPageHome } from "@/lib/api/wwd-client";
+import { getLatestVideos } from "@/lib/youtube";
 import { Hero } from "@/components/Hero";
 import { BentoGrid } from "@/components/BentoGrid";
 import { Audioguide } from "@/components/Audioguide";
@@ -110,9 +111,20 @@ export default async function HomePage() {
   const data = (await wwdClient.getPage<WWDPageHome>("home")) ?? fallback;
   const s = data.sections;
 
+  // Auto-detect livestream or latest video from YouTube
+  const { liveStream, latestVod } = await getLatestVideos();
+  const autoVideoUrl = liveStream
+    ? `https://www.youtube.com/embed/${liveStream.id}?autoplay=1`
+    : latestVod
+      ? `https://www.youtube.com/embed/${latestVod.id}`
+      : undefined;
+
   return (
     <>
-      <Hero {...s.hero} />
+      <Hero
+        {...s.hero}
+        livestream_url={autoVideoUrl}
+      />
       <BentoGrid cards={s.bento_grid} />
       <Audioguide stations={s.audioguide} />
       <ChurchSection {...s.church_history} />
