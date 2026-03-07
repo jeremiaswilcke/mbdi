@@ -14,7 +14,7 @@ interface FAQProps {
   title?: string;
 }
 
-export function FAQ({ items, title = "Haeufige Fragen" }: FAQProps) {
+export function FAQ({ items, title = "Häufige Fragen" }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (

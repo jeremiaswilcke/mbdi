@@ -10,8 +10,8 @@ interface ContactCTAProps {
 }
 
 export function ContactCTA({
-  title = "Personliches Gesprach",
-  description = "Der erste Schritt ist oft der schwerste. Wir horen Ihnen zu -- unverbindlich und vertraulich.",
+  title = "Persönliches Gespräch",
+  description = "Der erste Schritt ist oft der schwerste. Wir hören Ihnen zu -- unverbindlich und vertraulich.",
   id = "kontakt",
 }: ContactCTAProps) {
   return (

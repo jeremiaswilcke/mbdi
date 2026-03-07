@@ -300,6 +300,174 @@
           }
         }
       }
+    },
+    "christ-werden": {
+      "slug": "christ-werden",
+      "sections": {
+        "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
+          "fields": {
+            "hero_title": { "type": "text", "label": "Titel" },
+            "hero_description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" },
+            "primary_cta_text": { "type": "text", "label": "Button Text" },
+            "primary_cta_link": { "type": "url", "label": "Button Link" }
+          }
+        },
+        "intro": {
+          "type": "inline",
+          "label": "Einleitungstext",
+          "fields": {
+            "body": { "type": "richtext", "label": "Einleitungstext" }
+          }
+        },
+        "pathways": {
+          "type": "inline",
+          "label": "Weg-Karten",
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "href": { "type": "url", "label": "Link" },
+            "icon": { "type": "text", "label": "Icon (Emoji)" }
+          }
+        },
+        "contact": {
+          "type": "inline",
+          "label": "Kontakt-CTA",
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
+          }
+        }
+      }
+    },
+    "christ-werden-fuer-suchende": {
+      "slug": "christ-werden-fuer-suchende",
+      "sections": {
+        "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
+          "fields": {
+            "hero_title": { "type": "text", "label": "Titel" },
+            "hero_description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" },
+            "primary_cta_text": { "type": "text", "label": "Button Text" },
+            "primary_cta_link": { "type": "url", "label": "Button Link" }
+          }
+        },
+        "arguments": {
+          "type": "inline",
+          "label": "Argumente / Impulse",
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "content": { "type": "richtext", "label": "Inhalt" }
+          }
+        },
+        "faq": {
+          "type": "inline",
+          "label": "Häufige Fragen",
+          "repeatable": true,
+          "fields": {
+            "question": { "type": "text", "label": "Frage" },
+            "answer": { "type": "textarea", "label": "Antwort" }
+          }
+        },
+        "contact": {
+          "type": "inline",
+          "label": "Kontakt-CTA",
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
+          }
+        }
+      }
+    },
+    "christ-werden-fuer-muslime": {
+      "slug": "christ-werden-fuer-muslime",
+      "sections": {
+        "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
+          "fields": {
+            "hero_title": { "type": "text", "label": "Titel" },
+            "hero_description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" },
+            "primary_cta_text": { "type": "text", "label": "Button Text" },
+            "primary_cta_link": { "type": "url", "label": "Button Link" }
+          }
+        },
+        "arguments": {
+          "type": "inline",
+          "label": "Argumente / Impulse",
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "content": { "type": "richtext", "label": "Inhalt" }
+          }
+        },
+        "faq": {
+          "type": "inline",
+          "label": "Häufige Fragen",
+          "repeatable": true,
+          "fields": {
+            "question": { "type": "text", "label": "Frage" },
+            "answer": { "type": "textarea", "label": "Antwort" }
+          }
+        },
+        "contact": {
+          "type": "inline",
+          "label": "Kontakt-CTA",
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
+          }
+        }
+      }
+    },
+    "christ-werden-fuer-protestanten": {
+      "slug": "christ-werden-fuer-protestanten",
+      "sections": {
+        "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
+          "fields": {
+            "hero_title": { "type": "text", "label": "Titel" },
+            "hero_description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" },
+            "primary_cta_text": { "type": "text", "label": "Button Text" },
+            "primary_cta_link": { "type": "url", "label": "Button Link" }
+          }
+        },
+        "arguments": {
+          "type": "inline",
+          "label": "Argumente / Impulse",
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "content": { "type": "richtext", "label": "Inhalt" }
+          }
+        },
+        "faq": {
+          "type": "inline",
+          "label": "Häufige Fragen",
+          "repeatable": true,
+          "fields": {
+            "question": { "type": "text", "label": "Frage" },
+            "answer": { "type": "textarea", "label": "Antwort" }
+          }
+        },
+        "contact": {
+          "type": "inline",
+          "label": "Kontakt-CTA",
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
+          }
+        }
+      }
     }
   },
   "settings": {
