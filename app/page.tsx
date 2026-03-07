@@ -130,11 +130,10 @@ export default async function HomePage() {
   const s = data.sections;
   const fb = fallback.sections;
 
-  // Normalize hero: WP might return single object (old config) or array (new config)
-  const heroSlides: WWDHeroSlide[] = Array.isArray(s.hero) && s.hero.length > 0
-    ? s.hero
-    : Array.isArray(s.hero) ? fb.hero : [s.hero as unknown as WWDHeroSlide].filter(h => h?.hero_title);
-  const safeHeroSlides = heroSlides.length > 0 ? heroSlides : fb.hero;
+  // Hero slides: fallback slides + any valid WP slides appended
+  const wpHero = Array.isArray(s.hero) ? s.hero : s.hero ? [s.hero as unknown as WWDHeroSlide] : [];
+  const wpSlides = wpHero.filter(h => h?.hero_title);
+  const safeHeroSlides = [...fb.hero, ...wpSlides];
 
   // Auto-detect livestream or latest video from YouTube
   const { liveStream, latestVod } = await getLatestVideos();
