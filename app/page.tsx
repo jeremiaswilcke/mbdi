@@ -130,10 +130,14 @@ export default async function HomePage() {
   const s = data.sections;
   const fb = fallback.sections;
 
-  // Hero slides: use WP slides if available, otherwise fallback
+  // Hero slides: merge WP over fallback per position, keep extras from either side
   const wpHero = Array.isArray(s.hero) ? s.hero : s.hero ? [s.hero as unknown as WWDHeroSlide] : [];
   const wpSlides = wpHero.filter(h => h?.hero_title);
-  const safeHeroSlides = wpSlides.length > 0 ? wpSlides : fb.hero;
+  const maxLen = Math.max(fb.hero.length, wpSlides.length);
+  const safeHeroSlides: WWDHeroSlide[] = [];
+  for (let i = 0; i < maxLen; i++) {
+    safeHeroSlides.push(wpSlides[i]?.hero_title ? wpSlides[i] : fb.hero[i]);
+  }
 
   // Auto-detect livestream or latest video from YouTube
   const { liveStream, latestVod } = await getLatestVideos();
