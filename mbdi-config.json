@@ -343,8 +343,8 @@
         }
       }
     },
-    "christ-werden-fuer-suchende": {
-      "slug": "christ-werden-fuer-suchende",
+    "cw-suchende": {
+      "slug": "cw-suchende",
       "sections": {
         "hero": {
           "type": "inline",
@@ -385,8 +385,8 @@
         }
       }
     },
-    "christ-werden-fuer-muslime": {
-      "slug": "christ-werden-fuer-muslime",
+    "cw-muslime": {
+      "slug": "cw-muslime",
       "sections": {
         "hero": {
           "type": "inline",
@@ -427,8 +427,8 @@
         }
       }
     },
-    "christ-werden-fuer-protestanten": {
-      "slug": "christ-werden-fuer-protestanten",
+    "cw-protestanten": {
+      "slug": "cw-protestanten",
       "sections": {
         "hero": {
           "type": "inline",
