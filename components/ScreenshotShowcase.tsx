@@ -35,47 +35,86 @@ export function ScreenshotShowcase({
           {subtitle}
         </p>
 
-        {/* Desktop: side-by-side | Mobile: stacked */}
+        {/* Desktop: side-by-side | Mobile: screenshot inline below active button */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
-          {/* Left: Vertical use case list */}
+          {/* Left: Vertical use case list (with inline screenshots on mobile) */}
           <div className="lg:w-2/5 flex flex-col gap-3">
             {useCases.map((uc, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                className={`text-left p-5 rounded-2xl transition-all duration-300 border ${
-                  i === activeIndex
-                    ? "bg-primary text-white border-primary shadow-lg"
-                    : "bg-white border-gray-100 hover:border-primary/30 hover:shadow-sm"
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  <span className="text-2xl shrink-0">{uc.icon}</span>
-                  <div>
-                    <h3
-                      className={`font-subheading text-base mb-1 ${
-                        i === activeIndex ? "text-white" : "text-primary"
-                      }`}
-                    >
-                      {uc.title}
-                    </h3>
-                    <p
-                      className={`font-body text-sm leading-relaxed ${
-                        i === activeIndex
-                          ? "text-white/80"
-                          : "text-foreground/60"
-                      }`}
-                    >
-                      {uc.description}
-                    </p>
+              <div key={i}>
+                <button
+                  onClick={() => setActiveIndex(i)}
+                  className={`w-full text-left p-5 rounded-2xl transition-all duration-300 border ${
+                    i === activeIndex
+                      ? "bg-primary text-white border-primary shadow-lg"
+                      : "bg-white border-gray-100 hover:border-primary/30 hover:shadow-sm"
+                  }`}
+                >
+                  <div className="flex items-start gap-4">
+                    <span className="text-2xl shrink-0">{uc.icon}</span>
+                    <div>
+                      <h3
+                        className={`font-subheading text-base mb-1 ${
+                          i === activeIndex ? "text-white" : "text-primary"
+                        }`}
+                      >
+                        {uc.title}
+                      </h3>
+                      <p
+                        className={`font-body text-sm leading-relaxed ${
+                          i === activeIndex
+                            ? "text-white/80"
+                            : "text-foreground/60"
+                        }`}
+                      >
+                        {uc.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </button>
+                </button>
+
+                {/* Mobile: show screenshot inline below the active button */}
+                {i === activeIndex && (
+                  <div className="lg:hidden mt-4 mb-2">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={`mobile-${activeIndex}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="relative min-h-[280px] md:min-h-[400px]"
+                      >
+                        {active?.screenshot?.url ? (
+                          <div className="relative w-full h-full min-h-[280px] md:min-h-[400px] rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-white">
+                            <Image
+                              src={active.screenshot.url}
+                              alt={active.screenshot.alt || active.title}
+                              fill
+                              className="object-cover object-top"
+                              sizes="100vw"
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-full h-full min-h-[280px] md:min-h-[400px] rounded-2xl border-2 border-dashed border-gray-300 bg-white flex flex-col items-center justify-center text-center p-8">
+                            <span className="text-5xl mb-4">{active?.icon}</span>
+                            <p className="font-subheading text-lg text-primary mb-2">
+                              {active?.title}
+                            </p>
+                            <p className="font-body text-sm text-foreground/50">
+                              Screenshot wird über WordPress ergänzt.
+                            </p>
+                          </div>
+                        )}
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
 
-          {/* Right: Screenshot display area */}
-          <div className="lg:w-3/5 relative min-h-[320px] md:min-h-[480px]">
+          {/* Right: Screenshot display area (desktop only) */}
+          <div className="hidden lg:block lg:w-3/5 relative min-h-[480px]">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -92,7 +131,7 @@ export function ScreenshotShowcase({
                       alt={active.screenshot.alt || active.title}
                       fill
                       className="object-cover object-top"
-                      sizes="(max-width: 1024px) 100vw, 60vw"
+                      sizes="60vw"
                     />
                   </div>
                 ) : (

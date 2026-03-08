@@ -25,7 +25,8 @@ function wwd_seeder_admin_page() {
     $results = null;
 
     if (isset($_POST['wwd_seed_run']) && check_admin_referer('wwd_seed_action', 'wwd_seed_nonce')) {
-        $results = wwd_seeder_run();
+        $mode = isset($_POST['wwd_seed_mode']) ? $_POST['wwd_seed_mode'] : 'empty_only';
+        $results = wwd_seeder_run($mode);
     }
 
     ?>
@@ -33,14 +34,34 @@ function wwd_seeder_admin_page() {
         <h1>WWD Content Seeder</h1>
         <p>Dieses Plugin schreibt alle Fallback-Texte aus dem Next.js-Frontend in die WordPress-Datenbank,
            sodass sie im WWD-Backend sichtbar und editierbar sind.</p>
-        <p><strong>Hinweis:</strong> Es werden nur leere Felder befüllt. Bereits vorhandene Inhalte werden nicht überschrieben.</p>
 
         <form method="post">
             <?php wp_nonce_field('wwd_seed_action', 'wwd_seed_nonce'); ?>
+
+            <table class="form-table" role="presentation">
+                <tr>
+                    <th scope="row">Modus</th>
+                    <td>
+                        <fieldset>
+                            <label style="display:block; margin-bottom: 8px;">
+                                <input type="radio" name="wwd_seed_mode" value="empty_only" checked />
+                                <strong>Nur leere Felder</strong> &mdash; Bestehende Inhalte bleiben unberührt.
+                            </label>
+                            <label style="display:block; margin-bottom: 8px;">
+                                <input type="radio" name="wwd_seed_mode" value="merge" />
+                                <strong>Texte aktualisieren, Links beibehalten</strong> &mdash; Aktualisiert Texte
+                                (Titel, Beschreibungen, Inhalte), aber behält alle Links (href, url, link, cta_link)
+                                und Medien (image, audio_file) bei, die bereits in WordPress gesetzt sind.
+                            </label>
+                        </fieldset>
+                    </td>
+                </tr>
+            </table>
+
             <p>
                 <input type="submit" name="wwd_seed_run" class="button button-primary button-hero"
                        value="Texte jetzt einfügen"
-                       onclick="return confirm('Alle leeren WWD-Felder mit Fallback-Texten befüllen?');" />
+                       onclick="return confirm('Seeder im gewählten Modus ausführen?');" />
             </p>
         </form>
 
@@ -62,8 +83,14 @@ function wwd_seeder_admin_page() {
 // Seed-Logik
 // =========================================================================
 
-function wwd_seeder_run() {
+function wwd_seeder_run($mode = 'empty_only') {
     $results = [];
+
+    // Fields that should be preserved in merge mode (links, media)
+    $preserve_fields = ['href', 'link', 'image', 'hero_image', 'audio_file',
+        'primary_cta_link', 'secondary_cta_link', 'cta_link',
+        'workshop_cta_link', 'info_cta_link', 'donation_link',
+        'livestream_url'];
 
     // Helper: get singleton post ID for a page
     $get_pid = function ($page_slug) {
@@ -76,27 +103,59 @@ function wwd_seeder_run() {
         return !empty($posts) ? (int) $posts[0] : null;
     };
 
-    // Helper: seed inline fields (only if empty)
-    $seed_inline = function ($post_id, $section, $data) use (&$results) {
+    // Helper: seed inline fields
+    $seed_inline = function ($post_id, $section, $data) use (&$results, $mode, $preserve_fields) {
         foreach ($data as $field => $value) {
             $key = '_wwd_' . $section . '_' . $field;
             $existing = get_post_meta($post_id, $key, true);
+
             if (empty($existing)) {
                 update_post_meta($post_id, $key, $value);
                 $results[] = "  + {$key}";
+            } elseif ($mode === 'merge' && !in_array($field, $preserve_fields)) {
+                update_post_meta($post_id, $key, $value);
+                $results[] = "  ~ {$key} (Text aktualisiert)";
+            } elseif ($mode === 'merge' && in_array($field, $preserve_fields)) {
+                $results[] = "  = {$key} (Link/Medien beibehalten)";
             } else {
                 $results[] = "  - {$key} (bereits vorhanden)";
             }
         }
     };
 
-    // Helper: seed repeatable items (only if empty)
-    $seed_repeatable = function ($post_id, $section, $items) use (&$results) {
+    // Helper: seed repeatable items
+    $seed_repeatable = function ($post_id, $section, $items) use (&$results, $mode, $preserve_fields) {
         $key = '_wwd_' . $section . '_items';
         $existing = get_post_meta($post_id, $key, true);
+
         if (empty($existing) || !is_array($existing) || count($existing) === 0) {
+            // Leer → komplett einfügen
             update_post_meta($post_id, $key, $items);
             $results[] = "  + {$key} (" . count($items) . " Eintraege)";
+        } elseif ($mode === 'merge') {
+            // Merge: Texte aktualisieren, Links/Medien beibehalten
+            $merged = [];
+            $count = max(count($existing), count($items));
+            for ($i = 0; $i < $count; $i++) {
+                if ($i < count($items) && $i < count($existing)) {
+                    // Item in beiden vorhanden → mergen
+                    $merged_item = $items[$i];
+                    foreach ($preserve_fields as $pf) {
+                        if (isset($existing[$i][$pf]) && !empty($existing[$i][$pf])) {
+                            $merged_item[$pf] = $existing[$i][$pf];
+                        }
+                    }
+                    $merged[] = $merged_item;
+                } elseif ($i < count($existing)) {
+                    // Nur in WP vorhanden → beibehalten
+                    $merged[] = $existing[$i];
+                } else {
+                    // Nur im Seeder vorhanden → einfügen
+                    $merged[] = $items[$i];
+                }
+            }
+            update_post_meta($post_id, $key, $merged);
+            $results[] = "  ~ {$key} (Texte aktualisiert, Links beibehalten, " . count($merged) . " Eintraege)";
         } else {
             $results[] = "  - {$key} (bereits " . count($existing) . " Eintraege)";
         }

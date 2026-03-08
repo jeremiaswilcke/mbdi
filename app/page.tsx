@@ -130,10 +130,10 @@ export default async function HomePage() {
   const s = data.sections;
   const fb = fallback.sections;
 
-  // Hero slides: fallback slides + any valid WP slides appended
+  // Hero slides: use WP slides if available, otherwise fallback
   const wpHero = Array.isArray(s.hero) ? s.hero : s.hero ? [s.hero as unknown as WWDHeroSlide] : [];
   const wpSlides = wpHero.filter(h => h?.hero_title);
-  const safeHeroSlides = [...fb.hero, ...wpSlides];
+  const safeHeroSlides = wpSlides.length > 0 ? wpSlides : fb.hero;
 
   // Auto-detect livestream or latest video from YouTube
   const { liveStream, latestVod } = await getLatestVideos();

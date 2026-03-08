@@ -43,10 +43,11 @@ export default function IsidorAGBPage() {
             <p>
               (1) Diese Allgemeinen Geschäftsbedingungen (nachfolgend «AGB»)
               gelten für die Nutzung der Software «Isidor -- Pfarrverwaltung
-              für WordPress» (nachfolgend «Software»), die von Mariabrunn
-              Digital, einem Projekt der Pfarre Mariabrunn, Hauptstraße 180,
-              1140 Wien (nachfolgend «Anbieter»), unentgeltlich zur Verfügung
-              gestellt wird.
+              für WordPress» (nachfolgend «Software»), die von Wilcke Worte
+              &amp; Visionen, Grenzgasse 4, 3001 Mauerbach, Österreich,
+              vertreten durch Jeremias und Adina Wilcke (nachfolgend
+              «Anbieter»), unentgeltlich zur Verfügung gestellt und über die
+              Plattform Mariabrunn Digital zum Download bereitgestellt wird.
             </p>
             <p>
               (2) Die Software richtet sich ausschließlich an katholische
@@ -432,13 +433,13 @@ export default function IsidorAGBPage() {
               Bei Fragen zu diesen AGB wenden Sie sich an:
             </p>
             <p className="mt-4">
-              <strong>Mariabrunn Digital</strong>
+              <strong>Wilcke Worte &amp; Visionen</strong>
               <br />
-              Pfarre Mariabrunn
+              Jeremias und Adina Wilcke
               <br />
-              Hauptstraße 180
+              Grenzgasse 4
               <br />
-              1140 Wien, Österreich
+              3001 Mauerbach, Österreich
               <br />
               E-Mail:{" "}
               <a
@@ -446,6 +447,15 @@ export default function IsidorAGBPage() {
                 className="text-primary underline hover:text-secondary transition-colors"
               >
                 digital@mariabrunn.at
+              </a>
+              <br />
+              <br />
+              Download über:{" "}
+              <a
+                href="/"
+                className="text-primary underline hover:text-secondary transition-colors"
+              >
+                Mariabrunn Digital
               </a>
             </p>
           </section>
