@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { ScreenshotShowcase } from "@/components/ScreenshotShowcase";
+import { IsidorDownload } from "@/components/IsidorDownload";
 import { ContactCTA } from "@/components/ContactCTA";
 
 export const metadata: Metadata = {
@@ -130,6 +131,11 @@ const advantages = [
     description:
       "Isidor wurde von und für Pfarrgemeinden entwickelt. Jedes Modul orientiert sich an den realen Abläufen einer katholischen Pfarre.",
   },
+  {
+    title: "Mobilfreundlich",
+    description:
+      "Alle Module sind vollständig responsiv gestaltet. Dienstpläne einsehen, Termine bestätigen oder Liedpläne abrufen -- auch unterwegs auf Smartphone und Tablet.",
+  },
 ];
 
 export default function IsidorPage() {
@@ -229,7 +235,7 @@ export default function IsidorPage() {
           <h2 className="font-heading text-3xl md:text-4xl mb-8">
             Systemanforderungen
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
               <h3 className="font-heading text-2xl mb-2">WordPress 6.0+</h3>
               <p className="text-white/70 font-body">Aktuelle WordPress-Installation</p>
@@ -242,36 +248,27 @@ export default function IsidorPage() {
               <h3 className="font-heading text-2xl mb-2">MySQL 5.7+</h3>
               <p className="text-white/70 font-body">Oder MariaDB 10.3+</p>
             </div>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6">
+              <h3 className="font-heading text-xl mb-2">GitHub Updater</h3>
+              <p className="text-white/70 font-body">
+                Für automatische Updates muss das Plugin{" "}
+                <a
+                  href="https://github.com/afragen/git-updater"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline text-white hover:text-secondary transition-colors"
+                >
+                  Git Updater
+                </a>{" "}
+                installiert sein.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Download */}
-      <section id="download" className="py-24 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="font-heading text-3xl md:text-4xl text-primary mb-6">
-            Jetzt herunterladen
-          </h2>
-          <p className="font-body text-foreground/70 mb-4">
-            Isidor Suite v2.2.0 -- WordPress-Plugin als ZIP-Datei. Installieren
-            Sie es direkt über das WordPress-Dashboard unter Plugins &rarr;
-            Installieren &rarr; Plugin hochladen.
-          </p>
-          <p className="font-body text-foreground/50 text-sm mb-8">
-            Kostenlos. Keine Registrierung erforderlich.
-          </p>
-          <a
-            href="/downloads/isidor-suite.zip"
-            download
-            className="inline-flex items-center gap-3 bg-primary text-white font-subheading px-10 py-4 rounded-xl hover:bg-primary/90 transition-colors text-lg"
-          >
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-            </svg>
-            Isidor Suite herunterladen
-          </a>
-        </div>
-      </section>
+      {/* Download with AGB acceptance */}
+      <IsidorDownload />
 
       <ContactCTA
         title="Fragen zu Isidor?"
