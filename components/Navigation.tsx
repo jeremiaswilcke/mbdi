@@ -14,6 +14,7 @@ const navLinks = [
   { name: "Kirche", href: "/kirche" },
   { name: "Mitmachen", href: "/mitmachen" },
   { name: "Christ werden", href: "/christ-werden" },
+  { name: "Die Liturgie", href: "/die-liturgie" },
   { name: "KSMJ", href: "/ksmj" },
   { name: "Isidor", href: "/isidor" },
 ];

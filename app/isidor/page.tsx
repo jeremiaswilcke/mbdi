@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import { ScreenshotShowcase } from "@/components/ScreenshotShowcase";
 import { ContactCTA } from "@/components/ContactCTA";
 
 export const metadata: Metadata = {
@@ -56,6 +57,45 @@ const modules = [
     description:
       "Tagesübersicht für die Pfarre. Alle Termine, Dienste und Aufgaben eines Tages auf einen Blick -- für Pfarrer, Sekretariat und Team.",
     icon: "📊",
+  },
+];
+
+const useCases = [
+  {
+    title: "Dienste planen",
+    description:
+      "Erstellen Sie den Dienstplan für Lektoren, Ministranten und Kommunionhelfer. Automatische Zuweisung, Tauschbörse und E-Mail-Erinnerungen.",
+    icon: "\u{1F4CB}",
+  },
+  {
+    title: "Liedplan erstellen",
+    description:
+      "Wählen Sie Lieder aus dem zentralen Gotteslob-Archiv und ordnen Sie sie den Gottesdiensten zu. Liedpläne drucken oder digital teilen.",
+    icon: "\u{1F3B5}",
+  },
+  {
+    title: "Finanzen verwalten",
+    description:
+      "Erfassen Sie Einnahmen und Ausgaben nach Kostenstellen. Automatische Berichte und Übersichten für den Vermögensverwaltungsrat.",
+    icon: "\u{1F4B6}",
+  },
+  {
+    title: "Räume buchen",
+    description:
+      "Pfarrsaal, Sitzungsräume und andere Räumlichkeiten zentral verwalten. Kalenderansicht, Doppelbuchungserkennung und Veranstaltungsposter.",
+    icon: "\u{1F4C5}",
+  },
+  {
+    title: "Sitzungen organisieren",
+    description:
+      "PGR- und VVR-Sitzungen mit Tagesordnung, RSVP-Einladungen, Abstimmungen und automatischer Protokollerstellung verwalten.",
+    icon: "\u{1F3DB}\u{FE0F}",
+  },
+  {
+    title: "Tagesplan anzeigen",
+    description:
+      "Alle Termine, Dienste und Aufgaben eines Tages auf einen Blick -- als Dashboard für Pfarrer, Sekretariat und ehrenamtliche Mitarbeiter.",
+    icon: "\u{1F4CA}",
   },
 ];
 
@@ -179,6 +219,9 @@ export default function IsidorPage() {
           </div>
         </div>
       </section>
+
+      {/* Screenshots / Use Cases */}
+      <ScreenshotShowcase useCases={useCases} />
 
       {/* Systemanforderungen */}
       <section className="py-24 px-6 bg-primary text-white">
