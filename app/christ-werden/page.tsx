@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero";
 import { PathwayCard } from "@/components/PathwayCard";
 import { ContactCTA } from "@/components/ContactCTA";
 import { wwdClient, type WWDPageGeneric } from "@/lib/api/wwd-client";
+import { mergeItems } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Christ werden -- Mariabrunn Digital",
@@ -62,13 +63,7 @@ export default async function ChristWerdenPage() {
   const introBody =
     (s.intro as { body?: string })?.body || fallback.intro;
 
-  const wpPathways = Array.isArray(s.pathways)
-    ? s.pathways
-    : (s.pathways as { items?: unknown[] })?.items;
-  const pathways =
-    Array.isArray(wpPathways) && wpPathways.length > 0
-      ? (wpPathways as typeof fallback.pathways)
-      : fallback.pathways;
+  const pathways = mergeItems(s.pathways, fallback.pathways);
 
   const contact = {
     ...fallback.contact,

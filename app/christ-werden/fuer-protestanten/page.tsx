@@ -5,6 +5,7 @@ import { ArgumentBlock } from "@/components/ArgumentBlock";
 import { FAQ } from "@/components/FAQ";
 import { ContactCTA } from "@/components/ContactCTA";
 import { wwdClient, type WWDPageGeneric } from "@/lib/api/wwd-client";
+import { mergeItems } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Für Protestanten -- Christ werden",
@@ -95,21 +96,8 @@ export default async function FuerProtestantenPage() {
     ...(s.hero && typeof s.hero === "object" ? s.hero : {}),
   };
 
-  const wpArgs = Array.isArray(s.arguments)
-    ? s.arguments
-    : (s.arguments as { items?: unknown[] })?.items;
-  const args =
-    Array.isArray(wpArgs) && wpArgs.length > 0
-      ? (wpArgs as typeof fallback.arguments)
-      : fallback.arguments;
-
-  const wpFaq = Array.isArray(s.faq)
-    ? s.faq
-    : (s.faq as { items?: unknown[] })?.items;
-  const faqItems =
-    Array.isArray(wpFaq) && wpFaq.length > 0
-      ? (wpFaq as typeof fallback.faq)
-      : fallback.faq;
+  const args = mergeItems(s.arguments, fallback.arguments);
+  const faqItems = mergeItems(s.faq, fallback.faq);
 
   const contact = {
     ...fallback.contact,

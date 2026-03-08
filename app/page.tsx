@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { wwdClient, type WWDPageHome, type WWDHeroSlide } from "@/lib/api/wwd-client";
+import { mergeItems } from "@/lib/utils";
 import { getLatestVideos } from "@/lib/youtube";
 import { Hero } from "@/components/Hero";
 import { BentoGrid } from "@/components/BentoGrid";
@@ -130,14 +131,9 @@ export default async function HomePage() {
   const s = data.sections;
   const fb = fallback.sections;
 
-  // Hero slides: merge WP over fallback per position, keep extras from either side
+  // Hero slides: merge WP over fallback per position and per field
   const wpHero = Array.isArray(s.hero) ? s.hero : s.hero ? [s.hero as unknown as WWDHeroSlide] : [];
-  const wpSlides = wpHero.filter(h => h?.hero_title);
-  const maxLen = Math.max(fb.hero.length, wpSlides.length);
-  const safeHeroSlides: WWDHeroSlide[] = [];
-  for (let i = 0; i < maxLen; i++) {
-    safeHeroSlides.push(wpSlides[i]?.hero_title ? wpSlides[i] : fb.hero[i]);
-  }
+  const safeHeroSlides = mergeItems(wpHero, fb.hero);
 
   // Auto-detect livestream or latest video from YouTube
   const { liveStream, latestVod } = await getLatestVideos();
@@ -153,8 +149,8 @@ export default async function HomePage() {
         slides={safeHeroSlides}
         livestream_url={autoVideoUrl}
       />
-      <BentoGrid cards={Array.isArray(s.bento_grid) ? s.bento_grid : fb.bento_grid} />
-      <Audioguide stations={Array.isArray(s.audioguide) ? s.audioguide : fb.audioguide} />
+      <BentoGrid cards={mergeItems(s.bento_grid, fb.bento_grid)} />
+      <Audioguide stations={mergeItems(s.audioguide, fb.audioguide)} />
       <ChurchSection {...(s.church_history?.title ? s.church_history : fb.church_history)} />
       <MovementSection {...(s.movement?.title ? s.movement : fb.movement)} />
       <TeamCTA {...(s.team_recruitment?.title ? s.team_recruitment : fb.team_recruitment)} />

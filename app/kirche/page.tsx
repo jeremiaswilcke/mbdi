@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { wwdClient, type WWDPageGeneric } from "@/lib/api/wwd-client";
+import { mergeItems } from "@/lib/utils";
 import { Hero } from "@/components/Hero";
 import { Audioguide } from "@/components/Audioguide";
 
@@ -44,8 +45,7 @@ const fallback: WWDPageGeneric = {
 export default async function KirchePage() {
   const data = (await wwdClient.getPage<WWDPageGeneric>("kirche")) ?? fallback;
   const hero = data.sections?.hero ?? fallback.sections!.hero!;
-  const rawStations = data.sections?.audioguide;
-  const stations = Array.isArray(rawStations) && rawStations.length > 0 ? rawStations : fallback.sections!.audioguide!;
+  const stations = mergeItems(data.sections?.audioguide, fallback.sections!.audioguide!);
 
   return (
     <>
