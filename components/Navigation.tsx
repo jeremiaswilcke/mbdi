@@ -15,6 +15,7 @@ const navLinks = [
   { name: "Mitmachen", href: "/mitmachen" },
   { name: "Christ werden", href: "/christ-werden" },
   { name: "KSMJ", href: "/ksmj" },
+  { name: "Isidor", href: "/isidor" },
 ];
 
 export function Navigation() {

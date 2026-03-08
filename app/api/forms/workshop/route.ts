@@ -4,7 +4,7 @@ import { sendEmail } from "@/lib/mailer";
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { parish_name, contact_person, email, message, honeypot } = body;
+        const { parish_name, contact_person, email, phone, workshop, participants, message, honeypot } = body;
 
         // Spam protection
         if (honeypot) {
@@ -12,7 +12,7 @@ export async function POST(request: Request) {
         }
 
         // Validation
-        if (!parish_name || !contact_person || !email) {
+        if (!contact_person || !email) {
             return NextResponse.json(
                 { success: false, message: "Bitte füllen Sie alle Pflichtfelder aus." },
                 { status: 400 }
@@ -27,26 +27,45 @@ export async function POST(request: Request) {
                     <h1 style="margin: 0; font-size: 20px;">Mariabrunn Digital</h1>
                 </div>
                 <div style="padding: 30px; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px;">
-                    <p style="color: #6b7280; font-size: 13px; margin-top: 0;">Formular: <strong>Workshop-Anfrage</strong> | Eingang: ${timestamp}</p>
+                    <p style="color: #6b7280; font-size: 13px; margin-top: 0;">Formular: <strong>Workshop-Anmeldung</strong> | Eingang: ${timestamp}</p>
                     <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 16px 0;" />
-                    <p><strong>Pfarre/Institution:</strong> ${parish_name}</p>
-                    <p><strong>Ansprechperson:</strong> ${contact_person}</p>
+                    ${workshop ? `<p><strong>Workshop:</strong> ${workshop}</p>` : ""}
+                    <p><strong>Name:</strong> ${contact_person}</p>
                     <p><strong>E-Mail:</strong> ${email}</p>
+                    ${phone ? `<p><strong>Telefon:</strong> ${phone}</p>` : ""}
+                    ${parish_name ? `<p><strong>Pfarre/Institution:</strong> ${parish_name}</p>` : ""}
+                    ${participants ? `<p><strong>Teilnehmer:</strong> ${participants}</p>` : ""}
                     <p><strong>Nachricht:</strong></p>
                     <p style="white-space: pre-line;">${message || "-"}</p>
                 </div>
             </div>
         `;
 
+        const textParts = [
+            "Workshop-Anmeldung",
+            "",
+            workshop ? `Workshop: ${workshop}` : null,
+            `Name: ${contact_person}`,
+            `E-Mail: ${email}`,
+            phone ? `Telefon: ${phone}` : null,
+            parish_name ? `Pfarre/Institution: ${parish_name}` : null,
+            participants ? `Teilnehmer: ${participants}` : null,
+            `Nachricht: ${message || "-"}`,
+            "",
+            `Gesendet am: ${timestamp}`,
+        ]
+            .filter(Boolean)
+            .join("\n");
+
         const result = await sendEmail({
-            subject: "Workshop-Anfrage – Mariabrunn Digital",
-            text: `Workshop-Anfrage\n\nPfarre/Institution: ${parish_name}\nAnsprechperson: ${contact_person}\nE-Mail: ${email}\nNachricht: ${message || "-"}\n\nGesendet am: ${timestamp}`,
+            subject: `Workshop-Anmeldung${workshop ? `: ${workshop.split(" -- ")[0]}` : ""} – Mariabrunn Digital`,
+            text: textParts,
             html: htmlContent,
             replyTo: email,
         });
 
         if (result.success) {
-            return NextResponse.json({ success: true, message: "Anfrage erfolgreich gesendet." });
+            return NextResponse.json({ success: true, message: "Anmeldung erfolgreich gesendet." });
         } else {
             return NextResponse.json(
                 { success: false, message: "E-Mail konnte nicht gesendet werden." },
