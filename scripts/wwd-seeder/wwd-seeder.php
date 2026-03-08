@@ -408,5 +408,53 @@ function wwd_seeder_run() {
         $results[] = "\n=== FUER PROTESTANTEN: Kein Post gefunden ===";
     }
 
+    // =====================================================================
+    // KSMJ
+    // =====================================================================
+    $pid = $get_pid('ksmj');
+    if ($pid) {
+        $results[] = "\n=== KSMJ (Post #{$pid}) ===";
+        $seed_inline($pid, 'hero', [
+            'hero_title' => 'KSMJ. Glaube trifft Medien.',
+            'hero_description' => 'Die Katholische Studio- und Medienjugend verbindet professionelle Medienarbeit mit lebendigem Glauben – ein Jugendverband für alle, die mehr wollen.',
+            'primary_cta_text' => 'Mitmachen',
+            'primary_cta_link' => '#kontakt',
+        ]);
+        $seed_inline($pid, 'intro', [
+            'title' => 'Was ist die KSMJ?',
+            'body' => '<p>Die Katholische Studio- und Medienjugend (KSMJ) ist ein Jugendverband, der 2021 in Bamberg gegründet wurde – mitten in der Corona-Pandemie, als Kirche plötzlich digital werden musste. Unser Ziel: Katholische Medienarbeit von Jugendlichen für die Kirche. Professionell, engagiert und mit Begeisterung für Technik und Glauben.</p><p>Wir glauben, dass moderne Medienarbeit und katholischer Glaube keine Gegensätze sind – sondern dass gerade die Kombination aus beidem Jugendliche begeistern und die Kirche voranbringen kann.</p>',
+        ]);
+        $seed_repeatable($pid, 'activities', [
+            ['title' => 'Livestream-Produktion', 'description' => 'Wir übertragen Gottesdienste live – professionell, mit mehreren Kameras, Ton und Regie. Jugendliche lernen dabei echtes Produktionshandwerk.', 'icon' => '🎬'],
+            ['title' => 'Podcast & Audio', 'description' => 'Von der Aufnahme bis zum Schnitt: Wir produzieren Podcasts, Kurzimpulse und Audiobeiträge rund um Glaube und Kirche.', 'icon' => '🎙️'],
+            ['title' => 'Social Media & Grafik', 'description' => 'Wir gestalten Inhalte für Instagram, YouTube und Co. – damit die Frohe Botschaft auch dort ankommt, wo Jugendliche unterwegs sind.', 'icon' => '📱'],
+            ['title' => 'Technik & IT', 'description' => 'Kameratechnik, Mischpulte, Netzwerke, Webentwicklung – bei uns lernst du Technik, die anderswo Geld kostet. Und setzt sie für etwas Sinnvolles ein.', 'icon' => '💻'],
+            ['title' => 'Workshops & Schulungen', 'description' => 'Wir bilden aus: Videoproduktion, Tontechnik, Grafikdesign, Webentwicklung. Regelmäßige Workshops für Einsteiger und Fortgeschrittene.', 'icon' => '🎓'],
+            ['title' => 'Gemeinschaft & Glaube', 'description' => 'Die KSMJ ist mehr als ein Technikverein. Gemeinsame Gebete, Ausflüge, Lager und Gruppenstunden gehören genauso dazu wie die Arbeit am Equipment.', 'icon' => '✝️'],
+        ]);
+        $seed_repeatable($pid, 'timeline', [
+            ['year' => '2021', 'title' => 'Gründung in Bamberg', 'description' => 'Während der Corona-Pandemie entsteht die Idee: Katholische Medienarbeit von und für Jugendliche. In Bamberg wird die KSMJ gegründet.'],
+            ['year' => '2022', 'title' => 'Erste Livestreams', 'description' => 'Die ersten professionellen Gottesdienst-Livestreams gehen online. Junge Menschen übernehmen Kamera, Regie und Ton.'],
+            ['year' => '2023', 'title' => 'Wachstum & Vernetzung', 'description' => 'Die KSMJ wächst und vernetzt sich mit Pfarren und Diözesen. Workshops und Schulungen werden zum festen Bestandteil.'],
+            ['year' => '2024', 'title' => 'KSMJ Wien', 'description' => 'Die KSMJ kommt nach Wien. In Zusammenarbeit mit Mariabrunn Digital entsteht ein neuer Standort mit eigener Studio- und Medienarbeit.'],
+        ]);
+        $seed_inline($pid, 'wien', [
+            'title' => 'KSMJ Wien',
+            'body' => '<p>In Wien arbeitet die KSMJ eng mit Mariabrunn Digital zusammen. Gemeinsam produzieren wir Livestreams, gestalten Social-Media-Inhalte und bilden Jugendliche in Medientechnik aus. Unser Studio in Mariabrunn steht allen offen, die mitmachen wollen.</p>',
+        ]);
+        $seed_repeatable($pid, 'organisation', [
+            ['title' => 'Struktur', 'description' => 'Die KSMJ ist ein katholischer Jugendverband, organisiert in lokalen Gruppen (Studien). Jede Studie arbeitet eigenständig in einer Pfarre oder Diözese, eingebettet in die überregionale KSMJ-Gemeinschaft.'],
+            ['title' => 'Mitgliedschaft', 'description' => 'Mitmachen kann jeder ab 14 Jahren. Es gibt keine Aufnahmeprüfung und keine Gebühr. Komm einfach vorbei, lerne uns kennen und entscheide selbst, ob die KSMJ etwas für dich ist.'],
+            ['title' => 'Trägerschaft', 'description' => 'Die KSMJ Wien wird getragen von der Pfarre Mariabrunn und ist Teil des Projekts Mariabrunn Digital. Wir sind kirchlich eingebunden und arbeiten eng mit der Diözese zusammen.'],
+            ['title' => 'Ausbildung', 'description' => 'Unsere Mitglieder lernen Videoproduktion, Tontechnik, Grafikdesign und Webentwicklung. Die Ausbildung findet praxisnah statt – direkt bei echten Produktionen.'],
+        ]);
+        $seed_inline($pid, 'contact', [
+            'title' => 'Mitmachen bei der KSMJ',
+            'description' => 'Du bist jung, technikbegeistert und willst deinen Glauben mit modernen Medien verbinden? Dann bist du bei uns richtig. Schreib uns – wir freuen uns auf dich!',
+        ]);
+    } else {
+        $results[] = "\n=== KSMJ: Kein Post gefunden ===";
+    }
+
     return $results;
 }

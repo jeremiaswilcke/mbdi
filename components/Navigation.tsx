@@ -14,6 +14,7 @@ const navLinks = [
   { name: "Kirche", href: "/kirche" },
   { name: "Mitmachen", href: "/mitmachen" },
   { name: "Christ werden", href: "/christ-werden" },
+  { name: "KSMJ", href: "/ksmj" },
 ];
 
 export function Navigation() {
@@ -41,7 +42,7 @@ export function Navigation() {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="relative z-50 flex items-center gap-3">
-            <div className="relative w-12 h-12">
+            <div className="relative w-16 h-16">
               <Image
                 src="/Logo.png"
                 alt="Mariabrunn Logo"

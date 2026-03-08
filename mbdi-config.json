@@ -468,6 +468,75 @@
           }
         }
       }
+    },
+    "ksmj": {
+      "slug": "ksmj",
+      "sections": {
+        "hero": {
+          "type": "inline",
+          "label": "Hero-Bereich",
+          "fields": {
+            "hero_title": { "type": "text", "label": "Titel" },
+            "hero_description": { "type": "textarea", "label": "Beschreibung" },
+            "hero_image": { "type": "image", "label": "Hintergrundbild" },
+            "primary_cta_text": { "type": "text", "label": "Button Text" },
+            "primary_cta_link": { "type": "url", "label": "Button Link" }
+          }
+        },
+        "intro": {
+          "type": "inline",
+          "label": "Einleitung",
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "body": { "type": "richtext", "label": "Einleitungstext" }
+          }
+        },
+        "activities": {
+          "type": "inline",
+          "label": "Aktivitäten",
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" },
+            "icon": { "type": "text", "label": "Icon (Emoji)" }
+          }
+        },
+        "timeline": {
+          "type": "inline",
+          "label": "Geschichte / Timeline",
+          "repeatable": true,
+          "fields": {
+            "year": { "type": "text", "label": "Jahr" },
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
+          }
+        },
+        "wien": {
+          "type": "inline",
+          "label": "KSMJ Wien",
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "body": { "type": "richtext", "label": "Text" }
+          }
+        },
+        "organisation": {
+          "type": "inline",
+          "label": "Organisation",
+          "repeatable": true,
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
+          }
+        },
+        "contact": {
+          "type": "inline",
+          "label": "Kontakt-CTA",
+          "fields": {
+            "title": { "type": "text", "label": "Titel" },
+            "description": { "type": "textarea", "label": "Beschreibung" }
+          }
+        }
+      }
     }
   },
   "settings": {
