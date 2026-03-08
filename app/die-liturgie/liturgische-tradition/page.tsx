@@ -93,7 +93,7 @@ export default async function LiturgischeTraditionPage() {
   const hero = {
     ...fallback.hero,
     ...(s.hero && typeof s.hero === "object" ? s.hero : {}),
-  } as typeof fallback.hero;
+  };
 
   const wpArgs = Array.isArray(s.arguments)
     ? s.arguments
@@ -118,13 +118,7 @@ export default async function LiturgischeTraditionPage() {
 
   return (
     <>
-      <Hero
-        hero_title={hero.hero_title}
-        hero_description={hero.hero_description}
-        hero_image={{ url: "/images/hero-church.png", alt: "Wallfahrtskirche Mariabrunn -- Liturgische Tradition" }}
-        primary_cta_text={hero.primary_cta_text}
-        primary_cta_link={hero.primary_cta_link}
-      />
+      <Hero {...hero} />
       <LiturgieNav />
       <ArgumentBlock arguments={args} />
       <FAQ items={faqItems} title="Häufige Fragen zur liturgischen Tradition" />

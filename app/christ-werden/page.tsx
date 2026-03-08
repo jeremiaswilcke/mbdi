@@ -57,7 +57,7 @@ export default async function ChristWerdenPage() {
   const hero = {
     ...fallback.hero,
     ...(s.hero && typeof s.hero === "object" ? s.hero : {}),
-  } as typeof fallback.hero;
+  };
 
   const introBody =
     (s.intro as { body?: string })?.body || fallback.intro;
@@ -77,13 +77,7 @@ export default async function ChristWerdenPage() {
 
   return (
     <>
-      <Hero
-        hero_title={hero.hero_title}
-        hero_description={hero.hero_description}
-        hero_image={{ url: "/images/hero-church.png", alt: "Wallfahrtskirche Mariabrunn" }}
-        primary_cta_text={hero.primary_cta_text}
-        primary_cta_link={hero.primary_cta_link}
-      />
+      <Hero {...hero} />
 
       <section className="py-24 px-6 max-w-4xl mx-auto">
         <div
