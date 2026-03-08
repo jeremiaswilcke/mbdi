@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import { LiturgieNav } from "@/components/LiturgieNav";
 import { ArgumentBlock } from "@/components/ArgumentBlock";
+import { MassOrder } from "@/components/MassOrder";
 import { FAQ } from "@/components/FAQ";
 import { ContactCTA } from "@/components/ContactCTA";
 import { wwdClient, type WWDPageGeneric } from "@/lib/api/wwd-client";
@@ -122,6 +123,7 @@ export default async function DasMessopferPage() {
       />
       <LiturgieNav />
       <ArgumentBlock arguments={args} />
+      <MassOrder />
       <FAQ items={faqItems} title="Häufige Fragen zur heiligen Messe" />
       <ContactCTA title={contact.title} description={contact.description} />
     </>

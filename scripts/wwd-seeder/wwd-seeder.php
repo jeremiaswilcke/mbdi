@@ -456,5 +456,172 @@ function wwd_seeder_run() {
         $results[] = "\n=== KSMJ: Kein Post gefunden ===";
     }
 
+    // =====================================================================
+    // DIE LITURGIE
+    // =====================================================================
+    $pid = $get_pid('die-liturgie');
+    if ($pid) {
+        $results[] = "\n=== DIE LITURGIE (Post #{$pid}) ===";
+        $seed_inline($pid, 'hero', [
+            'hero_title' => 'Die Liturgie. Himmel auf Erden.',
+            'hero_description' => 'In der Liturgie berühren sich Himmel und Erde. Seit zweitausend Jahren feiert die Kirche das Mysterium Christi – in Schönheit, Wahrheit und unveränderter Treue.',
+            'primary_cta_text' => 'Gottesdienste ansehen',
+            'primary_cta_link' => '/gottesdienste',
+        ]);
+        $seed_inline($pid, 'intro', [
+            'body' => '<p>Die Liturgie ist das Herz der Kirche. In ihr vollzieht sich, was Christus seinen Aposteln aufgetragen hat: «Tut dies zu meinem Gedächtnis» (Lk 22,19). Das Zweite Vatikanische Konzil nennt die Liturgie «den Höhepunkt, dem das Tun der Kirche zustrebt, und zugleich die Quelle, aus der all ihre Kraft strömt» (Sacrosanctum Concilium, Nr. 10).</p><p>Hier finden Sie eine Einführung in die großen Schätze der katholischen Liturgie: das heilige Messopfer, die sieben Sakramente, den Rhythmus des Kirchenjahres und die Frage, warum diese Tradition seit den Anfängen so bemerkenswert beständig geblieben ist.</p>',
+        ]);
+        $seed_repeatable($pid, 'pathways', [
+            ['title' => 'Das Messopfer', 'description' => 'Das Herzstück des katholischen Glaubens: die Feier der heiligen Eucharistie, in der Christus sein Kreuzesopfer gegenwärtig setzt.', 'href' => '/die-liturgie/das-messopfer', 'icon' => ''],
+            ['title' => 'Die Sakramente', 'description' => 'Sieben von Christus eingesetzte Zeichen der Gnade, die das ganze Leben des Christen von der Taufe bis zur Letzten Ölung begleiten.', 'href' => '/die-liturgie/die-sakramente', 'icon' => ''],
+            ['title' => 'Das Kirchenjahr', 'description' => 'Advent, Weihnachten, Fastenzeit, Ostern, Pfingsten – der heilige Rhythmus, in dem die Kirche das Geheimnis Christi Jahr für Jahr entfaltet.', 'href' => '/die-liturgie/das-kirchenjahr', 'icon' => ''],
+            ['title' => 'Liturgische Tradition', 'description' => 'Warum betet die Kirche seit 2000 Jahren so ähnlich? Über apostolische Wurzeln, lebendige Überlieferung und die Treue zum Ursprung.', 'href' => '/die-liturgie/liturgische-tradition', 'icon' => ''],
+        ]);
+        $seed_inline($pid, 'contact', [
+            'title' => 'Fragen zur Liturgie?',
+            'description' => 'Sie möchten die Liturgie besser verstehen oder an einem Gottesdienst teilnehmen? Schreiben Sie uns – wir freuen uns auf Sie.',
+        ]);
+    } else {
+        $results[] = "\n=== DIE LITURGIE: Kein Post gefunden ===";
+    }
+
+    // =====================================================================
+    // LITURGIE - DAS MESSOPFER
+    // =====================================================================
+    $pid = $get_pid('lit-messopfer');
+    if ($pid) {
+        $results[] = "\n=== DAS MESSOPFER (Post #{$pid}) ===";
+        $seed_inline($pid, 'hero', [
+            'hero_title' => 'Das Messopfer. Quelle und Höhepunkt.',
+            'hero_description' => 'In der heiligen Messe wird das Kreuzesopfer Christi gegenwärtig. Sie ist, wie das Konzil lehrt, «Quelle und Höhepunkt des ganzen christlichen Lebens» (Lumen Gentium, Nr. 11).',
+            'primary_cta_text' => 'Gottesdienstzeiten',
+            'primary_cta_link' => '/gottesdienste',
+        ]);
+        $seed_repeatable($pid, 'arguments', [
+            ['title' => 'Was geschieht in der heiligen Messe?', 'content' => 'Die heilige Messe ist kein bloßes Erinnerungsmahl und keine symbolische Feier. Sie ist die sakramentale Vergegenwärtigung des Kreuzesopfers Christi auf Golgotha. Das Konzil von Trient lehrt: «In diesem göttlichen Opfer, das in der Messe vollzogen wird, ist derselbe Christus enthalten und wird unblutig geopfert, der auf dem Altar des Kreuzes ein für allemal sich selbst blutig opferte» (DH 1743). Papst Johannes Paul II. schreibt in Ecclesia de Eucharistia: «Die Kirche lebt von der Eucharistie» (Nr. 1).'],
+            ['title' => 'Der Aufbau: Wortgottesdienst und Eucharistiefeier', 'content' => 'Die Messe gliedert sich in zwei große Teile: den Wortgottesdienst und die Eucharistiefeier. Die Allgemeine Einführung in das Römische Messbuch erklärt: «Die Messfeier besteht gleichsam aus zwei Teilen, nämlich aus der Wortliturgie und der Eucharistiefeier; diese sind so eng miteinander verbunden, dass sie einen einzigen Akt der Verehrung bilden» (GERM, Nr. 28).'],
+            ['title' => 'Die Realpräsenz: «Das ist mein Leib»', 'content' => 'Die katholische Kirche lehrt, dass Jesus Christus in der Eucharistie wahrhaft, wirklich und wesentlich gegenwärtig ist – mit Leib und Blut, Seele und Gottheit. Das Konzil von Trient definierte: «Im allerheiligsten Sakrament der Eucharistie ist wahrhaft, wirklich und wesentlich der Leib und das Blut zugleich mit der Seele und der Gottheit unseres Herrn Jesus Christus enthalten» (DH 1651).'],
+            ['title' => 'Die Schönheit der Messfeier', 'content' => 'Papst Benedikt XVI. schreibt: «Die Beziehung zwischen dem Geheimnis, das geglaubt wird, und dem Geheimnis, das gefeiert wird, zeigt sich in besonderer Weise im theologischen und liturgischen Wert der Schönheit» (Sacramentum Caritatis, Nr. 35). Sacrosanctum Concilium fordert: «Die Riten sollen den Glanz edler Einfachheit an sich tragen» (Nr. 34).'],
+            ['title' => 'Das Opfer der ganzen Kirche', 'content' => 'Die Messe ist nicht nur das Opfer des Priesters, sondern der ganzen Kirche. Der Katechismus lehrt: «Die gesamte Kirche vereinigt sich mit dem Opfer und der Fürsprache Christi» (KKK 1368). Das Konzil betont die «tätige Teilnahme» der Gläubigen (Sacrosanctum Concilium, Nr. 48).'],
+        ]);
+        $seed_repeatable($pid, 'faq', [
+            ['question' => 'Muss ich als Katholik jeden Sonntag zur Messe gehen?', 'answer' => 'Ja. Das dritte Kirchengebot verpflichtet die Gläubigen, an Sonntagen und gebotenen Feiertagen an der heiligen Messe teilzunehmen (KKK 2180). Schwerwiegende Gründe (Krankheit, Pflege kleiner Kinder) entschuldigen von dieser Pflicht.'],
+            ['question' => 'Was ist der Unterschied zwischen Messe und Gottesdienst?', 'answer' => '«Messe» bezeichnet spezifisch die Eucharistiefeier mit Wandlung und Kommunion. «Gottesdienst» ist ein weiterer Begriff, der auch Wortgottesdienste, Andachten und Vespern umfasst. Die Messe ist die höchste Form des Gottesdienstes.'],
+            ['question' => 'Dürfen Nicht-Katholiken die Kommunion empfangen?', 'answer' => 'Grundsätzlich ist die Kommunion den katholischen Gläubigen vorbehalten. In Ausnahmefällen können orthodoxe Christen zugelassen werden (Can. 844 §4). Nicht-katholische Besucher sind herzlich eingeladen, zum Segen nach vorne zu kommen.'],
+            ['question' => 'Was bedeutet «Transsubstantiation»?', 'answer' => 'Transsubstantiation bezeichnet die Lehre, dass bei der Wandlung die Substanz von Brot und Wein vollständig in den Leib und das Blut Christi verwandelt wird, während die äußeren Gestalten erhalten bleiben (DH 1652).'],
+            ['question' => 'Warum feiert die Kirche die Messe auf Latein?', 'answer' => 'Das Zweite Vatikanische Konzil hat die Volkssprache erlaubt, zugleich aber festgehalten: «Der Gebrauch der lateinischen Sprache soll in den lateinischen Riten erhalten bleiben» (SC, Nr. 36). In der Praxis werden die meisten Messen heute in der Volkssprache gefeiert.'],
+        ]);
+        $seed_inline($pid, 'contact', [
+            'title' => 'Die Messe mitfeiern',
+            'description' => 'Sie möchten die heilige Messe in Mariabrunn mitfeiern oder haben Fragen? Schreiben Sie uns – wir freuen uns auf Sie.',
+        ]);
+    } else {
+        $results[] = "\n=== DAS MESSOPFER: Kein Post gefunden ===";
+    }
+
+    // =====================================================================
+    // LITURGIE - DIE SAKRAMENTE
+    // =====================================================================
+    $pid = $get_pid('lit-sakramente');
+    if ($pid) {
+        $results[] = "\n=== DIE SAKRAMENTE (Post #{$pid}) ===";
+        $seed_inline($pid, 'hero', [
+            'hero_title' => 'Die Sakramente. Zeichen der Gnade.',
+            'hero_description' => 'Sieben heilige Zeichen, von Christus selbst eingesetzt, die bewirken, was sie bezeichnen – und das ganze Leben des Christen durchdringen.',
+            'primary_cta_text' => 'Kontakt aufnehmen',
+            'primary_cta_link' => '#kontakt',
+        ]);
+        $seed_repeatable($pid, 'arguments', [
+            ['title' => 'Was sind Sakramente?', 'content' => 'Der Katechismus definiert: «Die Sakramente sind wirksame Zeichen der Gnade, von Christus eingesetzt und der Kirche anvertraut, durch die uns das göttliche Leben gespendet wird» (KKK 1131). Die sieben Sakramente gliedern sich in: Initiation (Taufe, Firmung, Eucharistie), Heilung (Buße, Krankensalbung) und Dienst (Weihe, Ehe).'],
+            ['title' => 'Taufe – Wiedergeburt aus Wasser und Geist', 'content' => 'Die Taufe ist das Tor zu allen anderen Sakramenten. Der Katechismus lehrt: «Die heilige Taufe ist die Grundlage des ganzen christlichen Lebens» (KKK 1213). Jesus selbst hat die Taufe eingesetzt: «Tauft sie auf den Namen des Vaters und des Sohnes und des Heiligen Geistes» (Mt 28,19).'],
+            ['title' => 'Firmung – Stärkung durch den Heiligen Geist', 'content' => 'Die Firmung vollendet die Taufgnade. Der Katechismus lehrt: «Das Sakrament der Firmung bewirkt ein Wachstum und eine Vertiefung der Taufgnade» (KKK 1303). Die biblische Grundlage liegt in der Apostelgeschichte (Apg 8,14-17).'],
+            ['title' => 'Eucharistie – Quelle und Höhepunkt', 'content' => 'Die Eucharistie ist «Quelle und Höhepunkt des ganzen christlichen Lebens» (Lumen Gentium, Nr. 11). In ihr empfängt der Gläubige den Leib und das Blut Christi selbst. Die weiteren Ausführungen finden sich auf der Seite «Das Messopfer».'],
+            ['title' => 'Buße und Krankensalbung – Sakramente der Heilung', 'content' => 'In der Beichte empfängt der Sünder die Vergebung Gottes: «Wem ihr die Sünden vergebt, dem sind sie vergeben» (Joh 20,23). Die Krankensalbung richtet sich an Gläubige in schwerer Krankheit und verleiht Stärkung, Frieden und Trost (KKK 1532).'],
+            ['title' => 'Weihe und Ehe – Sakramente des Dienstes', 'content' => 'Das Weihesakrament setzt die Sendung der Apostel fort (KKK 1536). Das Sakrament der Ehe verbindet Mann und Frau sakramental: «Was Gott verbunden hat, das darf der Mensch nicht trennen» (Mt 19,6). Das Konzil nennt die christliche Familie «Hauskirche» (LG, Nr. 11).'],
+        ]);
+        $seed_repeatable($pid, 'faq', [
+            ['question' => 'Warum gibt es genau sieben Sakramente?', 'answer' => 'Die Zahl wurde auf dem Konzil von Trient (1547) definitiv bestätigt (DH 1601). Die sieben Sakramente entsprechen den entscheidenden Stationen des Lebens – Geburt, Reifung, Nahrung, Heilung und Dienst.'],
+            ['question' => 'Was ist ein «Sakramental» im Unterschied zu einem Sakrament?', 'answer' => 'Sakramentalien sind heilige Zeichen (Segnungen, Weihwasser, Rosenkranz), die den Sakramenten nachgebildet sind. Sie wirken nicht «aus sich heraus», sondern kraft der Fürbitte der Kirche (KKK 1677).'],
+            ['question' => 'Kann man die Sakramente auch ohne Priester empfangen?', 'answer' => 'Die Taufe kann im Notfall von jedem Menschen gespendet werden (KKK 1256). Die Ehe wird von den Brautleuten selbst gespendet. Alle anderen Sakramente erfordern einen geweihten Spender.'],
+            ['question' => 'Was bedeutet «ex opere operato»?', 'answer' => 'Die Sakramente wirken nicht von der Heiligkeit des Spenders abhängig, sondern aus der Kraft Christi selbst (DH 1608). Die würdige Disposition des Empfangenden bleibt für die Fruchtbarkeit entscheidend.'],
+        ]);
+        $seed_inline($pid, 'contact', [
+            'title' => 'Sakramente empfangen',
+            'description' => 'Sie möchten ein Sakrament empfangen oder sich darauf vorbereiten? Schreiben Sie uns – wir begleiten Sie gerne.',
+        ]);
+    } else {
+        $results[] = "\n=== DIE SAKRAMENTE: Kein Post gefunden ===";
+    }
+
+    // =====================================================================
+    // LITURGIE - DAS KIRCHENJAHR
+    // =====================================================================
+    $pid = $get_pid('lit-kirchenjahr');
+    if ($pid) {
+        $results[] = "\n=== DAS KIRCHENJAHR (Post #{$pid}) ===";
+        $seed_inline($pid, 'hero', [
+            'hero_title' => 'Das Kirchenjahr. Im Rhythmus des Heils.',
+            'hero_description' => 'Im Kreislauf des Jahres entfaltet die Kirche das ganze Mysterium Christi – von der Erwartung seiner Ankunft bis zur Sendung des Heiligen Geistes.',
+            'primary_cta_text' => 'Gottesdienstzeiten',
+            'primary_cta_link' => '/gottesdienste',
+        ]);
+        $seed_repeatable($pid, 'arguments', [
+            ['title' => 'Der heilige Kreislauf', 'content' => 'Das Zweite Vatikanische Konzil lehrt: «Im Kreislauf des Jahres entfaltet die Kirche das ganze Mysterium Christi von der Menschwerdung und Geburt bis zur Himmelfahrt, zum Pfingsttag und zur Erwartung der seligen Hoffnung und der Ankunft des Herrn» (SC, Nr. 102). Der Kern des liturgischen Jahres ist der Sonntag als Auferstehungstag (KKK 1163).'],
+            ['title' => 'Advent und Weihnachten', 'content' => 'Der Advent ist die vierwöchige Vorbereitungszeit auf Weihnachten mit doppeltem Charakter: Erinnerung an die Erwartung Israels und Ausblick auf die Wiederkunft Christi. Weihnachten feiert die Menschwerdung: «Das Wort ist Fleisch geworden und hat unter uns gewohnt» (Joh 1,14).'],
+            ['title' => 'Fastenzeit – Vierzig Tage der Umkehr', 'content' => 'Die Fastenzeit beginnt am Aschermittwoch und dauert vierzig Tage. Sacrosanctum Concilium bestimmt: Die Erinnerung an die Taufe und die Buße sollen stärker hervorgehoben werden (Nr. 109). Das Gloria und das Halleluja werden nicht gesungen.'],
+            ['title' => 'Die Karwoche – Im Schatten des Kreuzes', 'content' => 'Die heiligste Woche: Palmsonntag, Gründonnerstag (Einsetzung der Eucharistie und des Priestertums), Karfreitag (Leiden und Sterben – einziger Tag ohne Messe), Karsamstag (Grabesruhe). Der Katechismus lehrt: «Das Kreuz ist das einzigartige Opfer Christi» (KKK 618).'],
+            ['title' => 'Ostern – Das Fest aller Feste', 'content' => 'Die Osternacht ist «die Mutter aller heiligen Vigilien» (Augustinus). Sie umfasst Lichtfeier, Wortgottesdienst mit bis zu sieben Lesungen, Tauffeier und Eucharistie. Die Osterzeit dauert fünfzig Tage bis Pfingsten – «wie ein einziger Festtag» (Athanasius).'],
+            ['title' => 'Die Zeit im Jahreskreis und Heiligenfeste', 'content' => 'Die «Zeit im Jahreskreis» umfasst 33-34 Wochen in Grün. Dazu kommen die Heiligenfeste: «In den irdischen Heiligen wird Gottes vollkommenes Bild verehrt» (SC, Nr. 104). Besonders hervorgehoben: Fronleichnam, Mariä Himmelfahrt, Allerheiligen, Christkönig.'],
+        ]);
+        $seed_repeatable($pid, 'faq', [
+            ['question' => 'Warum beginnt das Kirchenjahr im Advent?', 'answer' => 'Es beginnt mit der Erwartung (Advent), führt über die Erfüllung (Weihnachten, Ostern) und endet mit dem Christkönigsfest als Ausblick auf die Vollendung. So bildet es einen geschlossenen Kreislauf des Heilsgeheimnisses (vgl. SC, Nr. 102).'],
+            ['question' => 'Was sind die liturgischen Farben?', 'answer' => 'Weiß/Gold: Festfreude (Weihnachten, Ostern). Rot: Heiliger Geist und Martyrium (Pfingsten, Karfreitag). Violett: Buße und Erwartung (Advent, Fastenzeit). Rosa: verhaltene Freude (Gaudete, Laetare). Grün: Hoffnung (Zeit im Jahreskreis). Geregelt in GERM, Nr. 346.'],
+            ['question' => 'Warum wird in der Fastenzeit kein Halleluja gesungen?', 'answer' => 'Um den Bußcharakter auszudrücken und die Sehnsucht nach der Osterfreude zu vertiefen. Wenn es in der Osternacht wieder erklingt, hat es besondere Wirkung. Seit dem 5. Jahrhundert belegt.'],
+            ['question' => 'Ist das Datum von Ostern willkürlich?', 'answer' => 'Nein. Seit dem Konzil von Nizäa (325) wird Ostern am ersten Sonntag nach dem ersten Frühlingsvollmond gefeiert. Daher schwankt es zwischen 22. März und 25. April.'],
+            ['question' => 'Was ist die Osternacht und warum ist sie so wichtig?', 'answer' => 'Die bedeutendste liturgische Feier des Jahres. Sie umfasst Lichtfeier mit Osterfeuer, ausgedehnten Wortgottesdienst, Tauffeier und Eucharistie. In vielen Pfarren werden Erwachsene getauft und gefirmt.'],
+        ]);
+        $seed_inline($pid, 'contact', [
+            'title' => 'Das Kirchenjahr miterleben',
+            'description' => 'Sie möchten die liturgischen Feste in Mariabrunn mitfeiern? Schreiben Sie uns für weitere Informationen.',
+        ]);
+    } else {
+        $results[] = "\n=== DAS KIRCHENJAHR: Kein Post gefunden ===";
+    }
+
+    // =====================================================================
+    // LITURGIE - LITURGISCHE TRADITION
+    // =====================================================================
+    $pid = $get_pid('lit-tradition');
+    if ($pid) {
+        $results[] = "\n=== LITURGISCHE TRADITION (Post #{$pid}) ===";
+        $seed_inline($pid, 'hero', [
+            'hero_title' => '2000 Jahre. Dieselbe Liturgie.',
+            'hero_description' => 'Warum beten Christen heute im Wesentlichen so wie in den ersten Jahrhunderten? Über die apostolischen Wurzeln und die bemerkenswerte Beständigkeit der liturgischen Tradition.',
+            'primary_cta_text' => 'Gottesdienstzeiten',
+            'primary_cta_link' => '/gottesdienste',
+        ]);
+        $seed_repeatable($pid, 'arguments', [
+            ['title' => 'Der apostolische Ursprung der Liturgie', 'content' => 'Die Grundstruktur der Liturgie geht auf Jesus selbst zurück: «Tut dies zu meinem Gedächtnis» (Lk 22,19). Bereits die Apostelgeschichte berichtet: «Sie hielten an der Lehre der Apostel fest und an der Gemeinschaft, am Brechen des Brotes und an den Gebeten» (Apg 2,42). Diese vier Elemente bilden bis heute das Grundgerüst der Messe (KKK 1356).'],
+            ['title' => 'Die frühchristlichen Zeugnisse', 'content' => 'Justin der Märtyrer beschreibt um 155 n. Chr. eine Sonntagsliturgie, die dem heutigen Messablauf verblüffend ähnlich ist (1. Apol. 67). Hippolyt von Rom dokumentiert ca. 215 n. Chr. das älteste überlieferte Hochgebet (Traditio Apostolica). Die Didache (ca. 70-100 n. Chr.) enthält bereits feste Taufformeln und Eucharistiegebete.'],
+            ['title' => 'Warum hat sich so wenig geändert?', 'content' => 'Erstens: «Tut dies zu meinem Gedächtnis» ist ein göttliches Mandat. Zweitens: Die Liturgie wurde stets als heilig betrachtet – als Berührung von Himmel und Erde (KKK 1136). Drittens: Die apostolische Sukzession hat organische Kontinuität gewährleistet. Benedikt XVI.: «Die Liturgie ist uns vorgegeben» (Der Geist der Liturgie).'],
+            ['title' => 'Organische Entwicklung – nicht Erfindung', 'content' => 'Sacrosanctum Concilium: «Neuerungen sollen nur dann eingeführt werden, wenn der Nutzen der Kirche sie wirklich erfordert. Dabei ist Sorge zu tragen, dass die neuen Formen aus den schon bestehenden gewissermaßen organisch herauswachsen» (Nr. 23). Die Reform nach dem Konzil war keine Revolution, sondern organische Weiterentwicklung.'],
+            ['title' => 'Ost und West – dieselbe Substanz', 'content' => 'Obwohl sich westliche und östliche Tradition seit dem Mittelalter unabhängig entwickelt haben, teilen sie dieselbe Grundstruktur. Das Konzil erkennt an: «Die ehrwürdigen liturgischen Überlieferungen der Ostkirchen sind als Erbe der Gesamtkirche zu bewahren» (Orientalium Ecclesiarum, Nr. 1).'],
+            ['title' => 'Sacrosanctum Concilium und die Treue zur Tradition', 'content' => 'Das Konzil fordert: «Kein anderer, auch wenn er Priester wäre, darf nach eigenem Gutdünken in der Liturgie etwas hinzufügen, wegnehmen oder ändern» (SC, Nr. 22 §3). Papst Franziskus bestätigt: «Die Liturgie, die uns die Reform des Konzils übergibt, ist keine andere Liturgie, sondern dieselbe» (Desiderio Desideravi, Nr. 31).'],
+        ]);
+        $seed_repeatable($pid, 'faq', [
+            ['question' => 'Hat das Zweite Vatikanum die Messe «abgeschafft»?', 'answer' => 'Nein. Die Grundstruktur blieb erhalten. Papst Benedikt XVI. stellt klar, dass die ältere und die neuere Form «zwei Gebrauchsweisen des einen Römischen Ritus» sind (Summorum Pontificum, Art. 1).'],
+            ['question' => 'Warum sind orthodoxe und katholische Liturgie so ähnlich?', 'answer' => 'Weil beide aus derselben apostolischen Quelle stammen. Die Trennung (1054) fand statt, als die liturgische Grundstruktur bereits seit Jahrhunderten gefestigt war.'],
+            ['question' => 'Darf ein Priester die Liturgie verändern?', 'answer' => 'Nein. Sacrosanctum Concilium ist eindeutig: «Niemand darf nach eigenem Gutdünken in der Liturgie etwas hinzufügen, wegnehmen oder ändern» (Nr. 22 §3). Redemptionis Sacramentum (2004) bekräftigt dies.'],
+            ['question' => 'Was bedeutet «lex orandi, lex credendi»?', 'answer' => '«Das Gesetz des Betens ist das Gesetz des Glaubens.» Was die Kirche in der Liturgie betet, drückt aus, was sie glaubt – und umgekehrt (KKK 1124).'],
+            ['question' => 'Ist die Tradition nicht etwas Starres?', 'answer' => 'Nein. Dei Verbum lehrt: «Die Überlieferung schreitet in der Kirche unter dem Beistand des Heiligen Geistes fort» (Nr. 8). Tradition ist nicht das Bewahren der Asche, sondern das Weitergeben der Flamme.'],
+        ]);
+        $seed_inline($pid, 'contact', [
+            'title' => 'Die Tradition erleben',
+            'description' => 'Erleben Sie die lebendige liturgische Tradition in Mariabrunn. Wir freuen uns auf Ihren Besuch oder Ihre Fragen.',
+        ]);
+    } else {
+        $results[] = "\n=== LITURGISCHE TRADITION: Kein Post gefunden ===";
+    }
+
     return $results;
 }
