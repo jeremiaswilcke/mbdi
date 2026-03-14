@@ -1,8 +1,23 @@
 {
   "parish": "Mariabrunn",
-  "period": {
-    "from": "2026-03-14",
-    "to": "2026-04-05"
+  "source": {
+    "type": "pdf",
+    "title": "Pfarrkalender der Pfarre Mariabrunn",
+    "period": {
+      "from": "2026-03-14",
+      "to": "2026-04-05"
+    }
+  },
+  "contact": {
+    "name": "r.k. Pfarramt Mariabrunn",
+    "address": "1140 Wien, Hauptstraße 9",
+    "phone": "01/979-10-72",
+    "office_hours": [
+      "Di, Do, Fr 9-12",
+      "Do 15-18 Uhr"
+    ],
+    "email": "pfarre.mariabrunn@katholischekirche.at",
+    "website": "https://www.erzdioezese-wien.at/pages/pfarren/9122"
   },
   "services": [
     {
@@ -230,5 +245,7 @@
         }
       ]
     }
-  ]
+  ],
+  "events": [],
+  "notices": []
 }

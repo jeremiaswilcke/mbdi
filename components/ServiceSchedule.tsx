@@ -5,16 +5,17 @@ import { motion } from "framer-motion";
 interface Celebration {
   time: string;
   title: string;
-  type: string;
+  type?: string;
   intention?: string | null;
   notes?: string;
+  location?: string;
 }
 
 interface Readings {
-  l1: string;
-  psalm: string;
-  l2: string;
-  gospel: string;
+  l1?: string | null;
+  psalm?: string | null;
+  l2?: string | null;
+  gospel?: string | null;
 }
 
 interface ServiceDay {
@@ -43,10 +44,10 @@ interface Notice {
 
 interface ScheduleData {
   parish: string;
-  source: {
-    type: string;
-    title: string;
-    period: { from: string; to: string };
+  source?: {
+    type?: string;
+    title?: string;
+    period?: { from?: string; to?: string };
   };
   contact?: {
     name: string;
@@ -57,13 +58,25 @@ interface ScheduleData {
     website: string;
   };
   services: ServiceDay[];
-  events: PfarrEvent[];
+  events?: PfarrEvent[];
   notices?: Notice[];
 }
 
 function formatDate(dateStr: string): string {
   const d = new Date(dateStr + "T00:00:00");
   return d.toLocaleDateString("de-AT", { day: "numeric", month: "long" });
+}
+
+function inferType(celebration: Celebration): string {
+  if (celebration.type) return celebration.type;
+  const t = celebration.title.toLowerCase();
+  if (t.includes("messe") || t.includes("hochamt") || t.includes("abendmahl") || t.includes("prozession")) return "messe";
+  if (t.includes("rosenkranz")) return "rosenkranz";
+  if (t.includes("kinderkirche")) return "kinderkirche";
+  if (t.includes("beicht")) return "beichte";
+  if (t.includes("anbetung") || t.includes("grabwache")) return "anbetung";
+  if (t.includes("kreuzweg") || t.includes("feier") || t.includes("segnung")) return "feier";
+  return "sonstiges";
 }
 
 function typeColor(type: string): string {
@@ -74,8 +87,13 @@ function typeColor(type: string): string {
       return "bg-secondary";
     case "kinderkirche":
       return "bg-amber-500";
+    case "feier":
     case "aschenkreuzfeier":
       return "bg-violet-600";
+    case "beichte":
+      return "bg-emerald-600";
+    case "anbetung":
+      return "bg-rose-500";
     default:
       return "bg-gray-500";
   }
@@ -89,8 +107,13 @@ function typeLabel(type: string): string {
       return "Rosenkranz";
     case "kinderkirche":
       return "Kinderkirche";
+    case "feier":
     case "aschenkreuzfeier":
       return "Feier";
+    case "beichte":
+      return "Beichte";
+    case "anbetung":
+      return "Anbetung";
     default:
       return type;
   }
@@ -101,8 +124,8 @@ export function ServiceSchedule({ data }: { data: ScheduleData }) {
   today.setHours(0, 0, 0, 0);
   const todayStr = today.toISOString().split("T")[0];
 
-  const futureServices = data.services.filter((s) => s.date >= todayStr);
-  const futureEvents = data.events.filter((ev) => ev.date >= todayStr);
+  const futureServices = (data.services ?? []).filter((s) => s.date >= todayStr);
+  const futureEvents = (data.events ?? []).filter((ev) => ev.date >= todayStr);
 
   if (futureServices.length === 0 && futureEvents.length === 0 && (!data.notices || data.notices.length === 0)) {
     return (
@@ -184,11 +207,16 @@ export function ServiceSchedule({ data }: { data: ScheduleData }) {
                           <span className="font-subheading text-anthracite">
                             {c.title}
                           </span>
-                          <span
-                            className={`${typeColor(c.type)} text-white text-xs px-2 py-0.5 rounded-full font-body`}
-                          >
-                            {typeLabel(c.type)}
-                          </span>
+                          {(() => {
+                            const t = inferType(c);
+                            return (
+                              <span
+                                className={`${typeColor(t)} text-white text-xs px-2 py-0.5 rounded-full font-body`}
+                              >
+                                {typeLabel(t)}
+                              </span>
+                            );
+                          })()}
                         </div>
                         {c.intention && (
                           <p className="text-sm text-anthracite/60 mt-1 italic">
@@ -210,7 +238,12 @@ export function ServiceSchedule({ data }: { data: ScheduleData }) {
                   <div className="px-6 py-3 bg-gray-50/50 border-t border-gray-100">
                     <p className="text-xs text-anthracite/50 font-body">
                       <span className="font-semibold">Lesungen:</span>{" "}
-                      {day.readings.l1} · Ps {day.readings.psalm} · {day.readings.l2} · Ev: {day.readings.gospel}
+                      {[
+                        day.readings.l1,
+                        day.readings.psalm ? `Ps ${day.readings.psalm}` : null,
+                        day.readings.l2,
+                        day.readings.gospel ? `Ev: ${day.readings.gospel}` : null,
+                      ].filter(Boolean).join(" · ")}
                     </p>
                   </div>
                 )}

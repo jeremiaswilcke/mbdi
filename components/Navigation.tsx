@@ -36,9 +36,11 @@ export function Navigation() {
       <nav
         className={cn(
           "fixed top-0 w-full z-50 transition-all duration-300",
-          isScrolled
+          isMobileMenuOpen
+            ? "bg-transparent"
+            : isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-sm"
-            : "bg-transparent"
+            : "bg-gradient-to-b from-black/50 to-transparent"
         )}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -129,7 +131,7 @@ export function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-primary flex flex-col items-center justify-center gap-8 lg:hidden"
+            className="fixed inset-0 z-40 bg-primary flex flex-col items-center justify-start gap-6 pt-28 pb-8 overflow-y-auto lg:hidden"
           >
             {navLinks.map((link, i) => (
               <motion.div
